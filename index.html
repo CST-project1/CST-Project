@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+  
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .splash-text {
+        color: white;
+        font-size: 4rem;
+        font-weight: bold;
+        animation: fadeInScale 3s ease-in-out forwards;
+    }
+
+    /* Animation keyframes */
+    @keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    }
+</style>
+
+<body>
+    <div class="splash-text">zone</div>
+
+    <script>
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 3000);
+    </script>
+</body>
+
+</html>

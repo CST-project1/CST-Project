@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pages/bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+            <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
+                <div class="w-75">
+                    <h2 class="text-center mb-3">Register</h2>
+                    <h2 class="text-center mb-3">Register</h2>
+                    <form action="login.html" method="POST">
+                        <div class="mb-2">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="confirm password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                                required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="gender" class="form-label">gender</label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="" disabled selected>Select gender</option>
+                                <option value="Seller">Seller</option>
+                                <option value="buyer">buyer</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary w-30">Register</button>
+                            <a href="login.html" class="btn btn-secondary w-30">Back to Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block p-0">
+                <div class="w-100 h-100"
+                    style="background-image: url('images/logo.jpg'); background-size: cover; background-position: center;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap-5.3.7-disk/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
