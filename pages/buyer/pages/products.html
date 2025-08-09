@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Essence - Luxury Perfume Store</title>
+    <title>Products - L'Essence</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +17,10 @@
             <div class="container">
                 <a href="index.html" class="logo">L'Essence</a>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#hero">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="nav-right">
                     <div class="cart-icon" id="cart-icon">
@@ -57,48 +58,26 @@
     <div class="cart-overlay" id="cart-overlay"></div>
 
     <main>
-        <section id="hero" class="hero-section">
+        <section class="products-hero">
             <div class="container">
-                <h1>Discover Your Signature Scent</h1>
-                <p>An exclusive collection of perfumes that captivate the senses</p>
-                <a href="products.html" class="btn">Shop Now</a>
+                <h1>Our Complete Collection</h1>
+                <p>Discover all our exquisite fragrances</p>
             </div>
         </section>
 
-        <section id="featured" class="featured-section">
+        <section class="products-section">
             <div class="container">
-                <h2>Featured Products</h2>
-                <p class="section-subtitle">Handpicked fragrances just for you</p>
-                <div class="product-grid" id="featured-products-grid">
-                    <!-- Featured products will be added dynamically here -->
+                <div class="products-filter">
+                    <h3>Filter by Category</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All Products</button>
+                        <button class="filter-btn" data-category="men">Men's</button>
+                        <button class="filter-btn" data-category="women">Women's</button>
+                        <button class="filter-btn" data-category="unisex">Unisex</button>
+                    </div>
                 </div>
-                <div class="view-all-container">
-                    <a href="products.html" class="view-all-btn">View All Products</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2>Our Story</h2>
-                <p>At L'Essence, we believe that fragrance is not just a scent, but an identity and expression of self. We strive to bring you the finest perfumes from around the world, placing them at your fingertips.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>For any inquiries, you can reach us via:</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <strong>📧 Email:</strong> <a href="mailto:ahmed185taha@gmail.com">ahmed185taha@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>📞 Phone:</strong> <a href="tel:+201063675209">+20 106 367 5209</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>💬 WhatsApp:</strong> <a href="https://wa.me/201063675209">+20 106 367 5209</a>
-                    </div>
+                <div class="product-grid" id="all-products-grid">
+                    <!-- All products will be added dynamically here -->
                 </div>
             </div>
         </section>
@@ -110,6 +89,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="products.js"></script>
 </body>
 </html>
