@@ -1,0 +1,57 @@
+body {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    color: black;
+    min-height: 100vh;
+}
+
+.sidebar h2 {
+    color: black;
+    font-size: 1.4rem;
+}
+
+.sidebar a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.sidebar a.active {
+    background-color: rgb(49, 49, 225);
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    background-color: rgb(204, 198, 198);
+}
+
+.offcanvas .btn-close {
+    filter: invert(0) grayscale(100%) brightness(0);
+}
+
+.profile-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #343a40;
+}
+.profile-actions .btn {
+     margin-right: 10px;
+}
+/* .mb-4 .contact-info {
+    font-family: Arial, Helvetica, sans-serif;
+} */
