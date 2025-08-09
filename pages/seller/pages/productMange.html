@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Seller Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/productMange.css">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Offcanvas Sidebar for small screens -->
+<div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="sidebarMenu">
+  <div class="offcanvas-header">
+    <h2>PerfumeStore</h2>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a href="#">Dashboard</a>
+    <a href="#" class="active">Products</a>
+    <a href="#">Orders</a>
+    <a href="#">Analytics</a>
+    <a href="#">Profile</a>
+    <a href="#" style="color:#dc3545;">Logout</a>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Static Sidebar for large screens -->
+    <nav class="col-md-3 col-lg-2 d-none d-md-block sidebar p-3">
+      <h2>PerfumeStore</h2>
+      <a href="#">Dashboard</a>
+      <a href="#" class="active">Products</a>
+      <a href="#">Orders</a>
+      <a href="#">Analytics</a>
+      <a href="#">Profile</a>
+      <a href="#" style="color:#dc3545">Logout</a>
+    </nav>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Top bar -->
+      <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <!-- Toggle button for small screens -->
+        <button class="btn btn-dark d-md-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>My Products</h1>
+        <button class="btn btn-add"><i class="fas fa-plus"></i> Add Product</button>
+      </div>
+
+      <!-- Product Table -->
+      <div class="table-responsive">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
+              <td>Rose Elegance</td>
+              <td>$120</td>
+              <td>15</td>
+              <td><span class="badge badge-active">Active</span></td>
+              <td>
+                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
+              <td>Golden Mist</td>
+              <td>$95</td>
+              <td>0</td>
+              <td><span class="badge badge-out">Out of Stock</span></td>
+              <td>
+                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
+              <td>Stranger with you</td>
+              <td>$120</td>
+              <td>15</td>
+              <td><span class="badge bg-secondary rounded-pill">inactive</span></td>
+              <td>
+                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
