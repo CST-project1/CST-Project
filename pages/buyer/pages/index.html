@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Essence - Luxury Perfume Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" alt="Shopping Cart"/>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Discover Your Signature Scent</h1>
+                <p>An exclusive collection of perfumes that captivate the senses</p>
+                <a href="products.html" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="featured" class="featured-section">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <p class="section-subtitle">Handpicked fragrances just for you</p>
+                <div class="product-grid" id="featured-products-grid">
+                    <!-- Featured products will be added dynamically here -->
+                </div>
+                <div class="view-all-container">
+                    <a href="products.html" class="view-all-btn">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>Our Story</h2>
+                <p>At L'Essence, we believe that fragrance is not just a scent, but an identity and expression of self. We strive to bring you the finest perfumes from around the world, placing them at your fingertips.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>For any inquiries, you can reach us via:</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong> <a href="mailto:ahmed185taha@gmail.com">ahmed185taha@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Phone:</strong> <a href="tel:+201063675209">+20 106 367 5209</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>💬 WhatsApp:</strong> <a href="https://wa.me/201063675209">+20 106 367 5209</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer-bottom">
+        <div class="container">
+            <p>&copy; 2024 L'Essence. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
