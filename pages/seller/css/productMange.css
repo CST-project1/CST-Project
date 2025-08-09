@@ -1,0 +1,84 @@
+body {
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    color: black;
+    min-height: 100vh;
+}
+
+.sidebar h2 {
+    color: black;
+    font-size: 1.4rem;
+}
+
+.sidebar a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.sidebar a.active {
+    background-color: rgb(49, 49, 225);
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    background-color: rgb(204, 198, 198);
+}
+
+.btn-add {
+    background-color: rgb(49, 49, 225);
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-add:hover {
+    background-color: rgb(49, 49, 225);
+}
+
+/* Custom Table Styling */
+.custom-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgb(165, 161, 161);
+}
+
+.custom-table thead {
+    background-color: white;
+    color: #2C2C2C;
+    font-weight: bold;
+}
+
+.custom-table th,
+.custom-table td {
+    vertical-align: middle;
+    padding: 12px;
+    }
+
+.custom-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.badge-active {
+    background-color: #4CAF50;
+}
+
+/* .badge-inactive { background-color: #888; } */
+.badge-out {
+    background-color: #E53935;
+}
+
+.offcanvas .btn-close {
+    filter: invert(0) grayscale(100%) brightness(0);
+}
