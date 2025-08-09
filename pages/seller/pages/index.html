@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+    <link rel="stylesheet" href="../css/Dashboard.css">
+</head>
+<body>
+
+    <!-- sidemenu Button  -->
+    <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
+    
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+       
+        <button  class="btn-close btn-close-white" aria-label="Close" onclick="toggleSidebar()"></button>
+
+
+         <img src="https://sdmntprukwest.oaiusercontent.com/files/00000000-c1c0-6243-8925-d99e90af617e/raw?se=2025-08-09T16%3A27%3A21Z&sp=r&sv=2024-08-04&sr=b&scid=fddd76d0-a38b-599a-b118-19500f9137d9&skoid=b928fb90-500a-412f-a661-1ece57a7c318&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-09T05%3A17%3A07Z&ske=2025-08-10T05%3A17%3A07Z&sks=b&skv=2024-08-04&sig=YpmdNYxi8tnp0Wq8C/86JuMALiPeu43k2IXiwbFULDY%3D" alt="Logo" >
+        <ul>
+            <li class="dashboard active"><a href="#"><i class="bi bi-house-door"></i>  Dashboard</a></li>
+            <li class="products"><a href="#"><i class="bi bi-box"></i> Product Management</a></li>
+            <li class="orders"><a href="#"><i class="bi bi-cart"></i> Orders</a></li>
+            <li class="analytics"><a href="#"><i class="bi bi-graph-up"></i> Sales Analytics</a></li>
+            <li class="account"><a href="#"><i class="bi bi-person"></i> Account Settings</a></li>
+            <li class="logout"><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <header>
+            
+            <h1>Dashboard Overview</h1> 
+           
+
+        </header>
+
+
+        <!-- Product Grid -->
+        <section class="products-grid">
+            <div class="product-card">
+                <img src="https://images.stockcake.com/public/1/b/e/1be712fd-b8c8-4772-9b9d-f57684ad4bde_large/elegant-perfume-bottle-stockcake.jpg" alt="Perfume">
+                <h3>Rose Elegance</h3>
+                <p>Price: $50</p>
+                <div class="actions">
+                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+
+                    
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://labelleperfumes.com/cdn/shop/files/ocean-breeze-milestone.webp?v=1720725925" alt="Perfume">
+                <h3>Ocean Breeze</h3>
+                <p>Price: $65</p>
+                <div class="actions">
+                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://arab-p-001.sitecorecontenthub.cloud/api/public/content/2htxteatxscktzqyxhfla-web?v=210ba4af&t=w800" alt="Perfume">
+                <h3>Vanilla Dream</h3>
+                <p>Price: $55</p>
+                <div class="actions">
+                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://swoobrothers.com/wp-content/uploads/2025/03/fg-scaled.webp" alt="Perfume">
+                <h3>Amber Nights</h3>
+                <p>Price: $70</p>
+                <div class="actions">
+                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.meesho.com/images/products/463929514/vt1lf_512.jpg" alt="Perfume">
+                <h3>Lavender Bliss</h3>
+                <p>Price: $45</p>
+                <div class="actions">
+                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://ramfabeauty.com/cdn/shop/files/the-majestic-musk-edp-unisex-alexandre-j-786269.jpg?v=1726725112" alt="Perfume">
+                <h3>Musk Majesty</h3>
+                <p>Price: $80</p>
+                <div class="actions">
+                   <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+        </section>
+         <!-- order section -->
+         <div class="orders-section">
+          <h2 class="mb-3">Recent Orders</h2>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#1</td>
+                  <td>Zoe Smith</td>
+                  <td>Amber Nights</td>
+                  <td>2025-7-20</td>
+                  <td><span class="badge bg-warning">Pending</span></td>
+                  <td>$140</td>
+                </tr>
+
+                <tr>
+                  <td>#2</td>
+                  <td>jhon marsel</td>
+                  <td>Ocean Breeze</td>
+                  <td>2025-6-16</td>
+                  <td><span class="badge bg-success">Delivered</span></td>
+                  <td>$65</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
