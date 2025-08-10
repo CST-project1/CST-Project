@@ -55,17 +55,17 @@
                 <div class="col-lg-8">
                     <div class="profile-card text-center">
                         <img src="https://cdn.shopify.com/s/files/1/0878/6981/7120/files/alpha_2.jpg?v=1724673288" class="profile-img" mb-3>
-                        <h3>Amira Perfumes</h3>
+                        <h3 id="storeDisplayName">Amira Perfumes</h3>
                         <p class="text-muted">Luxury Perfume Seller</p>
 
                         <div class="mb-4">
-                            <p class="contact-info"><i class="fas fa-envelope me-n"> amira@perfume.com</i></p>
-                            <p class="contact-info"><i class="fas fa-phone me-n"> +20 123 456 789</i></p>
-                            <p class="contact-info"><i class="fas fa-map-marker-alt me-2"> Mansoura, Egypt</i></p>
+                            <p class="contact-info"><i class="fas fa-envelope me-n"> <span id="storeDisplayEmail"> amira@perfume.com</span></i></p>
+                            <p class="contact-info"><i class="fas fa-phone me-n"><span id="storeDisplayPhone"> +20 123 456 789</span> </i></p>
+                            <p class="contact-info"><i class="fas fa-map-marker-alt me-2"><span id="storeDisplayLocation"> Mansoura, Egypt</span> </i></p>
                         </div>
 
                         <div class="profile-actions mb-4">
-                            <button class="btn btn-outline-dark">Edit Profile</button>
+                            <button id="edit-btn" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
                             <button class="btn btn-secondary">Logout</button>
                         </div>
 
@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-md-6">
                                 <h5><strong>About</strong></h5>
-                                <p>We offer a premium selection of fragrances from around the world, combining elegance and sophistication in every bottle.</p>
+                                <p id="storeDisplayAbout">We offer a premium selection of fragrances from around the world, combining elegance and sophistication in every bottle.</p>
                             </div>
                         </div>
                     </div>
@@ -90,8 +90,56 @@
     </main>
   </div>
 </div>
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Store Name</label>
+            <input type="text" class="form-control" id="storeName">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="storeEmail">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" id="storePhone">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" id="storeLocation">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">About</label>
+            <textarea class="form-control" id="storeAbout" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="save-btn">Save Changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/editStore.js"></script>
 </body>
 </html>
