@@ -3,6 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Sidebar Toggle</title>
     <style>
         aside {
@@ -105,9 +107,54 @@
         </aside>
 
         <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
+            <div class="row g-3 mb-8">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-success-subtle text-indigo-800 shadow-sm">
+                        <h3>User Number</h3>
+                        <p class="fs-3 fw-bold mt-2">1000</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-warning-subtle text-green-800 shadow-sm">
+                        <h3>Seller Number</h3>
+                        <p class="fs-3 fw-bold mt-2">1000</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-primary-subtle text-blue-800 shadow-sm">
+                        <h3>Order Number</h3>
+                        <p class="fs-3 fw-bold mt-2">1000</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-info-subtle text-purple-800 shadow-sm">
+                        <h3>Product Number</h3>
+                        <p class="fs-3 fw-bold mt-2">1000</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mb-4">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6">
+                        <div class="p-3 bg-white rounded shadow-sm">
+                            <h5 class="mb-3">Performance Trends</h5>
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-3 bg-white rounded shadow-sm">
+                            <h5 class="mb-3">Task Distribution</h5>
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 bg-white rounded shadow-sm">
+                <h5 class="mb-3">Monthly Performance Comparison</h5>
+                <canvas id="barChart"></canvas>
+            </div>
         </main>
+
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
@@ -115,6 +162,63 @@
         document.getElementById("toggleBtn").addEventListener("click", function () {
             document.querySelector("aside").classList.toggle("closed");
             document.querySelector("span").classList.toggle("d-none");
+        });
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                datasets: [{
+                        label: "Actual Performance",
+                        data: [65, 75, 70, 80, 85, 90],
+                        borderColor: "#4F46E5",
+                        backgroundColor: "rgba(79, 70, 229, 0.1)"
+                    },
+                    {
+                        label: "Target Performance",
+                        data: [70, 75, 80, 80, 85, 85],
+                        borderColor: "#10B981",
+                        backgroundColor: "rgba(16, 185, 129, 0.1)"
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ["Completed", "In queue", "Pending", "out to delivery"],
+                datasets: [{
+                    data: [45, 25, 20, 10],
+                    backgroundColor: ["#4F46E5", "#10B981", "#F59E0B", "#EF4444"]
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                datasets: [{
+                        label: "men's perfumes",
+                        data: [65, 75, 70, 80, 85, 90],
+                        backgroundColor: "lightblue"
+                    },
+                    {
+                        label: "Women Perfumes",
+                        data: [70, 75, 80, 80, 85, 85],
+                        backgroundColor: "pink"
+                    }
+                ]
+            },
+            options: {
+                responsive: true
+            }
         });
     </script>
 </body>
