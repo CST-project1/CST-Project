@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Seller Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/storeDetails.css">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Offcanvas Sidebar for small screens -->
+<div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="sidebarMenu">
+  <div class="offcanvas-header">
+    <h2>PerfumeStore</h2>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <a href="#"><span>🏠 </span>Dashboard</a>
+    <a href="productMange.html"><span>🧴 </span>Products</a>
+    <a href="#"><span>📦 </span>Orders</a>
+    <a href="#"><span>📈 </span>Analytics</a>
+    <a href="#" class="active"><span>👤 </span>Profile</a>
+    <a href="#" style="color:#dc3545;">Logout</a>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Static Sidebar for large screens -->
+    <nav class="col-md-3 col-lg-2 d-none d-md-block sidebar p-3">
+      <h2>PerfumeStore</h2>
+      <a href="#"><span>🏠 </span>Dashboard</a>
+      <a href="productMange.html"><span>🧴 </span>Products</a>
+      <a href="#"><span>📦 </span>Orders</a>
+      <a href="#"><span>📈 </span>Analytics</a>
+      <a href="#" class="active"><span>👤</span> Profile</a>
+      <a href="#" style="color:#dc3545">Logout</a>
+    </nav>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Top bar -->
+      <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <!-- Toggle button for small screens -->
+        <button class="btn btn-dark d-md-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="profile-card text-center">
+                        <img src="https://cdn.shopify.com/s/files/1/0878/6981/7120/files/alpha_2.jpg?v=1724673288" class="profile-img" mb-3>
+                        <h3>Amira Perfumes</h3>
+                        <p class="text-muted">Luxury Perfume Seller</p>
+
+                        <div class="mb-4">
+                            <p class="contact-info"><i class="fas fa-envelope me-n"> amira@perfume.com</i></p>
+                            <p class="contact-info"><i class="fas fa-phone me-n"> +20 123 456 789</i></p>
+                            <p class="contact-info"><i class="fas fa-map-marker-alt me-2"> Mansoura, Egypt</i></p>
+                        </div>
+
+                        <div class="profile-actions mb-4">
+                            <button class="btn btn-outline-dark">Edit Profile</button>
+                            <button class="btn btn-secondary">Logout</button>
+                        </div>
+
+                        <hr>
+
+                        <div class="row text-start mt-4">
+                            <div class="col-md-6">
+                                <h5><strong>Store Details</Details></strong></h5>
+                                <p><strong>Name: </strong>Amira Perfume</p>
+                                <p><strong>Products: </strong>30</p>
+                                <p><strong>Orders Completed: </strong>70</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><strong>About</strong></h5>
+                                <p>We offer a premium selection of fragrances from around the world, combining elegance and sophistication in every bottle.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
