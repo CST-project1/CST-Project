@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - L'Essence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"
+                            alt="Shopping Cart" />
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <!-- Breadcrumb -->
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="products.html">Products</a> >
+                    <span id="product-breadcrumb">Product Details</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Product Details Section -->
+        <section class="product-details-section">
+            <div class="container">
+                <div class="product-details-grid">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img id="main-product-image" src="" alt="Product Image" class="main-img">
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="product-info-details">
+                        <div class="product-category-badge" id="product-category-badge">Category</div>
+                        <h1 id="product-title">Product Name</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="rating-text">(4.2/5) - 127 Reviews</span>
+                        </div>
+                        <div class="product-price-section">
+                            <span class="current-price" id="product-price">$0.00</span>
+                            <span class="original-price">$129.99</span>
+                            <span class="discount-badge">15% OFF</span>
+                        </div>
+
+                        <div class="product-description">
+                            <h3>Description</h3>
+                            <p id="product-description-text">
+                                This exquisite fragrance captures the essence of luxury and sophistication.
+                                Crafted with the finest ingredients, it offers a unique blend of notes that
+                                create an unforgettable scent experience.
+                            </p>
+                        </div>
+
+                        <div class="product-details-info">
+                            <div class="detail-item">
+                                <strong>Brand:</strong> <span id="product-brand">L'Essence</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Size:</strong> <span>50ml / 1.7 fl oz</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Type:</strong> <span id="product-type">Eau de Parfum</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Longevity:</strong> <span>6-8 hours</span>
+                            </div>
+                        </div>
+
+                        <div class="fragrance-notes">
+                            <h3>Fragrance Notes</h3>
+                            <div class="notes-grid">
+                                <div class="note-item">
+                                    <strong>Top Notes:</strong>
+                                    <span id="top-notes">Bergamot, Lemon, Pink Pepper</span>
+                                </div>
+                                <div class="note-item">
+                                    <strong>Heart Notes:</strong>
+                                    <span id="heart-notes">Rose, Jasmine, Lily</span>
+                                </div>
+                                <div class="note-item">
+                                    <strong>Base Notes:</strong>
+                                    <span id="base-notes">Sandalwood, Musk, Amber</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add to Cart Section -->
+                        <div class="add-to-cart-section">
+                            <div class="quantity-selector">
+                                <label for="quantity">Quantity:</label>
+                                <div class="quantity-controls">
+                                    <button class="quantity-btn" id="decrease-qty">-</button>
+                                    <input type="number" id="quantity-input" value="1" min="1" max="10">
+                                    <button class="quantity-btn" id="increase-qty">+</button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-main-btn" id="add-to-cart-main">
+                                <span class="cart-icon-btn">🛒</span>
+                                Add to Cart
+                            </button>
+                            <button class="wishlist-btn">
+                                <span class="heart-icon">♡</span>
+                                Add to Wishlist
+                            </button>
+                        </div>
+
+                        <!-- Product Features -->
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <span class="feature-icon">🚚</span>
+                                <div class="feature-text">
+                                    <strong>Free Shipping</strong>
+                                    <p>On orders over $75</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">↩️</span>
+                                <div class="feature-text">
+                                    <strong>Easy Returns</strong>
+                                    <p>30-day return policy</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🎁</span>
+                                <div class="feature-text">
+                                    <strong>Gift Wrapping</strong>
+                                    <p>Available at checkout</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Products -->
+        <section class="related-products-section">
+            <div class="container">
+                <h2>You Might Also Like</h2>
+                <div class="related-products-grid" id="related-products-grid">
+                    <!-- Related products will be added dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Need Help?</h2>
+                <p>Our fragrance experts are here to help you find your perfect scent.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong> <a href="mailto:ahmed185taha@gmail.com">ahmed185taha@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Phone:</strong> <a href="tel:+201063675209">+20 106 367 5209</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>💬 WhatsApp:</strong> <a href="https://wa.me/201063675209">Contact via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer-bottom">
+        <div class="container">
+            <p>&copy; 2024 L'Essence. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="product-details.js"></script>
+</body>
+
+</html>
