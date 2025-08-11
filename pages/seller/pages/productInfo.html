@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/productinfo.css">
+    <title>productinfo</title>
+</head>
+<body>
+    <!-- container -->
+    <div class="container py-5">
+        <div class="card shadow-lg p-4">
+            <div class="row g-4">
+                <!-- Image -->
+                 <div class="col-md-5 text-center">
+                    <img id="product-image" src="" alt="product image" class="img-fluid rounded shadow">
+                 </div>
+                 <div class="col-md-7">
+                    <h2 id="product-name">Product Name</h2>
+                    <h3 id="product-price" class="text-success">$0.00</h3>
+                    
+                    <p id="product-description" >
+                        Discription about the product
+                    </p>
+                    <p><strong>Stock:</strong> <span id="product-stock">0</span></p>
+                    <p><strong>Status:</strong> <span id="product-status" class="badge bg-success">Active</span></p>
+
+                    <div class="mt-4">
+                        <input type="button" id="edit" value="Edit Product" >
+                        <a href="productMange.html" class="btn btn-secondary">Back to Products</a>
+
+                    </div>
+
+                 </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- dynamic productInf with js -->
+     <script>
+        // product details
+        let products = [
+    {
+      id: 1,
+      name: "Rose Elegance",
+      price: 120,
+      stock: 15,
+      status: "Active",
+      image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
+      description: "Elegant rose perfume with fresh scent."
+      },
+      {
+        id: 2,
+        name: "Golden Mist",
+        price: 95,
+        stock: 0,
+        status: "out of stock",
+        image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
+        description: "Golden Mist fragrance with a luxurious touch."
+        }
+        ];
+        // get id from url
+        let urlParams = new URLSearchParams(window.location.search);
+        let productId = parseInt( urlParams.get('id'));
+        // search product by id
+        let product = products.find(product => product.id === productId);
+        
+        if (product){
+            document.getElementById("product-image").src = product.image;
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-price").textContent = `$${product.price}`;
+            document.getElementById("product-description").textContent = product.description;
+            document.getElementById("product-stock").textContent = product.stock;
+
+            let statusElement = document.getElementById("product-status");
+            statusElement.textContent = product.status;
+            if (product.status === "Active"){
+                statusElement.className = "badge bg-success";
+            } else {
+                statusElement.className = "badge bg-danger";
+
+            } 
+        } else {
+            
+            document.querySelector(".card").innerHTML = `<p class="text-danger">Product not found!</p>` ;
+        }
+           
+            
+
+
+     </script>
+</body>
+</html>

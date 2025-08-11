@@ -67,8 +67,8 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody id="product-table">
+            <!-- <tr>
               <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
               <td>Rose Elegance</td>
               <td>$120</td>
@@ -100,13 +100,79 @@
                 <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
     </main>
   </div>
 </div>
+
+<!-- dynamic products with js -->
+ <script>
+  let products = [
+    {
+      id: 1,
+      name: "Rose Elegance",
+      price: 120,
+      stock: 15,
+      status: "Active",
+      image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
+      description: "Elegant rose perfume with fresh scent."
+      },
+      {
+        id: 2,
+        name: "Golden Mist",
+        price: 95,
+        stock: 0,
+        status: "out of stock",
+        image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
+        description: "Golden Mist fragrance with a luxurious touch."
+        },
+        {
+          id: 3,
+          name: "Stranger with you",
+          price: 120,
+          stock: 15,
+          status: "Inactive",
+          image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
+          description: "Stranger with you fragrance with a mysterious touch."
+          }
+          ];
+          let productsTable = document.getElementById("product-table");
+          products.forEach(product => {
+            let badgeClass = "";
+            if (product.status === "Active") {
+              badgeClass = "badge bg-success";
+              } else if (product.status === "out of stock") {
+                badgeClass = "badge bg-danger";
+                } else {
+                  badgeClass = "badge bg-secondary";
+                  }
+                let row = `
+                  <tr>
+                    <td><img src="${product.image}" alt="${product.name}" width="80"></td>
+                    <td><a href="productinfo.html?id=${product.id}" class="text-decoration-none">${product.name}</a></td>
+                    <td>${product.price}</td>
+                    <td>${product.stock}</td>
+                    <td><span class="${badgeClass}">${product.status}</span></td>
+                    <td>
+                      <button class="btn btn-sm btn-primary">
+                        <i class="fas fa-edit"></i> 
+                      </button>
+                      <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </td>
+                  </tr>
+                `;
+                productsTable.innerHTML += row;
+              
+
+            
+          });
+
+
+
+ </script>
 
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
