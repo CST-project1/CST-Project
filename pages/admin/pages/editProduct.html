@@ -1,0 +1,183 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/aside.css">
+    <title>Product Info</title>
+
+</head>
+<!-- 
+
+    
+    fetch product by id 
+    method to store edited product
+    method to delete product
+    fetch store information
+
+-->
+
+<body>
+    <div class="container-fluid vh-100 d-flex p-0">
+        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
+                ☰
+            </button>
+            <ul id="menuList" class="list-group">
+                <li class="list-group-item mb-2 rounded ">
+                    <a href="index.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-house me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
+                    <a href="Products.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-box me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Product</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#"
+                                class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none active">
+                                <span class="d-md-none d-lg-inline">product id</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfUsers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Customers</span>
+                    </a>
+
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfSellers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user-tie me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Seller</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfAllOrders.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-truck me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Orders</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="../../../login.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-sign-out me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="flex-grow-1 p-3">
+            <div class="container">
+                <h2 class="mb-4">Manage Product - Perfume</h2>
+
+                <form>
+                    <div class="row g-4">
+                        <!-- Product Image -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Product Image</label>
+                            <div class="border rounded p-3 text-center bg-white shadow-sm mb-3">
+                                <img src="../../../images/images.jpeg" alt="Perfume" class="img-fluid rounded">
+                            </div>
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Product Name</label>
+                                <input type="text" class="form-control" value="Luxury Perfume - Eau De Parfum">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Description</label>
+                                <textarea class="form-control"
+                                    rows="3">A luxurious oriental perfume featuring a blend of oud, rose, and musk.</textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label fw-bold">Price</label>
+                                    <input type="number" class="form-control" value="350">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label fw-bold">Discount (%)</label>
+                                    <input type="number" class="form-control" value="20">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label fw-bold">Capacity (ml)</label>
+                                    <input type="number" class="form-control" value="100">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Ingredients</label>
+                                <input type="text" class="form-control" value="Oud, Rose, Musk">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Country of Origin</label>
+                                <input type="text" class="form-control" value="France">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Store Information -->
+                    <div class="mt-5">
+                        <h4 class="mb-3">Store Information</h4>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <p><strong>Store Name:</strong><a href="storeInfo.html"> Luxury Scents</a></p>
+                                <p><strong>Seller:</strong> Ahmed Ali</p>
+                                <p><strong>Contact:</strong> +20 123 456 789</p>
+                                <p><strong>Email:</strong> luxuryscents@example.com</p>
+                                <p><strong>Address:</strong> 123 Perfume Street, Cairo, Egypt</p>
+                                <a href="store-products.html" class="btn btn-outline-primary btn-sm">
+                                    View All Store Products
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa-solid fa-save me-2"></i> Save Changes
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fa-solid fa-trash me-2"></i> Delete Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main><button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
+            ☰
+        </button>
+    </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5>Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
+        </div>
+    </div>
+
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/aside.js">
+
+    </script>
+</body>
