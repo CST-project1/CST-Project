@@ -1,0 +1,37 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+}
+
+#product-image{
+    width: 300px;
+    height: 300px;
+}
+
+#edit{
+    width: 120px;
+    height: 35px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: rgb(65, 162, 237);
+    margin: 10px;
+}
+
+#edit:hover{
+opacity: 0.9;
+color: #292929;
+}
+
+a{
+    width: 150px;
+    height: 35px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #c1c0c0; 
+}
+
+a:hover{
+    background-color: #abaaaa;
+}
+
+
