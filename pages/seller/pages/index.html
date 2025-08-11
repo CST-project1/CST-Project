@@ -20,15 +20,15 @@
        
         <button  class="btn-close btn-close-white" aria-label="Close" onclick="toggleSidebar()"></button>
 
-
-         <img src="https://sdmntprukwest.oaiusercontent.com/files/00000000-c1c0-6243-8925-d99e90af617e/raw?se=2025-08-09T16%3A27%3A21Z&sp=r&sv=2024-08-04&sr=b&scid=fddd76d0-a38b-599a-b118-19500f9137d9&skoid=b928fb90-500a-412f-a661-1ece57a7c318&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-09T05%3A17%3A07Z&ske=2025-08-10T05%3A17%3A07Z&sks=b&skv=2024-08-04&sig=YpmdNYxi8tnp0Wq8C/86JuMALiPeu43k2IXiwbFULDY%3D" alt="Logo" >
-        <ul>
-            <li class="dashboard active"><a href="#"><i class="bi bi-house-door"></i>  Dashboard</a></li>
-            <li class="products"><a href="#"><i class="bi bi-box"></i> Product Management</a></li>
-            <li class="orders"><a href="#"><i class="bi bi-cart"></i> Orders</a></li>
-            <li class="analytics"><a href="#"><i class="bi bi-graph-up"></i> Sales Analytics</a></li>
-            <li class="account"><a href="#"><i class="bi bi-person"></i> Account Settings</a></li>
-            <li class="logout"><a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
+         <p class="text-muted">Perfume Store</p>
+         <ul>
+            <li class="dashboard active"><a href="#"><span>🏠 </span>  Dashboard</a></li>
+            <li class="products"><a href="productMange.html"><span>🧴 </span> Product Management</a></li>
+            <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
+            <li class="analytics"><a href="#"><span>📈 </span> Analytics</a></li>
+            <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
+            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
         </ul>
     </aside>
 
@@ -37,72 +37,33 @@
         <header>
             
             <h1>Dashboard Overview</h1> 
-           
 
         </header>
-
-
-        <!-- Product Grid -->
-        <section class="products-grid">
-            <div class="product-card">
-                <img src="https://images.stockcake.com/public/1/b/e/1be712fd-b8c8-4772-9b9d-f57684ad4bde_large/elegant-perfume-bottle-stockcake.jpg" alt="Perfume">
-                <h3>Rose Elegance</h3>
-                <p>Price: $50</p>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-
-                    
+        <section class="flex-grow-1 p-3">
+            <div class="row g-3 mb-8">
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-primary-subtle text-indigo-800 shadow-sm">
+                        <h3>Total Products</h3>
+                        <p class="fs-3 fw-bold mt-2">50</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://labelleperfumes.com/cdn/shop/files/ocean-breeze-milestone.webp?v=1720725925" alt="Perfume">
-                <h3>Ocean Breeze</h3>
-                <p>Price: $65</p>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-warning-subtle text-green-800 shadow-sm">
+                        <h3>In Stock Units</h3>
+                        <p class="fs-3 fw-bold mt-2">250</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://arab-p-001.sitecorecontenthub.cloud/api/public/content/2htxteatxscktzqyxhfla-web?v=210ba4af&t=w800" alt="Perfume">
-                <h3>Vanilla Dream</h3>
-                <p>Price: $55</p>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-success-subtle text-blue-800 shadow-sm">
+                        <h3>Orders Received</h3>
+                        <p class="fs-3 fw-bold mt-2">120</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://swoobrothers.com/wp-content/uploads/2025/03/fg-scaled.webp" alt="Perfume">
-                <h3>Amber Nights</h3>
-                <p>Price: $70</p>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://images.meesho.com/images/products/463929514/vt1lf_512.jpg" alt="Perfume">
-                <h3>Lavender Bliss</h3>
-                <p>Price: $45</p>
-                <div class="actions">
-                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://ramfabeauty.com/cdn/shop/files/the-majestic-musk-edp-unisex-alexandre-j-786269.jpg?v=1726725112" alt="Perfume">
-                <h3>Musk Majesty</h3>
-                <p>Price: $80</p>
-                <div class="actions">
-                   <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="p-3 rounded bg-info-subtle text-purple-800 shadow-sm">
+                        <h3>Revenue This Month</h3>
+                        <p class="fs-3 fw-bold mt-2">12000 $</p>
+                    </div>
                 </div>
             </div>
         </section>
