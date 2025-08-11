@@ -131,7 +131,7 @@ i{
 }
 
 .content {
-    margin-left: 250px;
+    margin-left: 10px;
     padding: 20px;
     width: 100%;
 }
@@ -221,6 +221,3 @@ i{
     background-color: #E53935;
 }
 
-.offcanvas .btn-close {
-    filter: invert(0) grayscale(100%) brightness(0);
-}

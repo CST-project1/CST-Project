@@ -37,4 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
         const model = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
         model.hide();
     });
-})
+});
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }

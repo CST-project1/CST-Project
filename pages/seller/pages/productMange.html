@@ -19,7 +19,7 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
        
-        <button  class="btn-close btn-close-white" aria-label="Close" onclick="toggleSidebar()"></button>
+        <button  class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
 
          <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
          <p class="text-muted">Perfume Store</p>
@@ -27,7 +27,7 @@
             <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
             <li class="products active"><a href="#"><span>🧴 </span> Products</a></li>
             <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
-            <li class="analytics"><a href="#"><span>📈 </span> Analytics</a></li>
+            <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
             <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
             <li class="logout"><a href="#"><span>🔓</span> Logout</a>
         </ul>
@@ -36,11 +36,7 @@
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <!-- Top bar -->
-      <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
-        <!-- Toggle button for small screens -->
-        <button class="btn btn-dark d-md-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-          <i class="fas fa-bars"></i>
-        </button>
+      <div class="content">
         <h1>My Products</h1>
         <a href="addProduct.html" class="btn btn-add"><i class="fa-plus"> Add Product</i></a>
       </div>
@@ -99,74 +95,13 @@
   </div>
 </div>
 
-<!-- Bootstrap JS -->
- <script>
-  function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-  // dynamic products with js
-   let products = [
-    {
-      id: 1,
-      name: "Rose Elegance",
-      price: 120,
-      stock: 15,
-      status: "Active",
-      image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
-      description: "Elegant rose perfume with fresh scent."
-      },
-      {
-        id: 2,
-        name: "Golden Mist",
-        price: 95,
-        stock: 0,
-        status: "out of stock",
-        image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
-        description: "Golden Mist fragrance with a luxurious touch."
-        },
-        {
-          id: 3,
-          name: "Stranger with you",
-          price: 120,
-          stock: 15,
-          status: "Inactive",
-          image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
-          description: "Stranger with you fragrance with a mysterious touch."
-          }
-          ];
-          let productsTable = document.getElementById("product-table");
-          products.forEach(product => {
-            let badgeClass = "";
-            if (product.status === "Active") {
-              badgeClass = "badge bg-success";
-              } else if (product.status === "out of stock") {
-                badgeClass = "badge bg-danger";
-                } else {
-                  badgeClass = "badge bg-secondary";
-                  }
-                let row = `
-                  <tr>
-                    <td><img src="${product.image}" alt="${product.name}" width="80"></td>
-                    <td><a href="productinfo.html?id=${product.id}" class="text-decoration-none">${product.name}</a></td>
-                    <td>${product.price}</td>
-                    <td>${product.stock}</td>
-                    <td><span class="${badgeClass}">${product.status}</span></td>
-                    <td>
-                      <button class="btn btn-sm btn-primary">
-                        <i class="fas fa-edit"></i> 
-                      </button>
-                      <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                `;
-                productsTable.innerHTML += row;
-              
 
-            
-          });
+ 
+         
 
 </script>
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/productMange.js"></script>
 </body>
 </html>
