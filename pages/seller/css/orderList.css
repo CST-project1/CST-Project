@@ -6,27 +6,28 @@ body {
 
 .sidebar {
     width: 250px;
-    background: rgb(214, 214, 214);
-    color: white;
+    background: #f0f0f0;
+    color: black;
     height: 100vh;
     padding: 20px;
     position: fixed;
     top: 0;
     left: 0;
     transition: transform 0.3s ease;
-    z-index: 1000;
+}
+
+.sidebar p{
+    margin-left: 35px;
 }
 
 header{
       margin-bottom: 20px;  
 }
 
-
-
 .sidebar ul {
     list-style: none;
     padding: 0;
-    margin-top: 50px;
+    margin-top: 15px;
     
 }
 
@@ -35,32 +36,27 @@ header{
     margin-top:10px ;
     padding-top: 5px;
     padding-left: 10px;
-    
-
 }
+
 .sidebar ul li:hover{
     border-style: none;
     border-radius: 10px;
     width: 200px;
     height: 40px;
-    color: #333333;
-    
-    background-color: rgb(65, 162, 237);
-    
-
+    background-color: rgb(49, 49, 225);
 }
 
-.orders.active{
-    background-color: rgb(65, 162, 237);
-    color: white;
+.sidebar ul li.active {
+    background-color: rgb(49, 49, 225);
     border-radius: 10px;
-     width: 200px;
+    width: 200px;
     height: 40px;
-    
-
 }
 
-
+.sidebar ul li.active a {
+    color: white;
+    font-weight: bold;
+}
 
 .sidebar ul li a {
     color: rgb(0, 0, 0);
@@ -73,8 +69,16 @@ header{
     color: rgb(255, 255, 255);
 } 
 
-h2{
-    color: #333333;
+.sidebar ul li.active a {
+    color: white;
+    font-weight: bold;
+}
+
+.sidebar img{
+    width: 100px;
+    border-radius: 50%;
+    margin-left: 35px;
+    margin-bottom: 10px;
 }
 
 i{
@@ -85,23 +89,11 @@ i{
     margin-left: 250px;
     padding: 20px;
     width: 100%;
-    
 }
-
 
 .orders-section{
     margin-top: 20px;
 }
-
-.card-body{
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgb(96, 94, 94);
-}
-
-
-
 
 /* sidemenu Button  */
 .sidemenu {
@@ -111,10 +103,11 @@ i{
     color: #ffffff;
     padding: 5px 10px;   
     cursor: pointer;
-    position: fixed; 
-    top: 5px; 
-    border-radius: 5px;
-    margin-left: 10px;
+     position: fixed; 
+     top: 5px; 
+     border-radius: 5px;
+     margin-left: 10px;
+     
     cursor: pointer;
 }
 
@@ -149,3 +142,4 @@ i{
         padding-top: 60px;
     }
 }
+
