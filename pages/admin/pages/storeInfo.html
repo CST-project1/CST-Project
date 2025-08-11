@@ -16,7 +16,7 @@
                 ☰
             </button>
             <ul id="menuList" class="list-group">
-                <li class="list-group-item mb-2 rounded active">
+                <li class="list-group-item mb-2 rounded">
                     <a href="index.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <i class="fa-solid fa-house me-lg-2"></i>
@@ -38,12 +38,17 @@
                         <span class="d-md-none d-lg-inline">Customers</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
                     <a href="listOfSellers.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <i class="fa-solid fa-user-tie me-lg-2"></i>
                         <span class="d-md-none d-lg-inline">Seller</span>
                     </a>
+                    <ul>
+                        <li>
+                            Store ID
+                        </li>
+                    </ul>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
                     <a href="listOfAllOrders.html"
@@ -63,9 +68,84 @@
         </aside>
 
         <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
-        </main> <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
+            <h2 class="mb-4">Store Information</h2>
+
+            <!-- Store Card -->
+            <div class="card p-4 shadow-sm mb-4">
+                <div class="d-flex align-items-center mb-4">
+                    <img src="../images/store-logo.png" alt="Store Logo" class="rounded-circle me-3" width="80"
+                        height="80">
+                    <div>
+                        <h4 class="mb-1">Tech World</h4>
+                        <small class="text-muted">Electronics & Gadgets</small>
+                    </div>
+                </div>
+
+                <p class="mb-3">
+                    Welcome to Tech World! Your one-stop shop for the latest electronics, gadgets, and accessories.
+                </p>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>Email:</strong> techworld@example.com
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Phone:</strong> +1 234 567 890
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Location:</strong>
+                        <a href="https://maps.google.com/?q=123 Main Street, New York" target="_blank">
+                            123 Main Street, New York, USA
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Products Section -->
+            <h3 class="mb-3">Products</h3>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartphone">
+                        <div class="card-body">
+                            <h5 class="card-title">Smartphone X</h5>
+                            <p class="card-text">$799 - Latest model with advanced features</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Wireless Earbuds">
+                        <div class="card-body">
+                            <h5 class="card-title">Wireless Earbuds</h5>
+                            <p class="card-text">$99 - Noise cancelling & long battery life</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartwatch">
+                        <div class="card-body">
+                            <h5 class="card-title">Smartwatch Z</h5>
+                            <p class="card-text">$199 - Fitness tracking & notifications</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartwatch">
+                        <div class="card-body">
+                            <h5 class="card-title">Smartwatch Z</h5>
+                            <p class="card-text">$199 - Fitness tracking & notifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
             ☰
         </button>
     </div>
