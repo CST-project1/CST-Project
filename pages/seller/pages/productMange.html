@@ -12,35 +12,26 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- sidemenu Button  -->
+    <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
+    
 
-<!-- Offcanvas Sidebar for small screens -->
-<div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="sidebarMenu">
-  <div class="offcanvas-header">
-    <h2>PerfumeStore</h2>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body">
-    <a href="index.html"><span>🏠 </span>Dashboard</a>
-    <a href="#" class="active"><span>🧴 </span>Products</a>
-    <a href="orderList.html"><span>📦 </span>Orders</a>
-    <a href="#"><span>📈 </span>Analytics</a>
-    <a href="storeDetails.html"><span>👤 </span>Profile</a>
-    <a href="#" style="color:#dc3545;">Logout</a>
-  </div>
-</div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+       
+        <button  class="btn-close btn-close-white" aria-label="Close" onclick="toggleSidebar()"></button>
 
-<div class="container-fluid">
-  <div class="row">
-    <!-- Static Sidebar for large screens -->
-    <nav class="col-md-3 col-lg-2 d-none d-md-block sidebar p-3">
-      <h2>PerfumeStore</h2>
-      <a href="index.html"><span>🏠 </span>Dashboard</a>
-      <a href="#" class="active"><span>🧴 </span>Products</a>
-      <a href="orderList.html"><span>📦 </span>Orders</a>
-      <a href="#"><span>📈 </span>Analytics</a>
-      <a href="storeDetails.html"><span>👤</span> Profile</a>
-      <a href="#" style="color:#dc3545">Logout</a>
-    </nav>
+         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
+         <p class="text-muted">Perfume Store</p>
+         <ul>
+            <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
+            <li class="products active"><a href="#"><span>🧴 </span> Products</a></li>
+            <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
+            <li class="analytics"><a href="#"><span>📈 </span> Analytics</a></li>
+            <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
+            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+        </ul>
+    </aside>
 
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -108,6 +99,11 @@
   </div>
 </div>
 
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
 </body>
