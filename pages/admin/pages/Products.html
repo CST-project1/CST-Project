@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,13 +57,13 @@
             </button>
             <ul class="list-group">
                 <li class="list-group-item mb-2 rounded ">
-                    <a href="index.html" ">
+                    <a href="index.html">
                         <i class=" fa-solid fa-house me-2"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 active ">
-                    <a href="Products.html" ">
+                    <a href="Products.html">
                         <i class=" fa-solid fa-box me-2"></i>
                         <span>Products</span>
                     </a>
@@ -104,9 +107,110 @@
             </ul>
         </aside>
 
-        <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
+        <main class="flex-grow-1 p-3 ">
+            <h1 class="text-2xl font-bold  text-gray-800">Product Management</h1>
+
+            <div class="grid grid-cols-1 gap-4 mb-6 text-gray-800 d-flex">
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                    <input type="text" placeholder="Search products..."
+                        class="pl-10 p-2 w-full rounded-lg border dark:bg-gray-700 dark:border-gray-600" value=""
+                        onchange="" />
+                </div>
+                <select onchange="" class="p-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                    <option value="all">All Categories</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Accessories">Accessories</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Audio">Audio</option>
+                </select>
+                <div>
+                    <input type="range" min="0" max="1000" value="0" onchange="" class="w-full" />
+                    <div class="text-sm">Price: $0 - $1000</div>
+                </div>
+                <select onchange="" class="p-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                    <option value="all">All Stock</option>
+                    <option value="inStock">In Stock</option>
+                    <option value="outOfStock">Out of Stock</option>
+                </select>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light table-cell-padding-x: 0.5rem">
+                        <tr>
+                            <th scope="col" class="text-blue-800">product</th>
+                            <th scope="col" class="text-blue-800">category</th>
+                            <th scope="col" class="text-blue-800">price</th>
+                            <th scope="col" class="text-blue-800">amount</th>
+                            <th scope="col" class="text-blue-800">status</th>
+                            <th scope="col" class="text-blue-800">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- منتج 1 -->
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
+                                        style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">Product 1</div>
+                                        <div class="text-muted small">#P-101</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted">Electronics</td>
+                            <td>$299.00</td>
+                            <td>12</td>
+                            <td>
+                                <span class="badge bg-success">active</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center ">
+                                    <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
+                                        style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">Product 1</div>
+                                        <div class="text-muted small">#P-101</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted">Electronics</td>
+                            <td>$299.00</td>
+                            <td>12</td>
+                            <td>
+                                <span class="badge bg-success">active</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
         </main>
     </div>
 
@@ -114,7 +218,8 @@
     <script>
         document.getElementById("toggleBtn").addEventListener("click", function () {
             document.querySelector("aside").classList.toggle("closed");
-            document.querySelector("span").classList.toggle("d-none");
         });
     </script>
 </body>
+
+</html>

@@ -105,8 +105,86 @@
         </aside>
 
         <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
+            <h1 class="text-2xl font-bold  text-gray-800">User Management</h1>
+            <input type="text" placeholder="Search products..."
+                class="pl-10 p-2 w-full rounded-lg border dark:bg-gray-700 dark:border-gray-600" value="" onchange="" />
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light table-cell-padding-x: 0.5rem">
+                        <tr>
+                            <th scope="col" class="text-blue-800">User</th>
+                            <th scope="col" class="text-blue-800">email</th>
+                            <th scope="col" class="text-blue-800">gender</th>
+                            <th scope="col" class="text-blue-800">role</th>
+                            <th scope="col" class="text-blue-800">status</th>
+                            <th scope="col" class="text-blue-800">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- منتج 1 -->
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
+                                        style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">Abas</div>
+                                        <div class="text-muted small">#P-101</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted">Abas12@gmail.com</td>
+                            <td>male</td>
+                            <td>seller</td>
+                            <td>
+                                <span class="badge bg-success">active</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
+                                        style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div>
+                                        <div class="fw-semibold">Aya</div>
+                                        <div class="text-muted small">#P-101</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted">aya12@gmail.com</td>
+                            <td>female</td>
+                            <td>seller</td>
+                            <td>
+                                <span class="badge bg-success">active</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 

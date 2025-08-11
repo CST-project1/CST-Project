@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Seller Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/productMange.css">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- sidemenu Button  -->
+  <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+       
+        <button  class="btn-close btn-close-white" aria-label="Close" onclick="toggleSidebar()"></button>
+
+         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
+         <p class="text-muted">Perfume Store</p>
+         <ul>
+            <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
+            <li class="products"><a href="productMange.html"><span>🧴 </span> Products</a></li>
+            <li class="orders active"><a href="orderList.html"><span>📦 </span> Orders</a></li>
+            <li class="analytics"><a href="#"><span>📈 </span> Analytics</a></li>
+            <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
+            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+        </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <!-- Top bar -->
+      <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+        <!-- Toggle button for small screens -->
+        <button class="btn btn-dark d-md-none" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>History of Orders</h1>
+      </div>
+
+      <!-- Product Table -->
+      <div class="table-responsive">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>User Name</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
+              <td>Rose Elegance</td>
+              <td>$120</td>
+              <td>Amira</td>
+              <td><span class="badge badge-active">Completed</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
+              <td>Golden Mist</td>
+              <td>$95</td>
+              <td>Aya</td>
+              <td><span class="badge badge-out">Cancelled</span></td>
+              <td>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+</script>
+<!-- Bootstrap JS -->
+<script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -142,3 +142,23 @@ i{
         padding-top: 60px;
     }
 }
+
+.profile-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.profile-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #343a40;
+}
+.profile-actions .btn {
+     margin-right: 10px;
+}
+/* .mb-4 .contact-info {
+    font-family: Arial, Helvetica, sans-serif;
+} */
