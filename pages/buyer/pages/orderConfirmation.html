@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <title>Order Confirmation</title>
+    <style>
+        .navbar{
+            background-color:#1a1a1a;
+        }
+        .navbar-brand {
+            margin-left: 60px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #d4af37;
+        }
+        
+        .nav-link{
+            color: #f2f2f2;
+            margin-right: 50px;
+        }
+        .nav-link:hover{
+            color: #d4af37;
+        }
+        .navbar-toggler{
+            background-color: #f2f2f2;
+        }
+        .card {
+            width: 50vw;
+            height: 60vh;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg">
+        <div class="container">
+            <a href="#" class="navbar-brand">L'Essence</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="products.html" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container card text-center align-items-center justify-content-center">
+            <h1 class="text-success">Order Placed Successfully!</h1>
+            <p>Thank you for your purchase.</p>
+            <p>Your order ID is : <strong></strong></p>
+            <p>We've sent a confirmation email to : <strong></strong></p>
+            <a href="index.html" class="btn btn-primary  col-md-3">Continue Shopping</a>
+    </div>
+
+
+</body>
+
+</html>
