@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // ----- Navbar Toggle Functionality -----
-    if (menuToggle && navLinks) {
+    if (menuToggle && navLinks){
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('is-active');
