@@ -1,180 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link rel="stylesheet" href="../styles/aside.css">
     <title>Sidebar Toggle</title>
-    <style>
-        aside {
-            width: 250px;
-            transition: width 0.3s ease;
-            overflow: hidden;
-            white-space: nowrap;
-            height: 100vh;
-        }
 
-        aside.closed {
-            width: 70px;
-        }
-
-
-        aside.closed .list-group-item span {
-            display: none;
-        }
-
-        aside.closed .list-group-item i {
-            margin-right: 0;
-        }
-
-        aside.closed .list-group-item {
-            padding: 1rem 1rem;
-            text-align: center;
-        }
-
-        aside.closed .list-group-item i {
-            margin-right: 0;
-        }
-
-        #toggleBtn {
-            width: 100%;
-        }
-
-        aside a {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
 </head>
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
-        <aside class="bg-light p-2">
-            <button id="toggleBtn" class="p-2 rounded border mb-3">
+
+        <!-- 
+            fetch number of all product
+            fetch number of all order
+            fetch number of all user
+            fetch number of all seller
+            get number of product sell by month(men /women)
+            get number of order (completed / in queue / pending / out to delivery)
+            
+        -->
+        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
                 ☰
             </button>
-            <ul class="list-group">
+            <ul id="menuList" class="list-group">
                 <li class="list-group-item mb-2 rounded active">
-                    <a href="index.html" ">
-                        <i class=" fa-solid fa-house me-2"></i>
-                        <span>Dashboard</span>
+                    <a href="index.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-house me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Dashboard</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2  ">
-                    <a href="Products.html" ">
-                        <i class=" fa-solid fa-box me-2"></i>
-                        <span>Products</span>
+
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="Products.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-box me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Products</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="listOfUsers.html">
-                        <i class="fa-solid fa-user me-2"></i>
-                        <span>Customers</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfUsers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Customers</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="listOfSellers.html">
-                        <i class="fa-solid fa-user-tie me-2"></i>
-                        <span>seller</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfSellers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user-tie me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Seller</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="analytics.html">
-                        <i class="fa-solid fa-chart-line me-2"></i>
-                        <span>Analytics</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfAllOrders.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-truck me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Orders</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="listOfAllOrders.html">
-                        <i class="fa-solid fa-truck me-2"></i>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="Settings.html">
-                        <i class="fa-solid fa-gear me-2"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="../../../login.html">
-                        <i class="fa-solid fa-sign-out me-2"></i>
-                        <span>Logout</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="../../../login.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-sign-out me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Logout</span>
                     </a>
                 </li>
             </ul>
         </aside>
 
-        <main class="flex-grow-1 p-3">
-            <div class="row g-3 mb-8">
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 rounded bg-success-subtle text-indigo-800 shadow-sm">
-                        <h3>User Number</h3>
-                        <p class="fs-3 fw-bold mt-2">1000</p>
-                    </div>
+
+        <!-- زر الموبايل -->
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
+            ☰
+        </button>
+
+        <!-- Main Content -->
+        <main class="flex-grow-1 p-lg-4 p-2">
+            <!-- الإحصائيات -->
+            <div class="row g-3 mb-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="listOfUsers.html">
+                        <div class="p-3 rounded bg-success-subtle shadow-sm text-center">
+                            <h3 class="fs-5">User Number</h3>
+                            <p class="fs-3 fw-bold mt-2">1000</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 rounded bg-warning-subtle text-green-800 shadow-sm">
-                        <h3>Seller Number</h3>
-                        <p class="fs-3 fw-bold mt-2">1000</p>
-                    </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="listOfSellers.html">
+                        <div class="p-3 rounded bg-warning-subtle shadow-sm text-center">
+                            <h3 class="fs-5">Seller Number</h3>
+                            <p class="fs-3 fw-bold mt-2">1000</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 rounded bg-primary-subtle text-blue-800 shadow-sm">
-                        <h3>Order Number</h3>
-                        <p class="fs-3 fw-bold mt-2">1000</p>
-                    </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="listOfAllOrders.html">
+                        <div class="p-3 rounded bg-primary-subtle shadow-sm text-center">
+                            <h3 class="fs-5">Order Number</h3>
+                            <p class="fs-3 fw-bold mt-2">1000</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 rounded bg-info-subtle text-purple-800 shadow-sm">
-                        <h3>Product Number</h3>
-                        <p class="fs-3 fw-bold mt-2">1000</p>
-                    </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="Products.html">
+                        <div class="p-3 rounded bg-danger-subtle shadow-sm text-center">
+                            <h3 class="fs-5">Product Number</h3>
+                            <p class="fs-3 fw-bold mt-2">1000</p>
+                        </div>
+                    </a>
                 </div>
             </div>
+
+            <!-- الرسوم البيانية -->
             <div class="row g-4 mb-4">
-                <div class="row g-4 mb-4">
-                    <div class="col-lg-6">
-                        <div class="p-3 bg-white rounded shadow-sm">
-                            <h5 class="mb-3">Performance Trends</h5>
+                <div class="col-12 col-lg-6">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <h5 class="mb-3">perfume Trends</h5>
+                        <div class="chart-container" style="position: relative; height: 300px;">
                             <canvas id="lineChart"></canvas>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="p-3 bg-white rounded shadow-sm">
-                            <h5 class="mb-3">Task Distribution</h5>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <h5 class="mb-3">Product Sales</h5>
+                        <div class="chart-container" style="position: relative; height: 300px;">
                             <canvas id="pieChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- المقارنة الشهرية -->
             <div class="p-3 bg-white rounded shadow-sm">
                 <h5 class="mb-3">Monthly Performance Comparison</h5>
-                <canvas id="barChart"></canvas>
+                <div class="chart-container" style="position: relative; height: 350px;">
+                    <canvas id="barChart"></canvas>
+                </div>
             </div>
         </main>
 
     </div>
 
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5>Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
+        </div>
+    </div>
+
+
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/aside.js">
+
+    </script>
     <script>
-        document.getElementById("toggleBtn").addEventListener("click", function () {
-            document.querySelector("aside").classList.toggle("closed");
-            document.querySelector("span").classList.toggle("d-none");
-        });
         new Chart(document.getElementById('lineChart'), {
             type: 'line',
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
                 datasets: [{
-                        label: "Actual Performance",
+                        label: "perfume men",
                         data: [65, 75, 70, 80, 85, 90],
                         borderColor: "#4F46E5",
                         backgroundColor: "rgba(79, 70, 229, 0.1)"
                     },
                     {
-                        label: "Target Performance",
+                        label: "perfume women",
                         data: [70, 75, 80, 80, 85, 85],
                         borderColor: "#10B981",
                         backgroundColor: "rgba(16, 185, 129, 0.1)"
@@ -189,7 +192,7 @@
         new Chart(document.getElementById('pieChart'), {
             type: 'pie',
             data: {
-                labels: ["Completed", "In queue", "Pending", "out to delivery"],
+                labels: ["Completed", "In queue", "Pending", "Out to delivery"],
                 datasets: [{
                     data: [45, 25, 20, 10],
                     backgroundColor: ["#4F46E5", "#10B981", "#F59E0B", "#EF4444"]
@@ -205,7 +208,7 @@
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
                 datasets: [{
-                        label: "men's perfumes",
+                        label: "Men's perfumes",
                         data: [65, 75, 70, 80, 85, 90],
                         backgroundColor: "lightblue"
                     },
@@ -222,3 +225,5 @@
         });
     </script>
 </body>
+
+</html>

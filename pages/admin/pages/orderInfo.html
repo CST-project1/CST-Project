@@ -15,8 +15,15 @@
             <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
                 ☰
             </button>
+            <!--
+            get order by id
+            get user by order id
+            get product by order id
+            get seller by order id
+            
+            -->
             <ul id="menuList" class="list-group">
-                <li class="list-group-item mb-2 rounded active">
+                <li class="list-group-item mb-2 rounded ">
                     <a href="index.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <i class="fa-solid fa-house me-lg-2"></i>
@@ -45,12 +52,17 @@
                         <span class="d-md-none d-lg-inline">Seller</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
                     <a href="listOfAllOrders.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <i class="fa-solid fa-truck me-lg-2"></i>
                         <span class="d-md-none d-lg-inline">Orders</span>
                     </a>
+                    <ul>
+                        <li>
+                            #id
+                        </li>
+                    </ul>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
                     <a href="../../../login.html"
@@ -63,9 +75,78 @@
         </aside>
 
         <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
-        </main> <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
+            <div class="container">
+                <h2 class="mb-4">Order Details</h2>
+
+                <!-- Order Info -->
+                <div class="card mb-4">
+                    <div class="card-header fw-bold">Order Information</div>
+                    <div class="card-body">
+                        <p><strong>Order ID:</strong> #12345</p>
+                        <p><strong>Date:</strong> 2025-08-11</p>
+                        <p><strong>Status:</strong> <span class="badge bg-success">Delivered</span></p>
+                        <p><strong>Total:</strong> $250.00</p>
+                    </div>
+                </div>
+
+                <!-- Customer Info -->
+                <div class="card mb-4">
+                    <div class="card-header fw-bold">Customer Information</div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Email:</strong> john@example.com</p>
+                        <p><strong>Phone:</strong> +123456789</p>
+                        <p><strong>Address:</strong> 123 Street, City, Country</p>
+                    </div>
+                </div>
+
+                <!-- Seller Info -->
+                <div class="card mb-4">
+                    <div class="card-header fw-bold">Seller Information</div>
+                    <div class="card-body">
+                        <p><strong>Store Name:</strong><a href="storeInfo.html"> Best Electronics</a></p>
+                        <p><strong>Seller Name:</strong><a href="sellerInfo.html"> Ahmed Ali</a></p>
+                        <p><strong>Phone:</strong> +987654321</p>
+                        <p><strong>Location:</strong> Cairo, Egypt</p>
+                    </div>
+                </div>
+
+                <!-- Products in Order -->
+                <div class="card mb-4">
+                    <div class="card-header fw-bold">Products</div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped m-0">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="productInfo.html">Keyboard</a></td>
+                                    <td>1</td>
+                                    <td>$200</td>
+                                    <td>$200</td>
+                                </tr>
+                                <tr>
+                                    <td>Mouse</td>
+                                    <td>1</td>
+                                    <td>$50</td>
+                                    <td>$50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <a href="listOfAllOrders.html" class="btn btn-secondary">Back to Orders</a>
+            </div>
+        </main>
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
             ☰
         </button>
     </div>

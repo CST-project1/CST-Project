@@ -3,118 +3,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/aside.css">
+
     <title>Sidebar Toggle</title>
-    <style>
-        aside {
-            width: 250px;
-            transition: width 0.3s ease;
-            overflow: hidden;
-            white-space: nowrap;
-            height: 100vh;
-        }
 
-        aside.closed {
-            width: 70px;
-        }
-
-
-        aside.closed .list-group-item span {
-            display: none;
-        }
-
-        aside.closed .list-group-item i {
-            margin-right: 0;
-        }
-
-        aside.closed .list-group-item {
-            padding: 1rem 1rem;
-            text-align: center;
-        }
-
-        aside.closed .list-group-item i {
-            margin-right: 0;
-        }
-
-        #toggleBtn {
-            width: 100%;
-        }
-
-        aside a {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
 </head>
+<!--
+ get all orders
+ add search method by order id or user id
+ fetch order by status(completed / in queue / pending / out to delivery)
+ filter order by price range
+ delete order
+ get order by id
+-->
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
-        <aside class="bg-light p-2">
-            <button id="toggleBtn" class="p-2 rounded border mb-3">
+        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
                 ☰
             </button>
-            <ul class="list-group">
-                <li class="list-group-item mb-2 rounded ">
-                    <a href="index.html" ">
-                        <i class=" fa-solid fa-house me-2"></i>
-                        <span>Dashboard</span>
+            <ul id="menuList" class="list-group">
+                <li class="list-group-item mb-2 rounded">
+                    <a href="index.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-house me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Dashboard</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2  ">
-                    <a href="Products.html" ">
-                        <i class=" fa-solid fa-box me-2"></i>
-                        <span>Products</span>
+
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="Products.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-box me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Products</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="listOfUsers.html">
-                        <i class="fa-solid fa-user me-2"></i>
-                        <span>Customers</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfUsers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Customers</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="listOfSellers.html">
-                        <i class="fa-solid fa-user-tie me-2"></i>
-                        <span>seller</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="listOfSellers.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-user-tie me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Seller</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="analytics.html">
-                        <i class="fa-solid fa-chart-line me-2"></i>
-                        <span>Analytics</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
+                    <a href="listOfAllOrders.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-truck me-lg-2 "></i>
+                        <span class="d-md-none d-lg-inline">Orders</span>
                     </a>
                 </li>
-                <li class="list-group-item rounded mb-2 active">
-                    <a href="listOfAllOrders.html">
-                        <i class="fa-solid fa-truck me-2"></i>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="Settings.html">
-                        <i class="fa-solid fa-gear me-2"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2">
-                    <a href="../../../login.html">
-                        <i class="fa-solid fa-sign-out me-2"></i>
-                        <span>Logout</span>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="../../../login.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <i class="fa-solid fa-sign-out me-lg-2"></i>
+                        <span class="d-md-none d-lg-inline">Logout</span>
                     </a>
                 </li>
             </ul>
         </aside>
 
-        <main class="flex-grow-1 p-3">
-            <h1>المحتوى هنا</h1>
-            <p>هنا باقي الصفحة.</p>
-        </main>
+        <main class="flex-grow-1 p-3 ">
+            <h1 class="text-2xl font-bold  text-gray-800">Orders Management</h1>
+
+            <div class="grid grid-cols-1 gap-4 mb-6 text-gray-800 d-flex">
+                <div class="relative">
+                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
+                    <input type="text" placeholder="Search products..."
+                        class="pl-10 p-2 w-full rounded-lg border dark:bg-gray-700 dark:border-gray-600" value=""
+                        onchange="" />
+                </div>
+                <select onchange="" class="p-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                    <option value="Out to Ship">Out to Ship</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                    <option value="Returned">Returned</option>
+                </select>
+                <div>
+                    <input type="range" min="0" max="1000" value="0" onchange="" class="w-full" />
+                    <div class="text-sm">Price: $0 - $40000</div>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light table-cell-padding-x: 0.5rem">
+                        <tr>
+                            <th scope="col" class="text-blue-800">UserDetails</th>
+                            <th scope="col" class="text-blue-800">payment</th>
+                            <th scope="col" class="text-blue-800">price</th>
+                            <th scope="col" class="text-blue-800">amount</th>
+                            <th scope="col" class="text-blue-800">status</th>
+                            <th scope="col" class="text-blue-800">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <a href="orderInfo.html">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="fw-semibold">ABAS</div>
+                                            <div class="text-muted small">#12</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="text-muted">instapay</td>
+                            <td>$299.00</td>
+                            <td>3 product</td>
+                            <td>
+                                <span class="badge bg-success">Out to Ship</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <div class="fw-semibold">ABAS</div>
+                                        <div class="text-muted small">#12</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-muted">instapay</td>
+                            <td>$299.00</td>
+                            <td>3 product</td>
+                            <td>
+                                <span class="badge bg-success">Out to Ship</span>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="" class="btn btn-sm btn-outline-primary">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </main> <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
+            ☰
+        </button>
+    </div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5>Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
+        </div>
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById("toggleBtn").addEventListener("click", function () {
-            document.querySelector("aside").classList.toggle("closed");
-            document.querySelector("span").classList.toggle("d-none");
-        });
+    <script src="../js/aside.js">
+
     </script>
 </body>
