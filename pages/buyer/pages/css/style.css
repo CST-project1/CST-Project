@@ -121,6 +121,23 @@ a {
     font-weight: bold;
     display: none;
 }
+/* user icon */
+
+.user-icon {
+    position: relative;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: transform 0.2s ease;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
+}
+
+.user-icon img {
+    width: 28px;
+    vertical-align: middle;
+}
 
 /* Cart Sidebar */
 .cart-sidebar {

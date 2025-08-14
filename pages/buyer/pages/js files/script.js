@@ -50,27 +50,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // All products data (expanded collection)
     const allProducts = [
-    // Men's Fragrances
-    { id: 1, name: 'Golden Desert', price: 89.99, category: 'men', image: './images/Golden-Desert-6ml.jpg', featured: true },
-    { id: 2, name: 'Royal Oud', price: 119.99, category: 'men', image: './images/CREEDROYALOUD.avif', featured: true },
-    { id: 3, name: 'Ocean Breeze', price: 59.99, category: 'men', image: './images/OceanBreeze.avif', featured: false },
-    { id: 4, name: 'Black Leather', price: 95.99, category: 'men', image: './images/BlackLeather.jpg', featured: false },
-    { id: 5, name: 'Woody Spice', price: 79.99, category: 'men', image: './images/WoodySpice.jpg', featured: false },
-    
-    // Women's Fragrances
-    { id: 6, name: 'White Musk', price: 69.99, category: 'women', image: './images/WhiteMusk.jpg', featured: true },
-    { id: 7, name: 'Cherry Blossom', price: 79.99, category: 'women', image:'./images/CherryBlossom.jpg', featured: true },
-    { id: 8, name: 'Midnight Rose', price: 94.99, category: 'women', image: './images/MidnightRose.jpg', featured: false },
-    { id: 9, name: 'Vanilla Dreams', price: 74.99, category: 'women', image: './images/VanillaDreams.jpg', featured: false },
-    { id: 10, name: 'Floral Elegance', price: 84.99, category: 'women', image: './images/FloralElegance.jpg', featured: false },
-    { id: 11, name: 'Pink Peony', price: 67.99, category: 'women', image: './images/PinkPeony.jpg', featured: false },
-    
-    // Unisex Fragrances
-    { id: 12, name: 'Citrus Burst', price: 64.99, category: 'unisex', image:'./images/CitrusBurst.jpg', featured: false },
-    { id: 13, name: 'Fresh Mint', price: 54.99, category: 'unisex', image: './images/FreshMint.jpg', featured: false },
-    { id: 14, name: 'Amber Glow', price: 89.99, category: 'unisex', image: './images/AmberGlow.jpg', featured: false },
-    { id: 15, name: 'Green Tea', price: 49.99, category: 'unisex', image: './images/GreenTea.jpg', featured: false }
-];
+        // Men's Fragrances
+        { id: 1, name: 'Golden Desert', price: 89.99, category: 'men', image: '../images/Golden-Desert-6ml.jpg', featured: true },
+        { id: 2, name: 'Royal Oud', price: 119.99, category: 'men', image: '../images/CREEDROYALOUD.avif', featured: true },
+        { id: 3, name: 'Ocean Breeze', price: 59.99, category: 'men', image: '../images/OceanBreeze.avif', featured: false },
+        { id: 4, name: 'Black Leather', price: 95.99, category: 'men', image: '../images/BlackLeather.jpg', featured: false },
+        { id: 5, name: 'Woody Spice', price: 79.99, category: 'men', image: '../images/WoodySpice.jpg', featured: false },
+
+        // Women's Fragrances
+        { id: 6, name: 'White Musk', price: 69.99, category: 'women', image: '../images/WhiteMusk.jpg', featured: true },
+        { id: 7, name: 'Cherry Blossom', price: 79.99, category: 'women', image: '../images/CherryBlossom.jpg', featured: true },
+        { id: 8, name: 'Midnight Rose', price: 94.99, category: 'women', image: '../images/MidnightRose.jpg', featured: false },
+        { id: 9, name: 'Vanilla Dreams', price: 74.99, category: 'women', image: '../images/VanillaDreams.jpg', featured: false },
+        { id: 10, name: 'Floral Elegance', price: 84.99, category: 'women', image: '../images/FloralElegance.jpg', featured: false },
+        { id: 11, name: 'Pink Peony', price: 67.99, category: 'women', image: '../images/PinkPeony.jpg', featured: false },
+
+        // Unisex Fragrances
+        { id: 12, name: 'Citrus Burst', price: 64.99, category: 'unisex', image: '../images/CitrusBurst.jpg', featured: true },
+        { id: 13, name: 'Fresh Mint', price: 54.99, category: 'unisex', image: '../images/FreshMint.jpg', featured: false },
+        { id: 14, name: 'Amber Glow', price: 89.99, category: 'unisex', image: '../images/AmberGlow.jpg', featured: false },
+        { id: 15, name: 'Green Tea', price: 49.99, category: 'unisex', image: '../images/GreenTea.jpg', featured: false }
+    ];
 
 
     // Store products globally for cart functionality
