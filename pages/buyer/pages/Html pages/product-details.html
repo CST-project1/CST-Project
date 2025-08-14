@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - L'Essence</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -52,7 +52,7 @@
             <div class="cart-total">
                 <strong>Total: $<span id="cart-total">0.00</span></strong>
             </div>
-            <button class="checkout-btn" onclick="window.location.href='checkOut.html'">Checkout</button>
+            <button class="checkout-btn">Checkout</button>
         </div>
     </div>
 
@@ -97,9 +97,9 @@
                             <span class="rating-text">(4.2/5) - 127 Reviews</span>
                         </div>
                         <div class="product-price-section">
-                            <span class="current-price" id="product-price">$0.00</span>
-                            <span class="original-price">$129.99</span>
-                            <span class="discount-badge">15% OFF</span>
+                            <span class="current-price" id="product-price"></span>
+                            <span class="original-price" id="original-price"></span>
+                            <span class="discount-badge" id="discount-badge"></span>
                         </div>
 
                         <div class="product-description">
@@ -157,10 +157,6 @@
                             <button class="add-to-cart-main-btn" id="add-to-cart-main">
                                 <span class="cart-icon-btn">🛒</span>
                                 Add to Cart
-                            </button>
-                            <button class="wishlist-btn">
-                                <span class="heart-icon">♡</span>
-                                Add to Wishlist
                             </button>
                         </div>
 
@@ -229,7 +225,7 @@
         </div>
     </footer>
 
-    <script src="./js files/product-details.js"></script>
+    <script src="../js files/product-details.js"></script>
 </body>
 
 </html>
