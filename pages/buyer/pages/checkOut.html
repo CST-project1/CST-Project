@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../pages/css/navbar.css">
     <title>Checkout</title>
     <style>
-
         .mainDiv {
             width: 50vw;
             margin: 100px auto;
@@ -16,14 +15,17 @@
 
         .card {
             width: 50vw;
-            height: 60vh;
+            height: auto;
+            margin-bottom: 20px;
         }
-        .subCard{
+
+        .subCard {
             width: 40vw;
-            height: 30vh;
+            height: auto;
             margin: 20px auto;
         }
-        .subCard>div{
+
+        .subCard>div {
             padding: 2px 10px 0px 10px;
         }
 
@@ -38,7 +40,7 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container">
-            <a href="#" class="navbar-brand">L'Essence</a>
+            <a href="index.html" class="navbar-brand">L'Essence</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,10 +54,10 @@
                         <a href="products.html" class="nav-link">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">About us</a>
+                        <a href="index.html#about" class="nav-link">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Contact</a>
+                        <a href="index.html#contact" class="nav-link">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -63,64 +65,83 @@
     </nav>
     <div class="mainDiv align-items-center">
         <h1 class="mb-4">Checkout</h1>
-        <form action="#" class="form-group">
-            <label for="fname">Frist Name</label>
-            <input type="text" name="fname" id="fname" class="form-control mb-4" required>
+
+        <form action="orderConfirmation.html" class="form-group needs-validation" novalidate>
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" id="first-name" class="form-control mb-4" required>
+
             <label for="lname">Last Name</label>
-            <input type="text" name="fname" id="fname" class="form-control mb-4" required>
+            <input type="text" name="lname" id="last-name" class="form-control mb-4" required>
+
             <label for="email">Email</label>
             <input type="email" name="email" id="email" class="form-control mb-4" required>
+
             <label for="phone">Phone</label>
             <input type="tel" name="phone" id="phone" class="form-control mb-4" required>
+
             <label for="address">Address</label>
             <input type="text" name="address" id="address" class="form-control mb-4" required>
+
             <label for="country">Country</label>
-            <select name="country" id="country" class="form-control mb-4">
+            <select name="country" id="country" class="form-control mb-4" required>
                 <option value="">choose...</option>
-                <option value="">Canda</option>
-                <option value="">United State</option>
+                <option value="Canada">Canda</option>
+                <option value="USA">United State</option>
             </select>
+
             <label for="state">State</label>
-            <select name="state" id="state" class="form-control mb-4">
+            <select name="state" id="state" class="form-control mb-4" required>
                 <option value="">choose...</option>
-                <option value="">California</option>
-                <option value="">New York</option>
+                <option value="CA">California</option>
+                <option value="NY">New York</option>
             </select>
+
             <label for="zip">Zip</label>
             <input type="text" name="zip" id="zip" class="form-control mb-4" required>
-        </form>
-        <hr class="my-4">
-        <h1 class="mb-4">Payment</h1>
-        <form action="#" class="form-group">
-            <input type="radio" name="paymentMethod" id="credit" class="form-ckeck-input" checked required>
-            <label for="credit" class="form-ckeck-label">Credit card</label><br>
-            <input type="radio" name="paymentMethod" id="paypal" class="form-ckeck-input" required>
-            <label for="paypal" class="form-ckeck-label mb-4">PayPal</label><br>
+
+            <hr class="my-4">
+            <h1 class="mb-4">Payment</h1>
+
+            <div class="form-check">
+                <input type="radio" name="paymentMethod" id="credit" class="form-check-input" checked required>
+                <label for="credit" class="form-check-label">Credit card</label>
+            </div>
+
+            <div class="form-check mb-4">
+                <input type="radio" name="paymentMethod" id="paypal" class="form-check-input" required>
+                <label for="paypal" class="form-check-label">PayPal</label>
+            </div>
+
             <label for="cardname">Name on card</label>
-            <input type="text" name="cardname" id="cardname" class="form-control mb-4" required>
+            <input type="text" name="cardname" id="card-name" class="form-control mb-4" required>
+
             <label for="cardnumber">Card number</label>
-            <input type="text" name="cardnumber" id="cardnumber" class="form-control mb-4" required>
+            <input type="text" name="cardnumber" id="card-number" class="form-control mb-4" required>
+
             <label for="expire">Expiration</label>
             <input type="text" name="expire" id="expire" class="form-control mb-4" required>
+
             <label for="cvv">CVV</label>
             <input type="text" name="cvv" id="cvv" class="form-control mb-4" required>
+
+            <input type="submit" class="btn btn-dark my-4" value="Place Order">
         </form>
         <hr class="my-4">
-        <input type="submit" class="btn btn-primary my-4" value="Place Order">
+
         <div class="card">
             <h1 class="card-header">Order Summary</h1>
             <div class="d-flex">
-                <img src="images/CREEDROYALOUD.avif" alt="">
-                <div class="ms-3">
-                    <h6 class="my-0">Product name</h6>
-                    <caption>Brief description $12</caption>
+                <img src="" alt="Product image"> <!-- when customer make order in products page -->
+                <div class="ms-3 my-2">
+                    <h6 class="my-0"><!-- Product name --></h6>
+                    <caption><!-- Brief description --> </caption>
                 </div>
             </div>
             <div class="d-flex">
-                <img src="images/CREEDROYALOUD.avif" alt="">
-                <div class="ms-3">
-                    <h6 class="my-0">Product name</h6>
-                    <caption>Brief description $12</caption>
+                <img src="" alt="Product image"> <!-- when customer make order in products page --> 
+                <div class="ms-3 my-2">
+                    <h6 class="my-0"><!-- Product name --></h6>
+                    <caption><!-- Brief description --></caption>
                 </div>
             </div>
             <div class="subCard card">
@@ -154,6 +175,8 @@
     </footer>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js files/checkout.js"></script>
 </body>
 
 </html>
+
