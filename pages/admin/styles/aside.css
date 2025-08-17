@@ -20,7 +20,7 @@
        width: 70px;
    }
 
-   aside.closed .list-group-item span {
+   aside.closed .menu-text {
        display: none !important;
    }
 
