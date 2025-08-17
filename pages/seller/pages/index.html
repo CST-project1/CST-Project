@@ -79,7 +79,7 @@
          <div class="orders-section">
           <h2 class="mb-3">Recent Orders</h2>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th>Order ID</th>
@@ -90,8 +90,8 @@
                   <th>Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody id="orderTable">
+                <!-- <tr>
                   <td>#1</td>
                   <td>Zoe Smith</td>
                   <td>4</td>
@@ -107,7 +107,7 @@
                   <td>2025-6-16</td>
                   <td><span class="badge bg-success">Delivered</span></td>
                   <td>$65</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>
@@ -115,11 +115,9 @@
         
     </main>
 
-    <script>
-        function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("active");
-        }
-    </script>
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/index.js"></script>
+    
 
 </body>
 </html>

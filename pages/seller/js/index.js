@@ -1,9 +1,8 @@
 // Function to toggle the sidebar visibility
 function toggleSidebar() {
- document.getElementById("sidebar").classList.toggle("active");
- }
-
- let orders = [
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+  let orders = [
     {
        id: 1, 
        customer: "Zoe Smith", 
@@ -19,16 +18,8 @@ function toggleSidebar() {
         date: "2025-06-16", 
         status: "Delivered", 
         total: 65
-        },
-        {
-          id: 3,
-          customer: "Majesty Brand", 
-          qty: 2, 
-          date: "2025-06-16", 
-          status: "Cancelled", 
-          total: 160
-          }
-          ];
+        }
+        ];
 
         let rowsPerPage = 3;
         let currentPage = 1;

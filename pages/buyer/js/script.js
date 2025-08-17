@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const allProductsGrid = document.getElementById('all-products-grid');
+    const featuredProductsGrid = document.getElementById('featured-products-grid');
     const cartCountSpan = document.getElementById('cart-count');
     const cartIcon = document.getElementById('cart-icon');
     const cartSidebar = document.getElementById('cart-sidebar');
@@ -9,12 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartTotal = document.getElementById('cart-total');
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    const filterButtons = document.querySelectorAll('.filter-btn');
     
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let currentFilter = 'all';
 
-    // ----- Navbar Toggle Functionality ----- 
+    // ----- Navbar Toggle Functionality -----
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -50,47 +48,47 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeCart) closeCart.addEventListener('click', closeCartSidebar);
     if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
 
-    // All products data (updated with local images)
+    // All products data (expanded collection)
     const allProducts = [
         // Men's Fragrances
-        { id: 1, name: 'Golden Desert', price: 89.99, category: 'men', image: './images/Golden-Desert-6ml.jpg', featured: true },
-        { id: 2, name: 'Royal Oud', price: 119.99, category: 'men', image: './images/CREEDROYALOUD.avif', featured: true },
-        { id: 3, name: 'Ocean Breeze', price: 59.99, category: 'men', image: './images/OceanBreeze.avif', featured: false },
-        { id: 4, name: 'Black Leather', price: 95.99, category: 'men', image: './images/BlackLeather.jpg', featured: false },
-        { id: 5, name: 'Woody Spice', price: 79.99, category: 'men', image: './images/WoodySpice.jpg', featured: false },
-        
+        { id: 1, name: 'Golden Desert', price: 89.99, category: 'men', image: '../images/Golden-Desert-6ml.jpg', featured: true },
+        { id: 2, name: 'Royal Oud', price: 119.99, category: 'men', image: '../images/CREEDROYALOUD.avif', featured: true },
+        { id: 3, name: 'Ocean Breeze', price: 59.99, category: 'men', image: '../images/OceanBreeze.avif', featured: false },
+        { id: 4, name: 'Black Leather', price: 95.99, category: 'men', image: '../images/BlackLeather.jpg', featured: false },
+        { id: 5, name: 'Woody Spice', price: 79.99, category: 'men', image: '../images/WoodySpice.jpg', featured: false },
+
         // Women's Fragrances
-        { id: 6, name: 'White Musk', price: 69.99, category: 'women', image: './images/WhiteMusk.jpg', featured: true },
-        { id: 7, name: 'Cherry Blossom', price: 79.99, category: 'women', image:'./images/CherryBlossom.jpg', featured: true },
-        { id: 8, name: 'Midnight Rose', price: 94.99, category: 'women', image: './images/MidnightRose.jpg', featured: false },
-        { id: 9, name: 'Vanilla Dreams', price: 74.99, category: 'women', image: './images/VanillaDreams.jpg', featured: false },
-        { id: 10, name: 'Floral Elegance', price: 84.99, category: 'women', image: './images/FloralElegance.jpg', featured: false },
-        { id: 11, name: 'Pink Peony', price: 67.99, category: 'women', image: './images/PinkPeony.jpg', featured: false },
-        
+        { id: 6, name: 'White Musk', price: 69.99, category: 'women', image: '../images/WhiteMusk.jpg', featured: true },
+        { id: 7, name: 'Cherry Blossom', price: 79.99, category: 'women', image: '../images/CherryBlossom.jpg', featured: true },
+        { id: 8, name: 'Midnight Rose', price: 94.99, category: 'women', image: '../images/MidnightRose.jpg', featured: false },
+        { id: 9, name: 'Vanilla Dreams', price: 74.99, category: 'women', image: '../images/VanillaDreams.jpg', featured: false },
+        { id: 10, name: 'Floral Elegance', price: 84.99, category: 'women', image: '../images/FloralElegance.jpg', featured: false },
+        { id: 11, name: 'Pink Peony', price: 67.99, category: 'women', image: '../images/PinkPeony.jpg', featured: false },
+
         // Unisex Fragrances
-        { id: 12, name: 'Citrus Burst', price: 64.99, category: 'unisex', image:'./images/CitrusBurst.jpg', featured: false },
-        { id: 13, name: 'Fresh Mint', price: 54.99, category: 'unisex', image: './images/FreshMint.jpg', featured: false },
-        { id: 14, name: 'Amber Glow', price: 89.99, category: 'unisex', image: './images/AmberGlow.jpg', featured: false },
-        { id: 15, name: 'Green Tea', price: 49.99, category: 'unisex', image: './images/GreenTea.jpg', featured: false }
+        { id: 12, name: 'Citrus Burst', price: 64.99, category: 'unisex', image: '../images/CitrusBurst.jpg', featured: true },
+        { id: 13, name: 'Fresh Mint', price: 54.99, category: 'unisex', image: '../images/FreshMint.jpg', featured: false },
+        { id: 14, name: 'Amber Glow', price: 89.99, category: 'unisex', image: '../images/AmberGlow.jpg', featured: false },
+        { id: 15, name: 'Green Tea', price: 49.99, category: 'unisex', image: '../images/GreenTea.jpg', featured: false }
     ];
+
+
+    // Store products globally for cart functionality
+    window.allProducts = allProducts;
 
     // Navigate to product details
     function goToProductDetails(productId) {
         window.location.href = `product-details.html?id=${productId}`;
     }
 
-    // Display all products with filtering
-    function displayProducts(filter = 'all') {
-        if (!allProductsGrid) return;
+    // Display featured products on homepage
+    function displayFeaturedProducts() {
+        if (!featuredProductsGrid) return;
         
-        let productsToShow = allProducts;
-        if (filter !== 'all') {
-            productsToShow = allProducts.filter(product => product.category === filter);
-        }
+        const featuredProducts = allProducts.filter(product => product.featured);
+        featuredProductsGrid.innerHTML = '';
         
-        allProductsGrid.innerHTML = '';
-        
-        productsToShow.forEach(product => {
+        featuredProducts.forEach(product => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
@@ -102,26 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
                 </div>
             `;
-            allProductsGrid.appendChild(productCard);
+            featuredProductsGrid.appendChild(productCard);
         });
     }
-
-    // Filter functionality
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-            
-            // Get filter category
-            const category = button.getAttribute('data-category');
-            currentFilter = category;
-            
-            // Display filtered products
-            displayProducts(category);
-        });
-    });
 
     // Add product to cart
     function addToCart(productId) {
@@ -215,8 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.goToProductDetails = goToProductDetails;
 
     // Add click functionality to "Add to Cart" buttons
-    if (allProductsGrid) {
-        allProductsGrid.addEventListener('click', function(e) {
+    if (featuredProductsGrid) {
+        featuredProductsGrid.addEventListener('click', function(e) {
             if (e.target.classList.contains('add-to-cart-btn')) {
                 const productId = e.target.getAttribute('data-id');
                 addToCart(productId);
@@ -231,8 +212,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
     
     // Initialize
-    displayProducts();
+    displayFeaturedProducts();
     updateCartUI();
 });

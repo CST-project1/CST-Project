@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Golden Desert', 
             price: 89.99, 
             category: 'men', 
-            image: './images/Golden-Desert-6ml.jpg', 
+            image: '../images/Golden-Desert-6ml.jpg', 
             featured: true,
             description: 'A luxurious blend that captures the essence of golden sand dunes at sunset. This sophisticated fragrance combines warm amber notes with exotic spices, creating an unforgettable masculine scent that exudes confidence and mystery.',
             brand: "L'Essence Elite",
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Royal Oud', 
             price: 119.99, 
             category: 'men', 
-            image: './images/CREEDROYALOUD.avif', 
+            image: '../images/CREEDROYALOUD.avif', 
             featured: true,
             description: 'An opulent fragrance fit for royalty. This rich and complex scent features the finest oud wood, balanced with precious rose and warm spices. A true masterpiece for the discerning gentleman.',
             brand: "L'Essence Royal",
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Ocean Breeze', 
             price: 59.99, 
             category: 'men', 
-            image: './images/OceanBreeze.avif', 
+            image: '../images/OceanBreeze.avif', 
             featured: false,
             description: 'Fresh and invigorating like a morning walk by the sea. This aquatic fragrance combines crisp marine notes with citrus and herbs, perfect for the modern man who loves adventure.',
             brand: "L'Essence Fresh",
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Black Leather', 
             price: 95.99, 
             category: 'men', 
-            image: './images/BlackLeather.jpg', 
+            image: '../images/BlackLeather.jpg', 
             featured: false,
             description: 'Bold and masculine with a rebellious edge. This intense fragrance features rich leather accords complemented by smoky woods and dark spices, perfect for evening wear.',
             brand: "L'Essence Dark",
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Woody Spice', 
             price: 79.99, 
             category: 'men', 
-            image: './images/WoodySpice.jpg', 
+            image: '../images/WoodySpice.jpg', 
             featured: false,
             description: 'Warm and comforting with a sophisticated twist. This aromatic blend features rich woods enhanced by exotic spices, creating a timeless fragrance for the refined gentleman.',
             brand: "L'Essence Classic",
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'White Musk', 
             price: 69.99, 
             category: 'women', 
-            image: './images/WhiteMusk.jpg', 
+            image: '../images/WhiteMusk.jpg', 
             featured: true,
             description: 'Pure elegance in a bottle. This delicate fragrance features soft white musk enhanced by gentle florals and clean cotton notes, creating an aura of sophisticated femininity.',
             brand: "L'Essence Pure",
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Cherry Blossom', 
             price: 79.99, 
             category: 'women', 
-            image: './images/CherryBlossom.jpg', 
+            image: '../images/CherryBlossom.jpg', 
             featured: true,
             description: 'Romantic and enchanting like spring in full bloom. This floral masterpiece captures the delicate beauty of cherry blossoms with soft petals and sweet undertones.',
             brand: "L'Essence Bloom",
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Midnight Rose', 
             price: 94.99, 
             category: 'women', 
-            image: './images/MidnightRose.jpg', 
+            image: '../images/MidnightRose.jpg', 
             featured: false,
             description: 'Mysterious and seductive, perfect for evening occasions. This intense floral fragrance features deep red roses enhanced by dark berries and sensual woods.',
             brand: "L'Essence Night",
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Vanilla Dreams', 
             price: 74.99, 
             category: 'women', 
-            image: './images/VanillaDreams.jpg', 
+            image: '../images/VanillaDreams.jpg', 
             featured: false,
             description: 'Sweet and comforting like a warm embrace. This gourmand fragrance features rich vanilla enhanced by caramel and soft florals, creating a dreamy and addictive scent.',
             brand: "L'Essence Sweet",
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Floral Elegance', 
             price: 84.99, 
             category: 'women', 
-            image: './images/FloralElegance.jpg', 
+            image: '../images/FloralElegance.jpg', 
             featured: false,
             description: 'Timeless sophistication in every drop. This classic floral bouquet combines the finest white flowers with green notes, creating an elegant and refined fragrance.',
             brand: "L'Essence Classic",
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Pink Peony', 
             price: 67.99, 
             category: 'women', 
-            image: './images/PinkPeony.jpg', 
+            image: '../images/PinkPeony.jpg', 
             featured: false,
             description: 'Fresh and feminine with a playful spirit. This delightful fragrance captures the essence of blooming peonies with fruity top notes and a soft musky base.',
             brand: "L'Essence Fresh",
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Citrus Burst', 
             price: 64.99, 
             category: 'unisex', 
-            image: './images/CitrusBurst.jpg', 
+            image: '../images/CitrusBurst.jpg', 
             featured: false,
             description: 'Energizing and uplifting for any occasion. This vibrant citrus blend combines zesty fruits with aromatic herbs, perfect for those who love fresh and invigorating scents.',
             brand: "L'Essence Energy",
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Fresh Mint', 
             price: 54.99, 
             category: 'unisex', 
-            image: './images/FreshMint.jpg', 
+            image: '../images/FreshMint.jpg', 
             featured: false,
             description: 'Cool and refreshing like a mountain breeze. This invigorating fragrance features crisp mint enhanced by eucalyptus and clean aquatic notes.',
             brand: "L'Essence Cool",
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Amber Glow', 
             price: 89.99, 
             category: 'unisex', 
-            image: './images/AmberGlow.jpg', 
+            image: '../images/AmberGlow.jpg', 
             featured: false,
             description: 'Warm and mysterious with universal appeal. This sophisticated fragrance features rich amber enhanced by spices and precious woods, suitable for any gender.',
             brand: "L'Essence Luxury",
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'Green Tea', 
             price: 49.99, 
             category: 'unisex', 
-            image: './images/GreenTea.jpg', 
+            image: '../images/GreenTea.jpg', 
             featured: false,
             description: 'Zen-like tranquility in a bottle. This calming fragrance features pure green tea enhanced by citrus and white flowers, perfect for meditation and relaxation.',
             brand: "L'Essence Zen",
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // ----- Navbar Toggle Functionality -----
-    if (menuToggle && navLinks) {
+    if (menuToggle && navLinks){
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('is-active');
@@ -303,6 +303,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (productDescriptionText) productDescriptionText.textContent = currentProduct.description;
         if (productBreadcrumb) productBreadcrumb.textContent = currentProduct.name;
 
+        // Calculate and update dynamic pricing
+        updateDynamicPricing(currentProduct.price);
+
         // Update additional details
         const productBrand = document.getElementById('product-brand');
         const productType = document.getElementById('product-type');
@@ -318,6 +321,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Load related products
         loadRelatedProducts();
+    }
+
+    // Function to calculate and update dynamic pricing
+    function updateDynamicPricing(currentPrice) {
+        // Calculate original price as 1.5 times the current price
+        const originalPrice = currentPrice * 1.5;
+        
+        // Calculate discount percentage
+        const discountAmount = originalPrice - currentPrice;
+        const discountPercentage = Math.round((discountAmount / originalPrice) * 100);
+        
+        // Update the original price element
+        const originalPriceElement = document.getElementById('original-price');
+        if (originalPriceElement) {
+            originalPriceElement.textContent = `$${originalPrice.toFixed(2)}`;
+        }
+        
+        // Update the discount badge element
+        const discountBadgeElement = document.getElementById('discount-badge');
+        if (discountBadgeElement) {
+            discountBadgeElement.textContent = `${discountPercentage}% OFF`;
+        }
     }
 
     // Load related products (same category, excluding current product)
