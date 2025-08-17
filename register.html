@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/bootstrap-5.3.7-dist/css/bootstrap.min.css">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
@@ -14,8 +14,7 @@
             <div class="col-md-6 d-flex align-items-center justify-content-center bg-light">
                 <div class="w-75">
                     <h2 class="text-center mb-3">Register</h2>
-                    <h2 class="text-center mb-3">Register</h2>
-                    <form action="login.html" method="POST">
+                    <form id="registerForm">
                         <div class="mb-2">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>
@@ -39,12 +38,41 @@
                         </div>
                         <div class="mb-4">
                             <label for="gender" class="form-label">gender</label>
-                            <select class="form-select" id="gender" name="gender" required>
+                            <select class="form-select" id="role" name="role" required>
                                 <option value="" disabled selected>Select gender</option>
                                 <option value="Seller">Seller</option>
-                                <option value="buyer">buyer</option>
+                                <option value="Buyer">buyer</option>
                             </select>
                         </div>
+                        <!-- Extra fields for Seller -->
+                        <div id="sellerFields" class="d-none">
+                            <div class="mb-2">
+                                <label for="brand_name" class="form-label">Brand Name</label>
+                                <input type="text" class="form-control" id="brand_name" name="brand_name">
+                            </div>
+                            <div class="mb-2">
+                                <label for="seller_location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="seller_location" name="seller_location">
+                            </div>
+                            <div class="mb-2">
+                                <label for="logo" class="form-label">Logo</label>
+                                <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
+                            </div>
+                        </div>
+
+                        <!-- Extra fields for Buyer -->
+                        <div id="buyerFields" class="d-none">
+                            <div class="mb-2">
+                                <label for="buyer_location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="buyer_location" name="buyer_location">
+                            </div>
+                            <div class="mb-2">
+                                <label for="profile_pic" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" id="profile_pic" name="profile_pic"
+                                    accept="image/*">
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary w-30">Register</button>
                             <a href="login.html" class="btn btn-secondary w-30">Back to Login</a>
@@ -60,7 +88,7 @@
             </div>
         </div>
     </div>
-
+    <script src="javascript/register.js"></script>
     <script src="bootstrap-5.3.7-disk/js/bootstrap.bundle.min.js"></script>
 </body>
 
