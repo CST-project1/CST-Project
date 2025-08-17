@@ -43,7 +43,7 @@
     <!-- add product form -->
     <div class="content">
         <!-- <h1 class="mb-4">Add New Product</h1> -->
-        <form>
+        <form id="addProductForm">
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
                 <input type="text" id="productName" class="form-control" placeholder="Enter Product Name" required>
@@ -51,7 +51,7 @@
 
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Price ($)</label>
-                <input type="text" id="productPrice" class="form-control" placeholder="Enter Product Price" required>
+                <input type="number" id="productPrice" class="form-control" placeholder="Enter Product Price" required>
             </div>
 
             <div class="mb-3">
@@ -90,7 +90,8 @@
 
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/analytics.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/addProduct.js"></script>
 
 </body>
 </html>
