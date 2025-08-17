@@ -1,37 +1,33 @@
 body{
     font-family: Arial, sans-serif;
-    background-color: lightgray;
+}
+
+.container.mt-5{
+    border: 1px solid lightgray;
+    box-shadow: 10px 10px 10px gray;
+
 }
 
 #product-image{
-    width: 300px;
-    height: 300px;
+    border: 10px solid lightgray;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
-#edit{
-    width: 120px;
-    height: 35px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: rgb(65, 162, 237);
-    margin: 10px;
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;
 }
 
-#edit:hover{
-opacity: 0.9;
-color: #292929;
+#productName{
+    color: blue;
 }
 
-a{
-    width: 150px;
-    height: 35px;
-    border-style: none;
-    border-radius: 5px;
-    background-color: #c1c0c0; 
-}
-
-a:hover{
-    background-color: #abaaaa;
+.col-md-6 strong{
+    color: brown;
+    font-size: large;
 }
 
 
