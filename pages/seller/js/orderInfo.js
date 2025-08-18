@@ -3,7 +3,7 @@ function toggleSidebar() {
  document.getElementById("sidebar").classList.toggle("active");
  }
 // order information
-let orders = [
+/* let orders = [
     {
        id: 1, 
        customer: "Zoe Smith", 
@@ -28,7 +28,7 @@ let orders = [
           status: "Cancelled", 
           total: 160
           }
-          ];
+          ]; */
           // get id from url
           let urlParams = new URLSearchParams(window.location.search);
           let productId = parseInt( urlParams.get('id'));
@@ -60,11 +60,11 @@ let orders = [
 
 
 // customer information
-let customerInfo = [
+/* let customerInfo = [
     {
         id: 1,
         name: "Zoe Smith",
-        email: "zoe.smith@example.com",
+        email: "zoe.smith@gmail.com",
         phone: "9876543210",
         address: "456 Elm St, Anytown, USA",
         
@@ -75,11 +75,11 @@ let customerInfo = [
         
         id: 2,
         name: "John Marsel",
-        email: "john.marsel@example.com",
+        email: "john.marsel@gmail.com",
         phone: "1234567890",
         address: "123 Main St, Anytown, USA",
     },
-    ];
+    ]; */
     // get customer information by id
     let customerId = parseInt(urlParams.get('id'));
     let customer = customerInfo.find(customer => customer.id === customerId);
@@ -93,7 +93,7 @@ let customerInfo = [
     }
 
     // product information
-    let productInfo = [
+    /* let productInfo = [
         {
             id: 1,
             name:  "Rose Elegance",
@@ -108,18 +108,18 @@ let customerInfo = [
             price: "$95",
             total: "$95",
             },
-        /* {
+           {  
             id: 3,
             name: "Stranger with you",
             quantity: 3,
             price: "$120",
             total: "$360",
-            } */
-            ];
+            } 
+            ]; */
             // Get the table where products will be inserted
             let table = document.getElementById("product-table");
             // Loop through each product and create a table row for it
-            productInfo.forEach(product => {
+            order.products.forEach(product => {
                 let row = `
                 <tr>
                 <td>${product.name}</td>

@@ -3,7 +3,7 @@
     document.getElementById("sidebar").classList.toggle("active");
   }
   // Array of products (each product has id, name, price, stock, status, image, description)
-   let products = [
+   /* let products = [
     {
       id: 1,
       name: "Rose Elegance",
@@ -31,7 +31,7 @@
           image: "https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629",
           description: "Stranger with you fragrance with a mysterious touch."
           }
-          ];
+          ]; */
 
           // Get the table where products will be inserted
           let productsTable = document.getElementById("product-table");

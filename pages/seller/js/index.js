@@ -2,7 +2,7 @@
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
-  let orders = [
+ /*  let orders = [
     {
        id: 1, 
        customer: "Zoe Smith", 
@@ -19,7 +19,7 @@ function toggleSidebar() {
         status: "Delivered", 
         total: 65
         }
-        ];
+        ]; */
 
         let rowsPerPage = 3;
         let currentPage = 1;
@@ -45,7 +45,7 @@ function toggleSidebar() {
                 `;
             });
 
-            renderPagination();
+            // renderPagination();
         }
 
         function getStatusClass(status) {
@@ -59,7 +59,7 @@ function toggleSidebar() {
             }
         }
 
-        function renderPagination() {
+  /*       function renderPagination() {
             const totalPages = Math.ceil(orders.length / rowsPerPage);
             const pagination = document.querySelector("pagination");
             pagination.innerHTML = "";
@@ -77,10 +77,13 @@ function toggleSidebar() {
             
             currentPage = page;
             renderTable(page);
-        }
+
+        } */
+
+            renderTable();
 
         function goToOrderInfo(orderId) {
              window.location.href = `orderInfo.html?id=${orderId}`;
         }
 
-        renderTable();
+        

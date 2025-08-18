@@ -44,31 +44,33 @@
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Search orders...">
+                            <input type="text" class="form-control" id="SearchInput" placeholder="Search orders...">
                         </div>
                         <div class="col-md-3">
-                            <select class="form-select">
+                            <select class="form-select" id="statusFilter">
                                 <option>All Status</option>
                                 <option>Pending</option>
-                                <option>Processing</option>
-                                <option>Shipped</option>
+                                <!-- <option>Processing</option>
+                                <option>Shipped</option> -->
                                 <option>Delivered</option>
                                 <option>Cancelled</option>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="dateInput">
                         </div>
                         <div class="col-md-3">
-                            <select class="form-select">
-                                <option>Sort By</option>
-                                <option>Date</option>
-                                <option>Amount</option>
-                                <option>Status</option>
+                            <select class="form-select" id="sortSelect">
+                                <option value="">Sort By</option>
+                                <option value="Date">Date</option>
+                                <option value="Amount">Amount</option>
+                                <option value="Status">Status</option>
                             </select>
                         </div>
                     </div>
+                    <!-- <input type="submit" class="btn btn-primary" value="Search"> -->
                 </div>
+                
             </div>
       
 
@@ -123,14 +125,14 @@
             </table>
           </div>
            <nav class="mt-4" >
-                        <ul class="pagination justify-content-end">
+                        <ul class="pagination justify-content-end" id="pagination">
                             <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul> 
-                    </nav>
+            </nav>
 
                </div>     
           </div>
@@ -138,6 +140,7 @@
     </main>
     
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/Data.js"></script>
     <script src="../js/orderList.js"></script>
     
 
