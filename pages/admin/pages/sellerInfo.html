@@ -40,14 +40,14 @@
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="listOfUsers.html"
+                    <a href="UsersPage.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <span>👤 </span>
                         <span class="d-md-none  menu-text d-lg-inline">Customers</span>
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center active">
-                    <a href="listOfSellers.html"
+                    <a href="SellerPage.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <span>👤 </span>
                         <span class="d-md-none  menu-text d-lg-inline">Seller</span>
@@ -59,7 +59,7 @@
                     </ul>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="listOfAllOrders.html"
+                    <a href="OrdersPage.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
                         <span>📦 </span>
                         <span class="d-md-none  menu-text d-lg-inline">Orders</span>
@@ -80,21 +80,20 @@
         <main class="flex-grow-1 p-4">
             <div class="card p-3 shadow-sm">
                 <div class="d-flex align-items-center mb-3">
-                    <img src="../../images/store.jpg" alt="Store Logo" class="rounded-circle me-3"
+                    <img id="sellerImg" src="../../images/store.jpg" alt="Store Logo" class="rounded-circle me-3"
                         style="width:80px; height:80px;">
                     <div>
-                        <h4 class="mb-0">Mohamed Ali</h4>
-                        <small class="text-muted">Seller ID: #S1234</small>
+                        <h4 id="sellerName" class="mb-0"></h4>
+                        <small class="text-muted">Seller ID: <span id="sellerId"></span></small>
                     </div>
                 </div>
 
                 <h5>Store Information</h5>
-                <p><strong>Store Name:</strong><a href="storeInfo.html"> Ali Electronics</a></p>
-                <p><strong>Location:</strong> Cairo, Egypt</p>
-                <p><strong>Phone:</strong> +20 111 222 333</p>
-                <p><strong>Email:</strong> seller@example.com</p>
-                <p><strong>Description:</strong> We specialize in high-quality electronics and gadgets, offering
-                    competitive prices and excellent customer service.</p>
+                <p><strong>Store Name:</strong> <a id="storeLink" href="storeInfo.html"></a></p>
+                <p><strong>Location:</strong> <span id="sellerLocation"></span></p>
+                <p><strong>Phone:</strong> <span id="sellerPhone"></span></p>
+                <p><strong>Email:</strong> <span id="sellerEmail"></span></p>
+                <p><strong>Description:</strong> <span id="storeDesc"></span></p>
 
                 <hr>
 
@@ -109,29 +108,19 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="orderInfo.html"> #O1001</a></td>
-                            <td>2025-08-05</td>
-                            <td><a href="userInfo.html"> Ahmed Hassan </a></td>
-                            <td>$120</td>
-                            <td><span class="badge bg-success">Delivered</span></td>
-                        </tr>
-                        <tr>
-                            <td>#O1002</td>
-                            <td>2025-08-08</td>
-                            <td>Sarah Ali</td>
-                            <td>$250</td>
-                            <td><span class="badge bg-warning text-dark">Pending</span></td>
-                        </tr>
+                    <tbody id="sellerOrders">
+                        <!-- Orders will render here -->
                     </tbody>
                 </table>
+
             </div>
         </main>
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/aside.js"></script>
+    <script src="../js/sellerInfo.js"></script>
+
 </body>
 
 </html>

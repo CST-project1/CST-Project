@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/aside.css">
+</head>
+
+<body>
+    <div class="container-fluid vh-100 d-flex p-0">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
+                ☰
+            </button>
+            <ul id="menuList" class="list-group">
+                <li class="list-group-item mb-2 rounded">
+                    <a href="index.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span class="me-lg-2">🏠 </span>
+                        <span class="d-md-none d-lg-inline menu-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="Products.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>🧴 </span>
+                        <span class="d-md-none d-lg-inline menu-text">Products</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
+                    <a href="UsersPage.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>👤 </span>
+                        <span class="d-md-none d-lg-inline menu-text">Customers</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="SellerPage.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>👤 </span>
+                        <span class="d-md-none d-lg-inline menu-text">Seller</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="OrdersPage.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>📦 </span>
+                        <span class="d-md-none d-lg-inline menu-text">Orders</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="../../../login.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>🔓</span>
+                        <span class="d-md-none d-lg-inline menu-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main -->
+        <main class="flex-grow-1 p-3">
+            <h1 class="mb-4 text-primary">Edit User</h1>
+
+            <form id="editUserForm" class="card p-4 shadow rounded">
+                <div class="mb-3 text-center">
+                    <img id="profilePreview" src="../../../images/logo.jpg" alt="Profile" class="rounded-circle mb-3"
+                        style="width: 80px; height: 80px; object-fit: cover;">
+                    <input type="file" id="profile_pic" class="form-control" accept="image/*">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Username / Brand Name</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <select id="gender" class="form-select">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select id="role" class="form-select" required>
+                        <option value="Customer">Customer</option>
+                        <option value="Seller">Seller</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/userEdit.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/aside.css">
+    <title>Orders Management</title>
+</head>
+
+<body>
+    <div class="container-fluid vh-100 d-flex p-0">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">☰</button>
+            <ul id="menuList" class="list-group">
+                <li class="list-group-item"><a href="index.html">🏠 Dashboard</a></li>
+                <li class="list-group-item"><a href="Products.html">🧴 Products</a></li>
+                <li class="list-group-item"><a href="UsersPage.html">👤 Customers</a></li>
+                <li class="list-group-item"><a href="SellerPage.html">👤 Seller</a></li>
+                <li class="list-group-item active"><a href="OrdersPage.html">📦 Orders</a></li>
+                <li class="list-group-item"><a href="../../../login.html">🔓 Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow-1 p-3">
+            <h1 class="mb-4">Orders Management</h1>
+
+            <!-- Filters -->
+            <div class="d-flex gap-3 mb-4">
+                <input id="searchInput" type="text" placeholder="Search by Order ID or User" class="form-control w-25">
+                <select id="statusFilter" class="form-select w-25">
+                    <option value="">All Status</option>
+                    <option value="new">New</option>
+                    <option value="inqueue">In Queue</option>
+                    <option value="out to serve">Out to Serve</option>
+                    <option value="complete">Complete</option>
+                </select>
+                <input type="range" id="priceFilter" min="0" max="1000" value="0" class="form-range w-25">
+                <span id="priceValue">$0+</span>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>User Details</th>
+                            <th>Payment</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <!-- Filled dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Mobile Sidebar Button -->
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">☰</button>
+    </div>
+
+    <!-- Offcanvas for Mobile -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+        <div class="offcanvas-header">
+            <h5>Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
+        </div>
+    </div>
+
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/aside.js"></script>
+
+    <script src="../js/orders.js">
+
+    </script>
+</body>
+
+</html>
