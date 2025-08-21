@@ -13,6 +13,9 @@
         return;
       }
 
+      //Save logged-in user to localStorage
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
       if (user.role === "Seller") {
         window.location.href = "pages/seller/pages/index.html";
       } else if (user.role === "Buyer") {
