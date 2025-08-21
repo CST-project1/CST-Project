@@ -1,74 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/aside.css">
-    <title>User Info</title>
-
 </head>
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
-        <!-- 
-            get user by id
-            show user info
-            get order history by user id
 
-            can edit location
-            method to change password
-        -->
+        <!-- Sidebar (نفس اللي عندك) -->
         <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
-            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
-                ☰
-            </button>
+            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">☰</button>
             <ul id="menuList" class="list-group">
                 <li class="list-group-item mb-2 rounded ">
                     <a href="index.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-house me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Dashboard</span>
+                        <span>🏠 </span>
+                        <span class="d-md-none menu-text d-lg-inline">Dashboard</span>
                     </a>
                 </li>
-
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
                     <a href="Products.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-box me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Products</span>
+                        <span>🧴 </span>
+                        <span class="d-md-none menu-text d-lg-inline">Products</span>
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center active">
-                    <a href="listOfUsers.html"
+                    <a href="UsersPage.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-user me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Customers</span>
-                    </a>
-                    <ul>
-                        <li>
-                            User id
-                        </li>
-                    </ul>
-                </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="listOfSellers.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-user-tie me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Seller</span>
+                        <span>👤 </span>
+                        <span class="d-md-none menu-text d-lg-inline">Customers</span>
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="listOfAllOrders.html"
+                    <a href="SellerPage.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-truck me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Orders</span>
+                        <span>👤 </span>
+                        <span class="d-md-none menu-text d-lg-inline">Seller</span>
+                    </a>
+                </li>
+                <li class="list-group-item rounded mb-2 d-flex align-items-center">
+                    <a href="OrdersPage.html"
+                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
+                        <span>📦 </span>
+                        <span class="d-md-none menu-text d-lg-inline">Orders</span>
                     </a>
                 </li>
                 <li class="list-group-item rounded mb-2 d-flex align-items-center">
                     <a href="../../../login.html"
                         class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <i class="fa-solid fa-sign-out me-lg-2"></i>
-                        <span class="d-md-none d-lg-inline">Logout</span>
+                        <span>🔓</span>
+                        <span class="d-md-none menu-text d-lg-inline">Logout</span>
                     </a>
                 </li>
             </ul>
@@ -81,9 +69,10 @@
             <!-- Profile Section -->
             <div class="card mb-4">
                 <div class="card-body text-center">
-                    <img src="../../images/profile.jpg" alt="Profile Picture" class="profile-img mb-3">
+                    <img id="profileImg" src="../../../images/logo.jpg" alt="Profile Picture"
+                        class="rounded-circle mb-3" style="width:100px;height:100px;object-fit:cover;">
                     <div>
-                        <input type="file" class="form-control w-50 mx-auto" accept="image/*">
+                        <input type="file" id="profileInput" class="form-control w-50 mx-auto" accept="image/*">
                     </div>
                 </div>
             </div>
@@ -92,21 +81,24 @@
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">Personal Details</div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> John Doe</p>
-                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Name:</strong> <span id="userName"></span></p>
+                    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+                    <p><strong>Role:</strong> <span id="userRole"></span></p>
+                    <p><strong>Gender:</strong> <span id="userGender"></span></p>
 
                     <!-- Update Location -->
-                    <form class="mb-3">
+                    <form id="locationForm" class="mb-3">
                         <label class="form-label"><strong>Location:</strong></label>
-                        <input type="text" class="form-control mb-2" value="New York, USA">
+                        <input type="text" id="userLocation" class="form-control mb-2">
                         <button type="submit" class="btn btn-warning btn-sm">Update Location</button>
                     </form>
 
                     <!-- Reset Password -->
-                    <form>
+                    <form id="passwordForm">
                         <label class="form-label"><strong>Change Password:</strong></label>
-                        <input type="password" class="form-control mb-2" placeholder="New Password">
-                        <input type="password" class="form-control mb-2" placeholder="Confirm Password">
+                        <input type="password" id="newPassword" class="form-control mb-2" placeholder="New Password">
+                        <input type="password" id="confirmPassword" class="form-control mb-2"
+                            placeholder="Confirm Password">
                         <button type="submit" class="btn btn-danger btn-sm">Reset Password</button>
                     </form>
                 </div>
@@ -126,29 +118,9 @@
                                 <th>Total</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="orderHistory">
                             <tr>
-                                <td>1</td>
-                                <td> <a href="orderInfo.html">#1001</a></td>
-                                <td>2025-07-01</td>
-                                <td>Delivered</td>
-                                <td>$120</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="orderInfo.html"> #1002</a>
-                                </td>
-                                <td>2025-07-15</td>
-                                <td>Shipped</td>
-                                <td>$75</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td> <a href="orderInfo.html">#1003</a></td>
-                                <td>2025-08-01</td>
-                                <td>Pending</td>
-                                <td>$200</td>
+                                <td colspan="5" class="text-center">No orders found</td>
                             </tr>
                         </tbody>
                     </table>
@@ -172,7 +144,8 @@
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js">
-
+    <script src="../js/userInfo.js">
     </script>
 </body>
+
+</html>
