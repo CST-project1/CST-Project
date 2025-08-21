@@ -11,11 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //get current login user
     const currentUser = getCurrentUser();
-    // if(!currentUser || currentUser.role !== "seller"){
-    //   alert("You must be logged in as a seller to add products!");
-    //   window.location.href = "login.html";
-    //   return;
-    // }
 
     const name = document.getElementById("productName").value;
     const price = document.getElementById("productPrice").value;
