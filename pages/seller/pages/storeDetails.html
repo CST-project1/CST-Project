@@ -15,68 +15,61 @@
     <!-- sidemenu Button  -->
     <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
     
-
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
-       
-        <button  class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
-
-         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
-         <p class="text-muted">Perfume Store</p>
-         <ul>
-            <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
-            <li class="products"><a href="productMange.html"><span>🧴 </span> Products</a></li>
-            <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
-            <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
-            <li class="account active"><a href="#"><span>👤 </span> Account Settings</a></li>
-            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+        <button class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
+        <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo">
+        <p class="text-muted">Perfume Store</p>
+        <ul>
+            <li class="dashboard"><a href="index.html"><span>🏠 </span>Dashboard</a></li>
+            <li class="products"><a href="productMange.html"><span>🧴 </span>Products</a></li>
+            <li class="orders"><a href="orderList.html"><span>📦 </span>Orders</a></li>
+            <li class="analytics"><a href="analytics.html"><span>📈 </span>Analytics</a></li>
+            <li class="account active"><a href="#"><span>👤 </span>Account Settings</a></li>
+            <li class="logout"><a href="#" id="logout-btn"><span>🔓</span> Logout</a></li>
         </ul>
     </aside>
 
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- Top bar -->
-      
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="profile-card text-center">
-                        <img src="https://cdn.shopify.com/s/files/1/0878/6981/7120/files/alpha_2.jpg?v=1724673288" class="profile-img" mb-3>
-                        <h3 id="storeDisplayName">Amira Perfumes</h3>
-                        <p class="text-muted">Luxury Perfume Seller</p>
+      <div class="container py-5">
+          <div class="row justify-content-center">
+              <div class="col-lg-8">
+                  <div class="profile-card text-center">
+                      <img src="../images/placeholder.jpg" class="profile-img mb-3" id="storeDisplayLogo">
+                      <h3 id="storeDisplayName"></h3>
+                      <p class="text-muted">Luxury Perfume Seller</p>
 
-                        <div class="mb-4">
-                            <p class="contact-info"><i class="fas fa-envelope me-n"> <span id="storeDisplayEmail"> amira@perfume.com</span></i></p>
-                            <p class="contact-info"><i class="fas fa-phone me-n"><span id="storeDisplayPhone"> +20 123 456 789</span> </i></p>
-                            <p class="contact-info"><i class="fas fa-map-marker-alt me-2"><span id="storeDisplayLocation"> Mansoura, Egypt</span> </i></p>
-                        </div>
+                      <div class="mb-4">
+                          <p class="contact-info"><i class="fas fa-envelope"></i> <span id="storeDisplayEmail"></span></p>
+                          <p class="contact-info"><i class="fas fa-phone"></i> <span id="storeDisplayPhone"></span></p>
+                          <p class="contact-info"><i class="fas fa-map-marker-alt"></i> <span id="storeDisplayLocation"></span></p>
+                      </div>
 
-                        <div class="profile-actions mb-4">
-                            <button id="edit-btn" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
-                            <button class="btn btn-secondary">Logout</button>
-                        </div>
+                      <div class="profile-actions mb-4">
+                          <button id="edit-btn" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                          <button id="logout-btn-2" class="btn btn-secondary">Logout</button>
+                      </div>
 
-                        <hr>
+                      <hr>
 
-                        <div class="row text-start mt-4">
-                            <div class="col-md-6">
-                                <h5><strong>Store Details</Details></strong></h5>
-                                <p><strong>Name: </strong>Amira Perfume</p>
-                                <p><strong>Products: </strong>30</p>
-                                <p><strong>Orders Completed: </strong>70</p>
-                            </div>
-                            <div class="col-md-6">
-                                <h5><strong>About</strong></h5>
-                                <p id="storeDisplayAbout">We offer a premium selection of fragrances from around the world, combining elegance and sophistication in every bottle.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                      <div class="row text-start mt-4">
+                          <div class="col-md-6">
+                              <h5><strong>Store Details</strong></h5>
+                              <br>
+                              <p><strong>Number of Products: </strong><span id="storeProductsCount"></span></p>
+                          </div>
+                          <div class="col-md-6">
+                              <h5><strong>About</strong></h5>
+                              <p id="storeDisplayAbout"></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </main>
-  </div>
-</div>
+
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -93,22 +86,18 @@
             <label class="form-label">Store Name</label>
             <input type="text" class="form-control" id="storeName">
           </div>
-          
           <div class="mb-3">
             <label class="form-label">Email</label>
             <input type="email" class="form-control" id="storeEmail">
           </div>
-          
           <div class="mb-3">
             <label class="form-label">Phone</label>
             <input type="text" class="form-control" id="storePhone">
           </div>
-          
           <div class="mb-3">
             <label class="form-label">Location</label>
             <input type="text" class="form-control" id="storeLocation">
           </div>
-          
           <div class="mb-3">
             <label class="form-label">About</label>
             <textarea class="form-control" id="storeAbout" rows="3"></textarea>
@@ -120,13 +109,13 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <button type="button" class="btn btn-primary" id="save-btn">Save Changes</button>
       </div>
-
     </div>
   </div>
 </div>
 
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/storage.js"></script>
 <script src="../js/editStore.js"></script>
 </body>
 </html>

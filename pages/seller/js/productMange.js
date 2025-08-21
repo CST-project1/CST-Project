@@ -1,18 +1,24 @@
- // Function to toggle the sidebar visibility
- function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-  
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
 const ITEMS_PER_PAGE = 5;
 let currentPage = 1;
 
 function loadProducts() {
-  const products = getProducts(); // from storage.js
-  renderTable(products, currentPage);
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const allProducts = getProducts();
+  const products = allProducts.filter(
+    (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
+  );
+
+  renderTable(products, currentPage, allProducts);
   renderPagination(products);
 }
 
-function renderTable(products, page) {
+function renderTable(products, page, allProducts) {
   const productTable = document.getElementById("product-table-body");
   productTable.innerHTML = "";
 
@@ -21,7 +27,11 @@ function renderTable(products, page) {
   const paginatedProducts = products.slice(start, end);
 
   paginatedProducts.forEach((product, index) => {
-    const absoluteIndex = (currentPage - 1) *ITEMS_PER_PAGE + index;
+    
+    const absoluteIndex = allProducts.findIndex(
+      (p) => p.name === product.name && p.sellerId === product.sellerId
+    );
+
     const images = product.images || (product.image ? [product.image] : []);
     let imageHTML = "";
 
@@ -48,7 +58,7 @@ function renderTable(products, page) {
         </div>`;
     } else {
       const img = images.length ? images[0] : "../images/placeholder.jpg";
-      imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50" >`;
+      imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
     }
 
     const row = `
@@ -59,7 +69,6 @@ function renderTable(products, page) {
             ${product.name}
           </a>
         </td>
-
         <td>$${product.price}</td>
         <td>${product.stock}</td>
         <td>
@@ -109,20 +118,25 @@ function renderPagination(products) {
 }
 
 function changePage(page) {
-  const products = getProducts();
-  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const user = getCurrentUser();
+  const allProducts = getProducts();
+  const products = allProducts.filter(
+    (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
+  );
 
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
   if (page < 1 || page > totalPages) return;
+
   currentPage = page;
-  renderTable(products, currentPage);
+  renderTable(products, currentPage, allProducts);
   renderPagination(products);
 }
 
 // Delete product
 function deleteProduct(index) {
   const products = getProducts();
-  let delete_confirm = confirm("Are You sure you want to delete this product ?!");
-  if(delete_confirm){
+  let delete_confirm = confirm("Are you sure you want to delete this product?");
+  if (delete_confirm) {
     products.splice(index, 1);
     saveProducts(products);
   }
