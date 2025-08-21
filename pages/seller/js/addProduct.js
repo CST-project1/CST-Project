@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get current login user
+    const currentUser = getCurrentUser();
+
     const name = document.getElementById("productName").value;
     const price = document.getElementById("productPrice").value;
     const category = document.getElementById("productCategory").value;
@@ -45,7 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
         stock,
         description,
         status,
-        images, // ✅ always array now
+        images, // always array now
+        sellerId: currentUser.email,
       };
 
       // use helper functions from storage.js
