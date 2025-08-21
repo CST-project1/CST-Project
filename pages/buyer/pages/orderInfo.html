@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <title>Order Confirmation</title>
+    <title>Order Information</title>
     <style>
-        
-        .card {
-            width: 50vw;
+        .mainDiv {
+            width: 90vw;
             height: 65vh;
             margin: 100px auto;
         }
-        
     </style>
 </head>
 
 <body>
+
     <nav class="navbar fixed-top navbar-expand-lg">
         <div class="container">
             <a href="#" class="navbar-brand">L'Essence</a>
@@ -43,25 +42,70 @@
                 </ul>
             </div>
         </div>
-    </nav> 
-    
-    
-    <div class="container card text-center align-items-center justify-content-center">
-            <h1 class="text-success">Order Placed Successfully!</h1>
-            <p>Thank you for your purchase.</p>
-            <p>Your order ID is : <strong>#1</strong></p>
-            <!-- <p>We've sent a confirmation email to : <strong></strong></p> -->
-            <a href="index.html" class="btn btn-dark col-md-3">Continue Shopping</a>
+    </nav>
+
+
+    <div class="container mainDiv ">
+
+
+        <div id="order-info" class="card shadow-lg p-4">
+            <h2>Order Information</h2>
+
+            <div class="col-md-7">
+                <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+                <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+                <p><strong>Date:</strong> <span id="order-date"></span></p>
+                <p><strong>Total:</strong> <span id="order-totalPrice"></span></p>
+                <p><strong>Status:</strong> <span id="order-status"></span></p>
+            </div>
+
+        </div>
+
+
+
+
+        <div id="order-info" class="card shadow-lg p-4">
+            <h2>Product Information</h2>
+
+            <div class="col-md-7">
+                <div class="table-responsive">
+                    <table class="table custom-table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="product-table">
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="mt-3">
+            <a href="historyOrder.html" class="btn btn-dark">Back to History</a>
+        </div>
+
     </div>
+
+
     <footer class="main-footer-bottom">
         <div class="container">
             <p>&copy; 2024 L'Essence. All rights reserved.</p>
         </div>
     </footer>
 
-
-
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/historyOrder.js"></script>
 </body>
 
 </html>
