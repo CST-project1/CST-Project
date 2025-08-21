@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get current login user
+    const currentUser = getCurrentUser();
+    // if(!currentUser || currentUser.role !== "seller"){
+    //   alert("You must be logged in as a seller to add products!");
+    //   window.location.href = "login.html";
+    //   return;
+    // }
+
     const name = document.getElementById("productName").value;
     const price = document.getElementById("productPrice").value;
     const category = document.getElementById("productCategory").value;
@@ -45,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
         stock,
         description,
         status,
-        images, // ✅ always array now
+        images, // always array now
+        sellerId: currentUser.email,
       };
 
       // use helper functions from storage.js
