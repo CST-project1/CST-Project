@@ -58,7 +58,7 @@ if (seller) {
                 <tr>
                     <td><a href="orderInfo.html?id=${order.id}">#${order.id}</a></td>
                     <td>${order.date}</td>
-                    <td><a href="userInfo.html?id=${buyer.id || ""}">${buyer.username || "Unknown"}</a></td>
+                    <td><a href="UserInfo.html?id=${buyer.id || ""}">${buyer.username || "Unknown"}</a></td>
                     <td>$${order.total}</td>
                     <td><span class="badge ${statusClass}">${order.status}</span></td>
                 </tr>

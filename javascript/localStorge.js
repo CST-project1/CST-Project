@@ -1,6 +1,7 @@
 // seed.js
 
 const users = [{
+        id: 0,
         name: "Admin One",
         username: "admin1",
         email: "admin1@mail.com",
@@ -12,6 +13,7 @@ const users = [{
         logo: "logo.jpg",
     },
     {
+        id: 1,
         name: "Admin Two",
         username: "admin2",
         email: "admin2@mail.com",
@@ -23,6 +25,7 @@ const users = [{
         logo: "logo.jpg",
     },
     {
+        id: 2,
         name: "Admin Three",
         username: "admin3",
         email: "admin3@mail.com",
@@ -36,6 +39,7 @@ const users = [{
 
     // 5 Sellers
     {
+        id: 3,
         name: "Seller One",
         username: "seller1",
         email: "seller1@mail.com",
@@ -48,6 +52,7 @@ const users = [{
         store_id: 1
     },
     {
+        id: 4,
         name: "Seller Two",
         username: "seller2",
         email: "seller2@mail.com",
@@ -60,6 +65,7 @@ const users = [{
         store_id: 2
     },
     {
+        id: 5,
         name: "Seller Three",
         username: "seller3",
         email: "seller3@mail.com",
@@ -72,6 +78,7 @@ const users = [{
         store_id: 3
     },
     {
+        id: 6,
         name: "Seller Four",
         username: "seller4",
         email: "seller4@mail.com",
@@ -84,6 +91,7 @@ const users = [{
         store_id: 4
     },
     {
+        id: 7,
         name: "Seller Five",
         username: "seller5",
         email: "seller5@mail.com",
@@ -100,6 +108,7 @@ const users = [{
 // Generate 22 Buyers automatically
 for (let i = 1; i <= 22; i++) {
     users.push({
+        id: i + 7,
         name: `Buyer ${i}`,
         username: `buyer${i}`,
         email: `buyer${i}@mail.com`,
@@ -186,19 +195,33 @@ for (let i = 26; i <= 50; i++) {
 localStorage.setItem("products", JSON.stringify(products));
 let orders = [];
 
-// 30 orders divided into 3 statuses
+// 30 orders divided into 5 statuses
 let statuses = ["out to ship", "inqueue", "Delivered", "Cancelled", "Processing"];
 
 for (let i = 1; i <= 30; i++) {
+    // توزيع الشهور (من 0 لـ 7)
+    let randomMonth = i % 8;
+    let randomDay = (i % 28) + 1; // علشان نتجنب مشاكل الشهور الصغيرة
+
+    let productId = (i % 50) + 1;
+    let product = products.find(p => p.id === productId);
+    let store = stores.find(s => s.id === product.store_id);
+    let seller = users.find(u => u.role === "Seller" && u.store_id === store.id);
+
+    // random buyer
+    let buyerId = 8 + (i % 22); // أول مشترى يبدأ من id = 8
+
     orders.push({
         id: i,
-        buyer: `buyer${(i % 22) + 1}`,
-        product_id: (i % 50) + 1,
+        sellerId: seller ? seller.id : null,
+        buyerId: buyerId,
+        product_id: productId,
         quantity: (i % 3) + 1,
-        total: (100 + i * 2),
+        total: product.price * ((i % 3) + 1),
         status: statuses[i % 5],
-        date: new Date().toISOString().split("T")[0]
+        date: new Date(2024, randomMonth, randomDay).toISOString().split("T")[0]
     });
+
 }
 
 // Save in LocalStorage
