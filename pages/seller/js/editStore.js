@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   // Fill profile card
-//   document.getElementById("storeDisplayName").innerHTML = user.brand_name;
   document.getElementById("storeDisplayName").innerHTML = user.username;
   document.getElementById("storeDisplayEmail").textContent = user.email;
   document.getElementById("storeDisplayPhone").textContent = user.phone;
@@ -60,18 +59,13 @@ document.getElementById("save-btn").addEventListener("click", () => {
 });
 
 //Logout
-// document.addEventListener("DOMContentLoaded", () => {
-//   document.getElementById("logout-btn").addEventListener("click", logout);
-//   document.getElementById("logout-btn-2").addEventListener("click", logout);
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   const btn1 = document.getElementById("logout-btn");
   const btn2 = document.getElementById("logout-btn-2");
 
   if (btn1) {
     btn1.addEventListener("click", (e) => {
-      e.preventDefault(); // stop <a href="#"> reload
+      e.preventDefault();
       logout();
     });
   }
