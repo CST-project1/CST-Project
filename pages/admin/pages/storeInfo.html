@@ -1,14 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Info</title>
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/aside.css">
-    <script src="../js/aside.js"></script>
-
-    <title>storeInfo</title>
-
+    <style>
+        .card-img-top {
+            height: 70vh;
+            object-fit: cover;
+        }
+    </style>
 </head>
+
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
@@ -23,79 +30,35 @@
                     <img src="../images/store-logo.png" alt="Store Logo" class="rounded-circle me-3" width="80"
                         height="80">
                     <div>
-                        <h4 class="mb-1">Tech World</h4>
-                        <small class="text-muted">Electronics & Gadgets</small>
+                        <h4 class="store-name">Store Name</h4>
+                        <small class="store-category text-muted">Category</small>
                     </div>
                 </div>
 
-                <p class="mb-3">
-                    Welcome to Tech World! Your one-stop shop for the latest electronics, gadgets, and accessories.
-                </p>
+                <p class="store-description mb-3">Store description goes here...</p>
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong>Email:</strong> techworld@example.com
+                        <strong>Email:</strong> <span class="store-email">-</span>
                     </li>
                     <li class="list-group-item">
-                        <strong>Phone:</strong> +1 234 567 890
+                        <strong>Phone:</strong> <span class="store-phone">-</span>
                     </li>
                     <li class="list-group-item">
                         <strong>Location:</strong>
-                        <a href="https://maps.google.com/?q=123 Main Street, New York" target="_blank">
-                            123 Main Street, New York, USA
-                        </a>
+                        <a href="#" target="_blank" class="store-location">-</a>
                     </li>
                 </ul>
             </div>
 
             <!-- Products Section -->
             <h3 class="mb-3">Products</h3>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartphone">
-                        <div class="card-body">
-                            <h5 class="card-title">Smartphone X</h5>
-                            <p class="card-text">$799 - Latest model with advanced features</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Wireless Earbuds">
-                        <div class="card-body">
-                            <h5 class="card-title">Wireless Earbuds</h5>
-                            <p class="card-text">$99 - Noise cancelling & long battery life</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartwatch">
-                        <div class="card-body">
-                            <h5 class="card-title">Smartwatch Z</h5>
-                            <p class="card-text">$199 - Fitness tracking & notifications</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="../../../images/images.jpeg" class="card-img-top" alt="Smartwatch">
-                        <div class="card-body">
-                            <h5 class="card-title">Smartwatch Z</h5>
-                            <p class="card-text">$199 - Fitness tracking & notifications</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="row product-container"></div>
         </main>
 
-        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
-            ☰
-        </button>
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">☰</button>
     </div>
+
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
         <div class="offcanvas-header">
             <h5>Menu</h5>
@@ -107,7 +70,8 @@
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js">
-
-    </script>
+    <script src="../js/aside.js"></script>
+    <script src="../js/storeInfo.js"></script>
 </body>
+
+</html>

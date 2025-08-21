@@ -1,5 +1,5 @@
-const PRODUCTS_KEY = "products";   // all products
-const USERS_KEY = "users";         // all users (sellers + buyers)
+const PRODUCTS_KEY = "products"; // all products
+const USERS_KEY = "users"; // all users (sellers + buyers)
 const CURRENT_USER_KEY = "currentUser";
 
 // Users
@@ -20,9 +20,9 @@ function getCurrentUser() {
 }
 
 function logout() {
-  localStorage.removeItem("currentUser");  
+  localStorage.removeItem("currentUser");
 
-  window.location.href = "../../../login.html"; 
+  window.location.href = "../../../login.html";
 }
 
 // Products

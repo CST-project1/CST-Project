@@ -165,33 +165,746 @@ let stores = [{
 localStorage.setItem("stores", JSON.stringify(stores));
 let products = [];
 
-// 25 Men's Products
-for (let i = 1; i <= 25; i++) {
-    products.push({
-        id: i,
-        name: `Men Product ${i}`,
-        category: "Men",
-        price: (100 + i * 5),
+products.push({
+        id: 1,
         stock: 50,
-        store_id: (i % 5) + 1,
-        image: "men.jpg"
-    });
-}
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/Golden-Desert-6ml.jpg',
+        featured: true
+    }, {
 
-// 25 Women's Products
-for (let i = 26; i <= 50; i++) {
-    products.push({
-        id: i,
-        name: `Women Product ${i - 25}`,
-        category: "Women",
-        price: (120 + (i - 25) * 5),
+        id: 2,
         stock: 50,
-        store_id: (i % 5) + 1,
-        image: "women.jpg"
-    });
-}
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        image: '../images/CREEDROYALOUD.avif',
+        featured: true
+    }, {
 
-// Save in LocalStorage
+        id: 3,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        image: '../images/OceanBreeze.avif',
+        featured: false
+    }, {
+
+        id: 4,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        image: '../images/BlackLeather.jpg',
+        featured: false
+    }, {
+
+        id: 5,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/WoodySpice.jpg',
+        featured: false
+    },
+
+    // Women's Fragrances
+    {
+
+        id: 6,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/WhiteMusk.jpg',
+        featured: true
+    }, {
+
+        id: 7,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/CherryBlossom.jpg',
+        featured: true
+    }, {
+
+        id: 8,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        image: '../images/MidnightRose.jpg',
+        featured: false
+    }, {
+
+        id: 9,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/VanillaDreams.jpg',
+        featured: false
+    }, {
+
+        id: 10,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        image: '../images/FloralElegance.jpg',
+        featured: false
+    }, {
+
+        id: 11,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/PinkPeony.jpg',
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 12,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        image: '../images/CitrusBurst.jpg',
+        featured: true
+    }, {
+
+        id: 13,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        image: '../images/FreshMint.jpg',
+        featured: false
+    }, {
+
+        id: 14,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        image: '../images/AmberGlow.jpg',
+        featured: false
+    }, {
+
+        id: 15,
+        stock: 50,
+        name: 'Green Tea',
+        price: 49.99,
+        store_id: 3,
+        category: 'unisex',
+        image: '../images/GreenTea.jpg',
+        featured: false
+    }, {
+        id: 1,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/Golden-Desert-6ml.jpg',
+        featured: true
+    }, {
+
+        id: 2,
+        stock: 50,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        image: '../images/CREEDROYALOUD.avif',
+        featured: true
+    }, {
+
+        id: 3,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        image: '../images/OceanBreeze.avif',
+        featured: false
+    }, {
+
+        id: 4,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        image: '../images/BlackLeather.jpg',
+        featured: false
+    }, {
+
+        id: 5,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/WoodySpice.jpg',
+        featured: false
+    },
+
+    // Women's Fragrances
+    {
+
+        id: 6,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/WhiteMusk.jpg',
+        featured: true
+    }, {
+
+        id: 7,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/CherryBlossom.jpg',
+        featured: true
+    }, {
+
+        id: 8,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        image: '../images/MidnightRose.jpg',
+        featured: false
+    }, {
+
+        id: 9,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/VanillaDreams.jpg',
+        featured: false
+    }, {
+
+        id: 10,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        image: '../images/FloralElegance.jpg',
+        featured: false
+    }, {
+
+        id: 11,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/PinkPeony.jpg',
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 12,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        image: '../images/CitrusBurst.jpg',
+        featured: true
+    }, {
+
+        id: 13,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        image: '../images/FreshMint.jpg',
+        featured: false
+    }, {
+
+        id: 14,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        image: '../images/AmberGlow.jpg',
+        featured: false
+    }, {
+        id: 15,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/Golden-Desert-6ml.jpg',
+        featured: true
+    }, {
+
+        id: 16,
+        stock: 50,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        image: '../images/CREEDROYALOUD.avif',
+        featured: true
+    }, {
+
+        id: 17,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        image: '../images/OceanBreeze.avif',
+        featured: false
+    }, {
+
+        id: 18,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        image: '../images/BlackLeather.jpg',
+        featured: false
+    }, {
+
+        id: 19,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/WoodySpice.jpg',
+        featured: false
+    },
+
+    // Women's Fragrances
+    {
+
+        id: 20,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/WhiteMusk.jpg',
+        featured: true
+    }, {
+
+        id: 21,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/CherryBlossom.jpg',
+        featured: true
+    }, {
+
+        id: 22,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        image: '../images/MidnightRose.jpg',
+        featured: false
+    }, {
+
+        id: 23,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/VanillaDreams.jpg',
+        featured: false
+    }, {
+
+        id: 24,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        image: '../images/FloralElegance.jpg',
+        featured: false
+    }, {
+
+        id: 25,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/PinkPeony.jpg',
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 26,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        image: '../images/CitrusBurst.jpg',
+        featured: true
+    }, {
+
+        id: 27,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        image: '../images/FreshMint.jpg',
+        featured: false
+    }, {
+
+        id: 28,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        image: '../images/AmberGlow.jpg',
+        featured: false
+    }, {
+        id: 29,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/Golden-Desert-6ml.jpg',
+        featured: true
+    }, {
+
+        id: 30,
+        stock: 50,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        image: '../images/CREEDROYALOUD.avif',
+        featured: true
+    }, {
+
+        id: 31,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        image: '../images/OceanBreeze.avif',
+        featured: false
+    }, {
+
+        id: 32,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        image: '../images/BlackLeather.jpg',
+        featured: false
+    }, {
+
+        id: 33,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/WoodySpice.jpg',
+        featured: false
+    },
+
+    // Women's Fragrances
+    {
+
+        id: 34,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/WhiteMusk.jpg',
+        featured: true
+    }, {
+
+        id: 35,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/CherryBlossom.jpg',
+        featured: true
+    }, {
+
+        id: 36,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        image: '../images/MidnightRose.jpg',
+        featured: false
+    }, {
+
+        id: 37,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/VanillaDreams.jpg',
+        featured: false
+    }, {
+
+        id: 38,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        image: '../images/FloralElegance.jpg',
+        featured: false
+    }, {
+
+        id: 39,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/PinkPeony.jpg',
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 40,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        image: '../images/CitrusBurst.jpg',
+        featured: true
+    }, {
+
+        id: 41,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        image: '../images/FreshMint.jpg',
+        featured: false
+    }, {
+
+        id: 42,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        image: '../images/AmberGlow.jpg',
+        featured: false
+    }, {
+        id: 43,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/Golden-Desert-6ml.jpg',
+        featured: true
+    }, {
+
+        id: 44,
+        stock: 50,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        image: '../images/CREEDROYALOUD.avif',
+        featured: true
+    }, {
+
+        id: 45,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        image: '../images/OceanBreeze.avif',
+        featured: false
+    }, {
+
+        id: 4,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        image: '../images/BlackLeather.jpg',
+        featured: false
+    }, {
+
+        id: 46,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        image: '../images/WoodySpice.jpg',
+        featured: false
+    },
+
+    // Women's Fragrances
+    {
+
+        id: 47,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/WhiteMusk.jpg',
+        featured: true
+    }, {
+
+        id: 48,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/CherryBlossom.jpg',
+        featured: true
+    }, {
+
+        id: 49,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        image: '../images/MidnightRose.jpg',
+        featured: false
+    }, {
+
+        id: 50,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        image: '../images/VanillaDreams.jpg',
+        featured: false
+    }, {
+
+        id: 51,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        image: '../images/FloralElegance.jpg',
+        featured: false
+    }, {
+
+        id: 52,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        image: '../images/PinkPeony.jpg',
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 53,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        image: '../images/CitrusBurst.jpg',
+        featured: true
+    }, {
+
+        id: 54,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        image: '../images/FreshMint.jpg',
+        featured: false
+    }, {
+
+        id: 55,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        image: '../images/AmberGlow.jpg',
+        featured: false
+    },
+)
+
+
+
 localStorage.setItem("products", JSON.stringify(products));
 let orders = [];
 
