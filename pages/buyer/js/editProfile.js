@@ -88,10 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Initialize with default data if localStorage is empty
-    if (!localStorage.getItem('username')) {
-        localStorage.setItem('username', 'johndoe');
-        localStorage.setItem('email', 'john@example.com');
-        localStorage.setItem('phone', '+1234567890');
-        loadProfileData();
-    }
+    // if (!localStorage.getItem('username')) {
+    //     localStorage.setItem('username', 'johndoe');
+    //     localStorage.setItem('email', 'john@example.com');
+    //     localStorage.setItem('phone', '+1234567890');
+    //     loadProfileData();
+    // }
 });
