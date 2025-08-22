@@ -2,136 +2,142 @@
 function toggleSidebar() {
  document.getElementById("sidebar").classList.toggle("active");
  }
-// order information
-let orders = [
-    {
-       id: 1, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-07-20", 
-       status: "Pending", 
-       total: 140
-      },
-      {
-        id: 2,
-        customer: "John Marsel", 
-        qty: 1, 
-        date: "2025-06-16", 
-        status: "Delivered", 
-        total: 65
-        },
-        {
-          id: 3,
-          customer: "Majesty Brand", 
-          qty: 2, 
-          date: "2025-06-16", 
-          status: "Cancelled", 
-          total: 160
-          }
-          ];
-          // get id from url
-          let urlParams = new URLSearchParams(window.location.search);
-          let productId = parseInt( urlParams.get('id'));
-          // get order by id
-          let order = orders.find(order => order.id === productId);
+
+ document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "Seller") return;
+
+  const brandName = document.getElementById("brandName");
+  brandName.textContent = currentUser.brand_name;
+});
+
+  // logout function
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // stop <a> from reloading page
+      logout(); // call logout from storage.js
+    });
+  }
+});
+
+
+ function getOrders() {
+  return JSON.parse(localStorage.getItem("orders")) || [];
+}
+function getProducts() {
+  return JSON.parse(localStorage.getItem("products")) || [];
+}
+function getUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+window.orders = getOrders();
+window.products = getProducts();
+window.users = getUsers();
+
+// get id from url
+let urlParams = new URLSearchParams(window.location.search);
+let productId = parseInt( urlParams.get('id'));
+// get order by id
+let order = orders.find(order => order.id === productId);
+
+
+if (order) {
+  let buyer = users.find(u => u.id === order.buyerId);
+  let product = products.find(p => p.id === order.product_id);
+
+ let formattedOrder = {
+    id: order.id,
+    customer: buyer ? buyer.name : "Unknown Customer",
+    email: buyer ? buyer.email : "",
+    phone: buyer ? buyer.phone : "",
+    address: buyer ? buyer.location : "",
+    qty: order.quantity,
+    date: order.date,
+    status: order.status,
+    products: product
+      ? [{ name: product.name, price: product.price, quantity: order.quantity }]
+      : [],
+  };
+
+ 
+
+
+
+          
           // display order information
-          if (order) {
-            document.getElementById("order-id").innerHTML = order.id;
-            document.getElementById("customer-name").innerHTML = order.customer;
-            document.getElementById("quantity").innerHTML = order.qty;
-            document.getElementById("order-date").innerHTML = order.date;
-            document.getElementById("order-status").innerHTML = order.status;
-            document.getElementById("order-total").innerHTML = order.total;
+          
+            document.getElementById("order-id").innerHTML = formattedOrder.id;
+            document.getElementById("customer-name").innerHTML = formattedOrder.customer;
+            document.getElementById("quantity").innerHTML = formattedOrder.qty;
+            document.getElementById("order-date").innerHTML = formattedOrder.date;
+            document.getElementById("order-status").innerHTML = formattedOrder.status;
+            document.getElementById("order-total").innerHTML = formattedOrder.total;
             
             let orderStatus = document.getElementById("order-status");
-            orderStatus .textContent = order.status;
-            if (order.status === "Delivered") {
-                orderStatus.className = "badge bg-success";
-                } else if (order.status === "Cancelled") {
-                    orderStatus.className = "badge bg-danger";
-                    } else if (order.status === "Pending") {
-                        orderStatus.className = "badge bg-warning";
-                        } else {
-                            orderStatus.className = "badge bg-secondary";
-                            }
-                            } else {
-                                document.getElementById("order-id").innerHTML = `<p class="text-danger">order not found!</p>`;
-                            }
+            orderStatus .textContent = formattedOrder.status;
+           switch (formattedOrder.status) {
+             case "Delivered":
+               orderStatus.className = "badge bg-success";
+               break;
+             case "Cancelled":
+               orderStatus.className = "badge bg-danger";
+               break;
+             case "out to ship":
+               orderStatus.className = "badge bg-primary";
+               break;
+             case "inqueue":
+               orderStatus.className = "badge bg-info";
+               break;
+             case "Processing":
+               orderStatus.className = "badge bg-secondary";
+               break;
+             default:
+               orderStatus.className = "badge bg-dark";
+               break;
+            }
+         
 
 
-// customer information
-let customerInfo = [
-    {
-        id: 1,
-        name: "Zoe Smith",
-        email: "zoe.smith@example.com",
-        phone: "9876543210",
-        address: "456 Elm St, Anytown, USA",
-        
-       
-    },
-    
-    {
-        
-        id: 2,
-        name: "John Marsel",
-        email: "john.marsel@example.com",
-        phone: "1234567890",
-        address: "123 Main St, Anytown, USA",
-    },
-    ];
+         let total = Math.round(formattedOrder.products.reduce((sum, p) => sum + p.price * p.quantity, 0));
+         document.getElementById("order-total").innerHTML = `$${total}`;
+
+
+
+
     // get customer information by id
-    let customerId = parseInt(urlParams.get('id'));
-    let customer = customerInfo.find(customer => customer.id === customerId);
+    /* let customerId = parseInt(urlParams.get('id'));
+    let customer = customerInfo.find(customer => customer.id === customerId); */
     // display customer information
-    if (customer) {
-        document.getElementById("name").innerHTML = customer.name;
-        document.getElementById("email").innerHTML = customer.email;
-        document.getElementById("phone").innerHTML = customer.phone;
-        document.getElementById("address").innerHTML = customer.address;
+    
+        document.getElementById("name").innerHTML = formattedOrder.customer;
+        document.getElementById("email").innerHTML = formattedOrder.email;
+        document.getElementById("phone").innerHTML = formattedOrder.phone;
+        document.getElementById("address").innerHTML = formattedOrder.address;
 
-    }
+    
 
-    // product information
-    let productInfo = [
-        {
-            id: 1,
-            name:  "Rose Elegance",
-            quantity: 2,
-            price:  "$120",
-            total: "$240",
-            },
-        {
-            id: 2,
-            name: "Golden Mist",
-            quantity: 1,
-            price: "$95",
-            total: "$95",
-            },
-        /* {
-            id: 3,
-            name: "Stranger with you",
-            quantity: 3,
-            price: "$120",
-            total: "$360",
-            } */
-            ];
+ 
             // Get the table where products will be inserted
             let table = document.getElementById("product-table");
+            table.innerHTML = "";
             // Loop through each product and create a table row for it
-            productInfo.forEach(product => {
+            formattedOrder.products.forEach(product => {
                 let row = `
                 <tr>
                 <td>${product.name}</td>
                 <td>${product.quantity}</td>
-                <td>${product.price}</td>
-                <td>${product.total}</td>
+                <td>$${product.price}</td>
+                <td>$${product.price * product.quantity}</td>
                 </tr>
                 `;
                 // Insert the row into the table
                 table.innerHTML += row;
             });
-                
+              
+            }
                 
 
 

@@ -20,14 +20,14 @@
         <button  class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
 
          <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
-         <p class="text-muted">Perfume Store</p>
+         <p class="text-muted" id="brandName">Perfume Store</p>
          <ul>
             <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
             <li class="products"><a href="productMange.html"><span>🧴 </span> Products</a></li>
             <li class="orders active"><a href="orderList.html"><span>📦 </span> Orders</a></li>
             <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
             <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
-            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+            <li class="logout"><a href="#" id="logout-link"><span>🔓</span> Logout</a>
         </ul>
     </aside>
 
@@ -52,41 +52,26 @@
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
-              <td>Rose Elegance</td>
-              <td>$120</td>
-              <td>Amira</td>
-              <td><span class="badge badge-active">Completed</span></td>
-              <td>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="https://www.perfumeshub.pk/cdn/shop/files/THE_GRANDMASTER.jpg?v=1737022629" alt="Perfume"></td>
-              <td>Golden Mist</td>
-              <td>$95</td>
-              <td>Aya</td>
-              <td><span class="badge badge-out">Cancelled</span></td>
-              <td>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
+          <tbody id="orderTable">
+            
             
           </tbody>
         </table>
       </div>
     </main>
   </div>
+
+  
+<div class="text-end my-3">
+  <a href="orderList.html" class="btn btn-primary" style="margin-right: 25px; margin-top: 20px;" >Back to Orders</a>
+</div>
 </div>
 
-<script>
-  function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
-</script>
+
 <!-- Bootstrap JS -->
 <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../../javascript/localStorge.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/historyOrder.js"></script>
 </body>
 </html>

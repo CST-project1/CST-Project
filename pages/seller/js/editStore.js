@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("storeDisplayLocation").textContent = user.location || "Not provided";
   document.getElementById("storeDisplayAbout").textContent = user.about || "No description provided.";
   document.getElementById("storeDisplayLogo").src = user.logo
-    ? `../images/${user.logo}`
+    ? `../../../images/${user.logo}`
     : "../images/placeholder.jpg";
 
   // get number of products from storage
