@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +27,7 @@
 
         <main class="flex-grow-1 p-3">
             <div class="container">
-                <h2 class="mb-4">Manage Product - Perfume</h2>
+                <h2 class="mb-4">Manage Product</h2>
 
                 <form>
                     <div class="row g-4">
@@ -32,47 +35,47 @@
                         <div class="col-md-4">
                             <label class="form-label fw-bold">Product Image</label>
                             <div class="border rounded p-3 text-center bg-white shadow-sm mb-3">
-                                <img src="../../../images/images.jpeg" alt="Perfume" class="img-fluid rounded">
+                                <img id="productImagePreview" src="../../../images/images.jpeg" alt="Product"
+                                    class="img-fluid rounded">
                             </div>
-                            <input type="file" class="form-control">
+                            <input type="file" id="productImage" class="form-control">
                         </div>
 
                         <!-- Product Details -->
                         <div class="col-md-8">
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Product Name</label>
-                                <input type="text" class="form-control" value="Luxury Perfume - Eau De Parfum">
+                                <input type="text" id="productName" class="form-control">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Description</label>
-                                <textarea class="form-control"
-                                    rows="3">A luxurious oriental perfume featuring a blend of oud, rose, and musk.</textarea>
+                                <textarea id="productDescription" class="form-control" rows="3"></textarea>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label fw-bold">Price</label>
-                                    <input type="number" class="form-control" value="350">
+                                    <input type="number" id="productPrice" class="form-control">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label fw-bold">Discount (%)</label>
-                                    <input type="number" class="form-control" value="20">
+                                    <input type="number" id="productDiscount" class="form-control">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label class="form-label fw-bold">Capacity (ml)</label>
-                                    <input type="number" class="form-control" value="100">
+                                    <input type="number" id="productCapacity" class="form-control">
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Ingredients</label>
-                                <input type="text" class="form-control" value="Oud, Rose, Musk">
+                                <input type="text" id="productIngredients" class="form-control">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-bold">Country of Origin</label>
-                                <input type="text" class="form-control" value="France">
+                                <input type="text" id="productCountry" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -81,15 +84,8 @@
                     <div class="mt-5">
                         <h4 class="mb-3">Store Information</h4>
                         <div class="card shadow-sm">
-                            <div class="card-body">
-                                <p><strong>Store Name:</strong><a href="storeInfo.html"> Luxury Scents</a></p>
-                                <p><strong>Seller:</strong> Ahmed Ali</p>
-                                <p><strong>Contact:</strong> +20 123 456 789</p>
-                                <p><strong>Email:</strong> luxuryscents@example.com</p>
-                                <p><strong>Address:</strong> 123 Perfume Street, Cairo, Egypt</p>
-                                <a href="store-products.html" class="btn btn-outline-primary btn-sm">
-                                    View All Store Products
-                                </a>
+                            <div class="card-body" id="storeInfo">
+                                <!-- سيتم تعبئة البيانات من localStorage -->
                             </div>
                         </div>
                     </div>
@@ -99,28 +95,99 @@
                         <button type="submit" class="btn btn-success">
                             <i class="fa-solid fa-save me-2"></i> Save Changes
                         </button>
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" id="deleteProductBtn">
                             <i class="fa-solid fa-trash me-2"></i> Delete Product
                         </button>
                     </div>
                 </form>
             </div>
-        </main><button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
-            ☰
-        </button>
-    </div>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
-        <div class="offcanvas-header">
-            <h5>Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body p-0">
-            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
-        </div>
+        </main>
     </div>
 
-    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const productId = parseInt(params.get("id"));
 
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        let product = products.find(p => p.id === productId);
+
+        if (product) {
+            document.querySelector('#productName').value = product.name || '';
+            document.querySelector('#productDescription').value = product.description || '';
+            document.querySelector('#productPrice').value = product.price || 0;
+            document.querySelector('#productDiscount').value = product.discount || 0;
+            document.querySelector('#productCapacity').value = product.capacity || '';
+            document.querySelector('#productIngredients').value = product.ingredients || '';
+            document.querySelector('#productCountry').value = product.country || '';
+            document.querySelector('#productImagePreview').src = ("../../../images/" + product.image) ||
+                '../../../images/images.jpeg';
+        }
+
+        // جلب بيانات البائع
+        let seller = users.find(u => u.role === "Seller" && u.store_id === product.store_id);
+
+        if (seller) {
+            document.querySelector("#storeInfo").innerHTML = `
+            <p><strong>Store Name:</strong> <a href="storeInfo.html">${seller.store_name || seller.name}</a></p>
+            <p><strong>Seller:</strong> ${seller.name}</p>
+            <p><strong>Contact:</strong> ${seller.phone}</p>
+            <p><strong>Email:</strong> ${seller.email}</p>
+            <p><strong>Address:</strong> ${seller.location}</p>
+            <a href="store-products.html" class="btn btn-outline-primary btn-sm">View All Store Products</a>
+        `;
+        }
+
+        // رفع صورة جديدة وعرضها فورًا
+        const imageInput = document.querySelector('#productImage');
+
+        imageInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.querySelector('#productImagePreview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+
+                // حفظ اسم الصورة فقط في كائن المنتج
+                product.image = ("images/" + file.name); // الاسم فقط
+            }
+        });
+
+        // حفظ التعديلات
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault();
+
+            product.name = document.querySelector('#productName').value;
+            product.description = document.querySelector('#productDescription').value;
+            product.price = parseFloat(document.querySelector('#productPrice').value);
+            product.discount = parseFloat(document.querySelector('#productDiscount').value);
+            product.capacity = parseInt(document.querySelector('#productCapacity').value);
+            product.ingredients = document.querySelector('#productIngredients').value;
+            product.country = document.querySelector('#productCountry').value;
+
+            // إذا ما تم اختيار صورة جديدة، استخدم القديمة
+            if (!product.image) {
+                product.image = product.image || 'images.jpeg';
+            }
+
+            localStorage.setItem("products", JSON.stringify(products));
+            alert("Product updated successfully!");
+        });
+
+
+        // حذف المنتج
+        document.querySelector('#deleteProductBtn').addEventListener('click', () => {
+            if (confirm("Are you sure you want to delete this product?")) {
+                products = products.filter(p => p.id !== productId);
+                localStorage.setItem("products", JSON.stringify(products));
+                alert("Product deleted successfully!");
+                window.location.href = 'store-products.html';
+            }
+        });
     </script>
 </body>
+
+</html>
