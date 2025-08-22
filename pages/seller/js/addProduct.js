@@ -41,19 +41,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Wait for all images to be processed
     Promise.all(readers).then(() => {
+
+      let products = getProducts();
+      const newId = products.length ? products[products.length - 1].id + 1 : 1;
       const product = {
+        id: newId,
         name,
         price,
         category,
         stock,
-        description,
-        status,
-        images, // always array now
+        // description,
+        // status,
+        store_id: currentUser.store_id,
+        image: images.length === 1 ? images[0] : null,
+        images: images.length > 1 ? images : null,
         sellerId: currentUser.email,
       };
 
       // use helper functions from storage.js
-      let products = getProducts();
+      // let products = getProducts();
       products.push(product);
       saveProducts(products);
 

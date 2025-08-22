@@ -11,7 +11,8 @@ function loadProducts() {
 
   const allProducts = getProducts();
   const products = allProducts.filter(
-    (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
+    p => p.store_id === user.store_id
+    // (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
   );
 
   renderTable(products, currentPage, allProducts);
@@ -60,6 +61,8 @@ function renderTable(products, page, allProducts) {
       const img = images.length ? images[0] : "../images/placeholder.jpg";
       imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
     }
+    //Status depends on stock
+    const status = Number(product.stock) >= 1 ? "Active" : "Out of Stock";
 
     const row = `
       <tr>
@@ -73,12 +76,12 @@ function renderTable(products, page, allProducts) {
         <td>${product.stock}</td>
         <td>
           <span class="badge ${
-            product.status === "Active"
+            status === "Active"
               ? "bg-success"
-              : product.status === "Out of Stock"
+              : status === "Out of Stock"
               ? "bg-danger"
               : "bg-secondary"
-          }">${product.status}</span>
+          }">${status}</span>
         </td>
         <td>
           <button class="btn btn-sm btn-primary" onclick="editProduct(${absoluteIndex})"><i class="fas fa-edit"></i></button>
@@ -121,7 +124,8 @@ function changePage(page) {
   const user = getCurrentUser();
   const allProducts = getProducts();
   const products = allProducts.filter(
-    (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
+    p => p.store_id === user.store_id
+    // (p) => p.sellerId?.toLowerCase() === user.email.toLowerCase()
   );
 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
@@ -151,3 +155,15 @@ function editProduct(index) {
 
 // Run on page load
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+//logout function
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // stop <a> from reloading page
+      logout(); // call logout from storage.js
+    });
+  }
+});
+
