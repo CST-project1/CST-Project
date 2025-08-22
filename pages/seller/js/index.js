@@ -99,26 +99,7 @@ products = JSON.parse(localStorage.getItem("products")) || [];
             }
         }
 
-  /*       function renderPagination() {
-            const totalPages = Math.ceil(orders.length / rowsPerPage);
-            const pagination = document.querySelector("pagination");
-            pagination.innerHTML = "";
-
-            for (let i = 1; i <= totalPages; i++) {
-                pagination.innerHTML += `
-                    <li class="page-item ${i === currentPage ? "active" : ""}">
-                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
-                    </li>
-                `;
-            }
-        }
-
-        function changePage(page) {
-            
-            currentPage = page;
-            renderTable(page);
-
-        } */
+  
 
             renderTable();
 
