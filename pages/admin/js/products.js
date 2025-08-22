@@ -3,13 +3,6 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const stockFilter = document.getElementById("stockFilter");
 const priceRange = document.getElementById("priceRange");
-const priceLabel = document.getElementById("priceLabel");
-let products = JSON.parse(localStorage.getItem("products"));
-const productTableBody = document.getElementById("productTableBody");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const stockFilter = document.getElementById("stockFilter");
-const priceRange = document.getElementById("priceRange");
 const priceValue = document.getElementById("priceValue");
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
