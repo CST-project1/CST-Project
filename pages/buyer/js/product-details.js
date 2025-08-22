@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         document.getElementById('product-breadcrumb').textContent = product.name;
-        document.getElementById('main-product-image').src = product.image;
+        document.getElementById('main-product-image').src = `../images/${product.image}`;
         document.getElementById('product-category-badge').textContent = product.category;
         document.getElementById('product-title').textContent = product.name;
         document.getElementById('product-price').textContent = `$${product.price}`;
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Update page elements
-        if (mainProductImage) mainProductImage.src = currentProduct.image;
+        if (mainProductImage) mainProductImage.src = `../images/${currentProduct.image}`;
         if (productTitle) productTitle.textContent = currentProduct.name;
         if (productPrice) productPrice.textContent = `$${currentProduct.price}`;
         if (productCategoryBadge) productCategoryBadge.textContent = currentProduct.category.toUpperCase();
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (relatedProductsGrid) {
             relatedProductsGrid.innerHTML = relatedProducts.map(product => `
                 <div class="product-card" onclick="goToProductDetails(${product.id})">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <img src="../images/${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
                         <h3 class="product-name">${product.name}</h3>
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <img src="../images/${item.image}" alt="${item.name}" class="cart-item-image">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">$${item.price}</div>
@@ -317,3 +317,8 @@ document.addEventListener('DOMContentLoaded', function() {
     loadProductDetails();
     updateCartUI();
 });
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = '../../../login.html';
+}

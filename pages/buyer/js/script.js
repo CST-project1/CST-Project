@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
+                <img src="../images/${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
                 <div class="product-info">
                     <div class="product-category">${product.category}</div>
                     <h3 class="product-name">${product.name}</h3>
