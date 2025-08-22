@@ -164,580 +164,1170 @@ let stores = [{
 // Save in LocalStorage
 localStorage.setItem("stores", JSON.stringify(stores));
 let products = [];
-// Cleaned up products array with unique, sequential IDs (1-55)
-products.push(
-    // Men's Fragrances
-    {
+
+products.push({
         id: 1,
         stock: 50,
         name: 'Golden Desert',
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 2,
         stock: 50,
         name: 'Royal Oud',
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 3,
         stock: 50,
         name: 'Ocean Breeze',
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 4,
         stock: 50,
         name: 'Black Leather',
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 5,
         stock: 50,
         name: 'Woody Spice',
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
     // Women's Fragrances
     {
+
         id: 6,
         stock: 50,
         name: 'White Musk',
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 7,
         stock: 50,
         name: 'Cherry Blossom',
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 8,
         stock: 50,
         name: 'Midnight Rose',
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 9,
         stock: 50,
         name: 'Vanilla Dreams',
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 10,
         stock: 50,
         name: 'Floral Elegance',
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 11,
         stock: 50,
         name: 'Pink Peony',
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
     // Unisex Fragrances
     {
+
         id: 12,
         stock: 50,
         name: 'Citrus Burst',
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 13,
         stock: 50,
         name: 'Fresh Mint',
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 14,
         stock: 50,
         name: 'Amber Glow',
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 15,
         stock: 50,
         name: 'Green Tea',
         price: 49.99,
         store_id: 3,
         category: 'unisex',
-        image: '../images/GreenTea.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'GreenTea.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+        id: 1,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 2,
+        stock: 50,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 3,
+        stock: 50,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 4,
+        stock: 50,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 5,
+        stock: 50,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
-    // Repeat pattern for more products, incrementing IDs
+    // Women's Fragrances
     {
+
+        id: 6,
+        stock: 50,
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 7,
+        stock: 50,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 8,
+        stock: 50,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 9,
+        stock: 50,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 10,
+        stock: 50,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 11,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 12,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 13,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 14,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+        id: 15,
+        stock: 50,
+        name: 'Golden Desert',
+        price: 89.99,
+        store_id: 1,
+        category: 'men',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
         id: 16,
         stock: 50,
-        name: 'Golden Desert',
-        price: 89.99,
-        store_id: 1,
+        name: 'Royal Oud',
+        price: 119.99,
+        store_id: 2,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 17,
         stock: 50,
-        name: 'Royal Oud',
-        price: 119.99,
-        store_id: 2,
+        name: 'Ocean Breeze',
+        price: 59.99,
+        store_id: 3,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
-        featured: true
-    },
-    {
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
         id: 18,
         stock: 50,
-        name: 'Ocean Breeze',
-        price: 59.99,
-        store_id: 3,
+        name: 'Black Leather',
+        price: 95.99,
+        store_id: 0,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 19,
         stock: 50,
-        name: 'Black Leather',
-        price: 95.99,
-        store_id: 0,
+        name: 'Woody Spice',
+        price: 79.99,
+        store_id: 1,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
+
+    // Women's Fragrances
     {
+
         id: 20,
         stock: 50,
-        name: 'Woody Spice',
-        price: 79.99,
-        store_id: 1,
-        category: 'men',
-        image: '../images/WoodySpice.jpg',
-        featured: false
-    },
+        name: 'White Musk',
+        price: 69.99,
+        store_id: 4,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
 
-    // Women's Fragrances
-    {
         id: 21,
         stock: 50,
-        name: 'White Musk',
-        price: 69.99,
-        store_id: 4,
+        name: 'Cherry Blossom',
+        price: 79.99,
+        store_id: 1,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
+    }, {
+
         id: 22,
         stock: 50,
-        name: 'Cherry Blossom',
-        price: 79.99,
-        store_id: 1,
+        name: 'Midnight Rose',
+        price: 94.99,
+        store_id: 2,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
-        featured: true
-    },
-    {
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
         id: 23,
         stock: 50,
-        name: 'Midnight Rose',
-        price: 94.99,
-        store_id: 2,
+        name: 'Vanilla Dreams',
+        price: 74.99,
+        store_id: 1,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 24,
         stock: 50,
-        name: 'Vanilla Dreams',
-        price: 74.99,
-        store_id: 1,
+        name: 'Floral Elegance',
+        price: 84.99,
+        store_id: 0,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
+    }, {
+
         id: 25,
         stock: 50,
-        name: 'Floral Elegance',
-        price: 84.99,
-        store_id: 0,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
+
+    // Unisex Fragrances
     {
+
         id: 26,
         stock: 50,
-        name: 'Pink Peony',
-        price: 67.99,
-        store_id: 4,
-        category: 'women',
-        image: '../images/PinkPeony.jpg',
-        featured: false
-    },
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
 
-    // Unisex Fragrances
-    {
         id: 27,
         stock: 50,
-        name: 'Citrus Burst',
-        price: 64.99,
-        store_id: 2,
-        category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
-        featured: true
-    },
-    {
-        id: 28,
-        stock: 50,
         name: 'Fresh Mint',
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 29,
+    }, {
+
+        id: 28,
         stock: 50,
         name: 'Amber Glow',
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 30,
-        stock: 50,
-        name: 'Green Tea',
-        price: 49.99,
-        store_id: 3,
-        category: 'unisex',
-        image: '../images/GreenTea.jpg',
-        featured: false
-    },
-
-    // Continue pattern up to id: 55
-    {
-        id: 31,
+    }, {
+        id: 29,
         stock: 50,
         name: 'Golden Desert',
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 32,
+    }, {
+
+        id: 30,
         stock: 50,
         name: 'Royal Oud',
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 33,
+    }, {
+
+        id: 31,
         stock: 50,
         name: 'Ocean Breeze',
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 34,
+    }, {
+
+        id: 32,
         stock: 50,
         name: 'Black Leather',
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 35,
+    }, {
+
+        id: 33,
         stock: 50,
         name: 'Woody Spice',
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
     // Women's Fragrances
     {
-        id: 36,
+
+        id: 34,
         stock: 50,
         name: 'White Musk',
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 37,
+    }, {
+
+        id: 35,
         stock: 50,
         name: 'Cherry Blossom',
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 38,
+    }, {
+
+        id: 36,
         stock: 50,
         name: 'Midnight Rose',
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 39,
+    }, {
+
+        id: 37,
         stock: 50,
         name: 'Vanilla Dreams',
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 40,
+    }, {
+
+        id: 38,
         stock: 50,
         name: 'Floral Elegance',
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 41,
+    }, {
+
+        id: 39,
         stock: 50,
         name: 'Pink Peony',
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
     // Unisex Fragrances
     {
-        id: 42,
+
+        id: 40,
         stock: 50,
         name: 'Citrus Burst',
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 43,
+    }, {
+
+        id: 41,
         stock: 50,
         name: 'Fresh Mint',
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 44,
+    }, {
+
+        id: 42,
         stock: 50,
         name: 'Amber Glow',
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 45,
-        stock: 50,
-        name: 'Green Tea',
-        price: 49.99,
-        store_id: 3,
-        category: 'unisex',
-        image: '../images/GreenTea.jpg',
-        featured: false
-    },
-
-    // Final set to reach 55
-    {
-        id: 46,
+    }, {
+        id: 43,
         stock: 50,
         name: 'Golden Desert',
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 47,
+    }, {
+
+        id: 44,
         stock: 50,
         name: 'Royal Oud',
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 48,
+    }, {
+
+        id: 45,
         stock: 50,
         name: 'Ocean Breeze',
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 49,
+    }, {
+
+        id: 4,
         stock: 50,
         name: 'Black Leather',
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 50,
+    }, {
+
+        id: 46,
         stock: 50,
         name: 'Woody Spice',
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
     // Women's Fragrances
     {
-        id: 51,
+
+        id: 47,
         stock: 50,
         name: 'White Musk',
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 52,
+    }, {
+
+        id: 48,
         stock: 50,
         name: 'Cherry Blossom',
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
-    },
-    {
-        id: 53,
+    }, {
+
+        id: 49,
         stock: 50,
         name: 'Midnight Rose',
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 54,
+    }, {
+
+        id: 50,
         stock: 50,
         name: 'Vanilla Dreams',
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    },
-    {
-        id: 55,
+    }, {
+
+        id: 51,
         stock: 50,
         name: 'Floral Elegance',
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
-    }
-);
+    }, {
+
+        id: 52,
+        stock: 50,
+        name: 'Pink Peony',
+        price: 67.99,
+        store_id: 4,
+        category: 'women',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    },
+
+    // Unisex Fragrances
+    {
+
+        id: 53,
+        stock: 50,
+        name: 'Citrus Burst',
+        price: 64.99,
+        store_id: 2,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: true
+    }, {
+
+        id: 54,
+        stock: 50,
+        name: 'Fresh Mint',
+        price: 54.99,
+        store_id: 1,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    }, {
+
+        id: 55,
+        stock: 50,
+        name: 'Amber Glow',
+        price: 89.99,
+        store_id: 0,
+        category: 'unisex',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
+        featured: false
+    },
+)
 
 
 
