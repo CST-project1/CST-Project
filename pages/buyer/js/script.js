@@ -10,7 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // Get current user from local storage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    // If no user is logged in, redirect to login page
+    if (!currentUser) {
+        window.location.href = '../../../login.html';
+        return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
+    const allProducts = JSON.parse(localStorage.getItem('products')) || [];
 
     // ----- Navbar Toggle Functionality -----
     if (menuToggle && navLinks) {
@@ -49,29 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
 
     // All products data (expanded collection)
-    const allProducts = [
-        // Men's Fragrances
-        { id: 1, name: 'Golden Desert', price: 89.99, category: 'men', image: '../images/Golden-Desert-6ml.jpg', featured: true },
-        { id: 2, name: 'Royal Oud', price: 119.99, category: 'men', image: '../images/CREEDROYALOUD.avif', featured: true },
-        { id: 3, name: 'Ocean Breeze', price: 59.99, category: 'men', image: '../images/OceanBreeze.avif', featured: false },
-        { id: 4, name: 'Black Leather', price: 95.99, category: 'men', image: '../images/BlackLeather.jpg', featured: false },
-        { id: 5, name: 'Woody Spice', price: 79.99, category: 'men', image: '../images/WoodySpice.jpg', featured: false },
-
-        // Women's Fragrances
-        { id: 6, name: 'White Musk', price: 69.99, category: 'women', image: '../images/WhiteMusk.jpg', featured: true },
-        { id: 7, name: 'Cherry Blossom', price: 79.99, category: 'women', image: '../images/CherryBlossom.jpg', featured: true },
-        { id: 8, name: 'Midnight Rose', price: 94.99, category: 'women', image: '../images/MidnightRose.jpg', featured: false },
-        { id: 9, name: 'Vanilla Dreams', price: 74.99, category: 'women', image: '../images/VanillaDreams.jpg', featured: false },
-        { id: 10, name: 'Floral Elegance', price: 84.99, category: 'women', image: '../images/FloralElegance.jpg', featured: false },
-        { id: 11, name: 'Pink Peony', price: 67.99, category: 'women', image: '../images/PinkPeony.jpg', featured: false },
-
-        // Unisex Fragrances
-        { id: 12, name: 'Citrus Burst', price: 64.99, category: 'unisex', image: '../images/CitrusBurst.jpg', featured: true },
-        { id: 13, name: 'Fresh Mint', price: 54.99, category: 'unisex', image: '../images/FreshMint.jpg', featured: false },
-        { id: 14, name: 'Amber Glow', price: 89.99, category: 'unisex', image: '../images/AmberGlow.jpg', featured: false },
-        { id: 15, name: 'Green Tea', price: 49.99, category: 'unisex', image: '../images/GreenTea.jpg', featured: false }
-    ];
-
 
     // Store products globally for cart functionality
     window.allProducts = allProducts;
@@ -81,18 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = `product-details.html?id=${productId}`;
     }
 
-    // Display featured products on homepage
+    // Display featured products
     function displayFeaturedProducts() {
+        const featuredProductsGrid = document.getElementById('featured-products-grid');
         if (!featuredProductsGrid) return;
         
-        const featuredProducts = allProducts.filter(product => product.featured);
+        const featuredProducts = allProducts.filter(p => p.featured);
         featuredProductsGrid.innerHTML = '';
         
         featuredProducts.forEach(product => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
+                <img src="../images/${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
                 <div class="product-info">
                     <div class="product-category">${product.category}</div>
                     <h3 class="product-name">${product.name}</h3>
@@ -120,14 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
         updateCartUI();
     }
 
     // Remove product from cart
     function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== parseInt(productId));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
         updateCartUI();
     }
 
@@ -141,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const item = cart.find(item => item.id === parseInt(productId));
         if (item) {
             item.quantity = newQuantity;
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
             updateCartUI();
         }
     }
@@ -167,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <img src="../images/${item.image}" alt="${item.name}" class="cart-item-image">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">$${item.price}</div>
@@ -226,8 +214,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Initialize
     displayFeaturedProducts();
     updateCartUI();
 });
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = '../../../login.html';
+}
