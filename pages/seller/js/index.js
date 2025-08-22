@@ -20,6 +20,9 @@ function toggleSidebar() {
   document.getElementById("totalProducts").innerText = totalProducts;
   document.getElementById("inStockUnits").innerText = inStockUnits;
 });
+
+const ordersReceived = orders.length;
+document.getElementById("ordersReceived").innerText = ordersReceived;
  
 // logout function
 document.addEventListener("DOMContentLoaded", () => {

@@ -2,6 +2,14 @@ function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "Seller") return;
+
+  const brandName = document.getElementById("brandName");
+  brandName.textContent = currentUser.brand_name;
+});
+
    // logout function
 document.addEventListener("DOMContentLoaded", () => {
   const logoutLink = document.getElementById("logout-link");
