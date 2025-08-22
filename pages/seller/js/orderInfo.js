@@ -3,6 +3,17 @@ function toggleSidebar() {
  document.getElementById("sidebar").classList.toggle("active");
  }
 
+  // logout function
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // stop <a> from reloading page
+      logout(); // call logout from storage.js
+    });
+  }
+});
+
 
  function getOrders() {
   return JSON.parse(localStorage.getItem("orders")) || [];
@@ -14,18 +25,24 @@ function getUsers() {
   return JSON.parse(localStorage.getItem("users")) || [];
 }
 
-let orders = getOrders();
-let products = getProducts();
-let users = getUsers();
+window.orders = getOrders();
+window.products = getProducts();
+window.users = getUsers();
 
-// إعادة بناء الطلبات بحيث نضيف بيانات العميل والمنتج
-orders = orders.map(order => {
-  let buyer = users.find(u => u.username === order.buyer);
+// get id from url
+let urlParams = new URLSearchParams(window.location.search);
+let productId = parseInt( urlParams.get('id'));
+// get order by id
+let order = orders.find(order => order.id === productId);
+
+
+if (order) {
+  let buyer = users.find(u => u.id === order.buyerId);
   let product = products.find(p => p.id === order.product_id);
 
-  return {
+ let formattedOrder = {
     id: order.id,
-    customer: buyer ? buyer.name : order.buyer,
+    customer: buyer ? buyer.name : "Unknown Customer",
     email: buyer ? buyer.email : "",
     phone: buyer ? buyer.phone : "",
     address: buyer ? buyer.location : "",
@@ -36,28 +53,24 @@ orders = orders.map(order => {
       ? [{ name: product.name, price: product.price, quantity: order.quantity }]
       : [],
   };
-});
+
  
 
 
 
-          // get id from url
-          let urlParams = new URLSearchParams(window.location.search);
-          let productId = parseInt( urlParams.get('id'));
-          // get order by id
-          let order = orders.find(order => order.id === productId);
+          
           // display order information
-          if (order) {
-            document.getElementById("order-id").innerHTML = order.id;
-            document.getElementById("customer-name").innerHTML = order.customer;
-            document.getElementById("quantity").innerHTML = order.qty;
-            document.getElementById("order-date").innerHTML = order.date;
-            document.getElementById("order-status").innerHTML = order.status;
-            document.getElementById("order-total").innerHTML = order.total;
+          
+            document.getElementById("order-id").innerHTML = formattedOrder.id;
+            document.getElementById("customer-name").innerHTML = formattedOrder.customer;
+            document.getElementById("quantity").innerHTML = formattedOrder.qty;
+            document.getElementById("order-date").innerHTML = formattedOrder.date;
+            document.getElementById("order-status").innerHTML = formattedOrder.status;
+            document.getElementById("order-total").innerHTML = formattedOrder.total;
             
             let orderStatus = document.getElementById("order-status");
-            orderStatus .textContent = order.status;
-           switch (order.status) {
+            orderStatus .textContent = formattedOrder.status;
+           switch (formattedOrder.status) {
              case "Delivered":
                orderStatus.className = "badge bg-success";
                break;
@@ -77,10 +90,10 @@ orders = orders.map(order => {
                orderStatus.className = "badge bg-dark";
                break;
             }
-         }
+         
 
 
-         let total = order.products.reduce((sum, p) => sum + p.price * p.quantity, 0);
+         let total = Math.round(formattedOrder.products.reduce((sum, p) => sum + p.price * p.quantity, 0));
          document.getElementById("order-total").innerHTML = `$${total}`;
 
 
@@ -91,18 +104,19 @@ orders = orders.map(order => {
     let customer = customerInfo.find(customer => customer.id === customerId); */
     // display customer information
     
-        document.getElementById("name").innerHTML = order.customer;
-        document.getElementById("email").innerHTML = order.email;
-        document.getElementById("phone").innerHTML = order.phone;
-        document.getElementById("address").innerHTML = order.address;
+        document.getElementById("name").innerHTML = formattedOrder.customer;
+        document.getElementById("email").innerHTML = formattedOrder.email;
+        document.getElementById("phone").innerHTML = formattedOrder.phone;
+        document.getElementById("address").innerHTML = formattedOrder.address;
 
     
 
  
             // Get the table where products will be inserted
             let table = document.getElementById("product-table");
+            table.innerHTML = "";
             // Loop through each product and create a table row for it
-            order.products.forEach(product => {
+            formattedOrder.products.forEach(product => {
                 let row = `
                 <tr>
                 <td>${product.name}</td>
@@ -114,7 +128,8 @@ orders = orders.map(order => {
                 // Insert the row into the table
                 table.innerHTML += row;
             });
-                
+              
+            }
                 
 
 

@@ -3,9 +3,23 @@ function toggleSidebar() {
  document.getElementById("sidebar").classList.toggle("active");
  }
 
- let orders = JSON.parse(localStorage.getItem("orders")) || [];
- let products = JSON.parse(localStorage.getItem("products")) || [];
- let users = JSON.parse(localStorage.getItem("users")) || [];
+ // logout function
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // stop <a> from reloading page
+      logout(); // call logout from storage.js
+    });
+  }
+});
+ 
+
+
+
+  orders = JSON.parse(localStorage.getItem("orders")) || [];
+  products = JSON.parse(localStorage.getItem("products")) || [];
+ const storedUsers  = JSON.parse(localStorage.getItem("users")) || [];
  
  // check if data loaded
  
@@ -13,15 +27,16 @@ console.log("Orders loaded: ", orders);
 
 
 orders = orders.map(order => {
-  let buyer = users.find(u => u.username === order.buyer);
+  let buyer = storedUsers.find(u => u.id === order.buyerId);
   let product = products.find(p => p.id === order.product_id);
 
   return {
     id: order.id,
-    customer: buyer ? buyer.name : order.buyer || "Unknown",
-    qty: order.quantity || 0,
+    customer: buyer ? buyer.name : order.buyer,
+    qty: order.quantity,
     date: order.date,
     status: order.status,
+    
     products: product
       ? [{ name: product.name, price: product.price, quantity: order.quantity }]
       : [],
@@ -35,7 +50,9 @@ orders = orders.map(order => {
 
           //function of calculate otder total
           function calculateOrderTotal(order) {
-            return order.products.reduce((sum, product) => sum + (product.price || 0) * (product.quantity || 0), 0);
+            return Math.round(
+             order.products.reduce((sum, product) => sum + product.price * product.quantity, 0)
+            );
           }
         
 
@@ -55,18 +72,22 @@ orders = orders.map(order => {
                         <td>${order.customer}</td>
                         <td>${order.qty}</td>
                         <td>${order.date}</td>
-                        <td><span class="badge ${getStatusClass(order.status)}" id="status-${order.id}">${order.status}</span>
-                        <button class="btn btn-sm btn-primary ms-2" onclick="editOrderStatus(${order.id})">
-                         <i class="bi bi-pencil"></i>
-                        </button>
-                        </td>
+                        <td><span class="badge ${getStatusClass(order.status)}" id="status-${order.id}">${order.status}</span></td>
                         <td>$${calculateOrderTotal(order)}</td>
+                        <td>
+                        <button class="btn btn-sm btn-primary" onclick="editStatus(${order.id})"><i class="fas fa-edit"></i></button>
+                        </td>
+                        
                     </tr>
                 `;
             });
 
             renderPagination(data);
         }
+
+         function goToOrderInfo(orderId) {
+             window.location.href = `orderInfo.html?id=${orderId}`;
+        };
 
         function getStatusClass(status) {
             switch (status) {
@@ -100,7 +121,7 @@ orders = orders.map(order => {
             for (let i = 1; i <= totalPages; i++) {
                 pagination.innerHTML += `
                     <li class="page-item ${i === currentPage ? "active" : ""}">
-                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        <button class="page-link" onclick="changePage(${i})">${i}</button>
                     </li>
                 `;
             }
@@ -112,15 +133,15 @@ orders = orders.map(order => {
             </li>`;
         }
 
-        function changePage(page) {
+         function changePage(page) {
+            let totalPages = Math.ceil(filteredOrders.length / rowsPerPage);
+            if (page < 1 || page > totalPages) return; 
             
             currentPage = page;
             renderTable(page, filteredOrders);
-        }
+        };
 
-        function goToOrderInfo(orderId) {
-             window.location.href = `orderInfo.html?id=${orderId}`;
-        }
+        
 
         renderTable();
 
@@ -178,17 +199,18 @@ let searchInput = document.getElementById("SearchInput");
 
 searchInput.addEventListener("input", function () {
     let searchTerm = this.value.trim().toLowerCase();
-
+     
     let searchResults;
 
     // filtering orders based on search term
     if (!isNaN(searchTerm) && searchTerm !== ""){
         searchResults = filteredOrders.filter(order =>
-         order.id.toString() ===searchTerm );
+            order.id.toString() ===searchTerm );
         }
         else {
             searchResults = filteredOrders.filter(order =>
-            order.customer.toLowerCase().includes(searchTerm));
+            order.customer.toLowerCase().includes(searchTerm)
+                );
         }
     /* let searchResults = filteredOrders.filter(order =>
         order.customer.toLowerCase().includes(searchTerm) || // search by customer name
@@ -211,25 +233,37 @@ dateInput.addEventListener("change", function () {
     });
 
 
-// Edit order status
-function editOrderStatus(orderId) {
-  let order = orders.find(o => o.id === orderId);
-  if (!order) return;
 
-  let newStatus = prompt("Enter new status for this order:", order.status);
-  if (!newStatus) return;
+//function of edit status 
+function editStatus(orderId) {
+    let statusEdit = document.getElementById(`status-${orderId}`);
 
-  order.status = newStatus;
-  localStorage.setItem("orders", JSON.stringify(orders));
+    let select = document.createElement("select");
+    select.className = "form-select form-select-sm";
+    let statuses = ["Delivered", "Cancelled", "out to ship", "inqueue", "Processing"];
 
-  let statusBadge = document.getElementById(`status-${order.id}`);
-  statusBadge.textContent = newStatus;
-  statusBadge.className = `badge ${getStatusClass(newStatus)}`;
+    // make all status
+    statuses.forEach(status => {
+        let option = document.createElement("option");
+        option.value = status;
+        option.textContent = status;
+        if (statusEdit.textContent === status) option.selected = true;
+        select.appendChild(option);
+    });
+
+    statusEdit.replaceWith(select);
+
+    select.addEventListener("change", function () {
+        let newStatus = this.value;
+      
+        let order = orders.find(o => o.id === orderId);
+        if (order) order.status = newStatus;
+
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+         renderTable(currentPage, filteredOrders);
+    });
 }
-
-      console.log(orders);
-console.log(products);
-console.log(users);
 
 
 

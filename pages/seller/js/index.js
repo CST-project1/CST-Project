@@ -31,10 +31,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
   
+orders = JSON.parse(localStorage.getItem("orders")) || [];
+products = JSON.parse(localStorage.getItem("products")) || [];
+ const storedUsers  = JSON.parse(localStorage.getItem("users")) || [];
 
+ orders = orders.map(order => {
+  let buyer = storedUsers.find(u => u.id === order.buyerId);
+  let product = products.find(p => p.id === order.product_id);
 
+  return {
+    id: order.id,
+    customer: buyer ? buyer.name : order.buyer,
+    qty: order.quantity,
+    date: order.date,
+    status: order.status,
+    
+    products: product
+      ? [{ name: product.name, price: product.price, quantity: order.quantity }]
+      : [],
+    total: product ? product.price * order.quantity : 0,
+  };
+});
+
+//function of calculate otder total
+          /* function calculateOrderTotal(order) {
+            return Math.round(
+             order.products.reduce((sum, product) => sum + product.price * product.quantity, 0)
+            );
+          }
+ */
         let rowsPerPage = 3;
         let currentPage = 1;
 
@@ -48,13 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             pageOrders.forEach(order => {
                 tableBody.innerHTML += `
-                    <tr onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">
-                        <td>#${order.id}</td>
+                    <tr>
+                        <td onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">#${order.id}</td>
                         <td>${order.customer}</td>
                         <td>${order.qty}</td>
                         <td>${order.date}</td>
                         <td><span class="badge ${getStatusClass(order.status)}">${order.status}</span></td>
-                        <td>$${order.total}</td>
+                        <td>$${Math.round(order.total)}</td>
                     </tr>
                 `;
             });
