@@ -40,35 +40,43 @@ function renderTable(products, page, allProducts) {
     const absoluteIndex = allProducts.findIndex(
       (p) => p.name === product.name && p.sellerId === product.sellerId
     );
+const images = product.images || (product.image ? [product.image] : []);
+let imageHTML = "";
 
-    const images = product.images || (product.image ? [product.image] : []);
-    let imageHTML = "";
+const resolvedImages = images.map(img => {
+  // If already Base64 or starts with http, use as is
+  if (img.startsWith("data:") || img.startsWith("http")) {
+    return img;
+  }
+  //it's a filename and prepend your images folder path
+  return `../../../images/${img}`;
+});
 
-    if (images.length > 1) {
-      const carouselId = `carousel-${page}-${index}`;
-      imageHTML = `
-        <div id="${carouselId}" class="carousel slide" data-bs-interval="false" style="width:50px; object-fit:cover">
-          <div class="carousel-inner">
-            ${images
-              .map(
-                (img, i) => `
-                <div class="carousel-item ${i === 0 ? "active" : ""}">
-                  <img src="${img}" class="d-block w-100" alt="${product.name}">
-                </div>`
-              )
-              .join("")}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-        </div>`;
-    } else {
-      const img = images.length ? images[0] : "../images/placeholder.jpg";
-      imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
-    }
+if (resolvedImages.length > 1) {
+  const carouselId = `carousel-${page}-${index}`;
+  imageHTML = `
+    <div id="${carouselId}" class="carousel slide" data-bs-interval="false" style="width:50px; object-fit:cover">
+      <div class="carousel-inner">
+        ${resolvedImages
+          .map(
+            (img, i) => `
+            <div class="carousel-item ${i === 0 ? "active" : ""}">
+              <img src="${img}" class="d-block w-100" alt="${product.name}">
+            </div>`
+          )
+          .join("")}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>`;
+} else {
+  const img = resolvedImages.length ? resolvedImages[0] : "../images/placeholder.jpg";
+  imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
+}
     //Status depends on stock
     const status = Number(product.stock) >= 1 ? "Active" : "Out of Stock";
 
