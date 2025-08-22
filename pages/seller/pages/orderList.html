@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/orderList.css">
+    <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -21,14 +23,14 @@
         <button  class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
 
         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
-        <p class="text-muted">Perfume Store</p>
+        <p class="text-muted" id="brandName">Perfume Store</p>
         <ul>
             <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
             <li class="products"><a href="productMange.html"><span>🧴 </span> Products</a></li>
             <li class="orders active"><a href="#"><span>📦 </span> Orders</a></li>
             <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
             <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
-            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+            <li class="logout"><a href="#" id="logout-link"><span>🔓</span> Logout</a>
         </ul>
     </aside>
 
@@ -44,31 +46,35 @@
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Search orders...">
+                            <input type="text" class="form-control" id="SearchInput" placeholder="Search orders...">
                         </div>
                         <div class="col-md-3">
-                            <select class="form-select">
+                            <select class="form-select" id="statusFilter">
                                 <option>All Status</option>
-                                <option>Pending</option>
-                                <option>Processing</option>
-                                <option>Shipped</option>
+                                <!-- <option>Pending</option> -->
                                 <option>Delivered</option>
                                 <option>Cancelled</option>
+                                <option>out to ship</option>
+                                <option>inqueue</option>
+                                <option>Processing</option>
+
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="dateInput">
                         </div>
                         <div class="col-md-3">
-                            <select class="form-select">
-                                <option>Sort By</option>
-                                <option>Date</option>
-                                <option>Amount</option>
-                                <option>Status</option>
+                            <select class="form-select" id="sortSelect">
+                                <option value="">Sort By</option>
+                                <option value="Date">Date</option>
+                                <option value="Amount">Amount</option>
+                                <option value="Status">Status</option>
                             </select>
                         </div>
                     </div>
+                    
                 </div>
+                
             </div>
       
 
@@ -93,44 +99,19 @@
                 </tr>
               </thead>
               <tbody id="orderTable">
-                <!-- <tr class="second">
-                  <td>#1</td>
-                  <td>Zoe Smith</td>
-                  <td>2</td>
-                  <td>2025-7-20</td>
-                  <td><span class="badge bg-warning">Pending</span></td>
-                  <td>$140</td>
-                </tr>
-
-                <tr class="third">
-                  <td>#2</td>
-                  <td>jhon marsel</td>
-                  <td>1</td>
-                  <td>2025-6-16</td>
-                  <td><span class="badge bg-success">Delivered</span></td>
-                  <td>$65</td>
-                </tr>
-
-                <tr class="fourth">
-                  <td>#3</td>
-                  <td> Majesty brand</td>
-                  <td>2</td>
-                  <td>2025-6-16</td>
-                  <td><span class="badge bg-danger">canceled</span></td>
-                  <td>$160</td>
-                </tr> -->
+                
               </tbody>
             </table>
           </div>
            <nav class="mt-4" >
-                        <ul class="pagination justify-content-end">
+                        <ul class="pagination justify-content-end" id="pagination">
                             <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul> 
-                    </nav>
+            </nav>
 
                </div>     
           </div>
@@ -138,6 +119,8 @@
     </main>
     
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../javascript/localStorge.js"></script>
+    <script src="../js/storage.js"></script>
     <script src="../js/orderList.js"></script>
     
 

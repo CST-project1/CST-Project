@@ -2,6 +2,14 @@
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "Seller") return;
+
+  const brandName = document.getElementById("brandName");
+  brandName.textContent = currentUser.brand_name;
+});
     // Sales Chart configiration
     // Get the drawing context for the sales chart 
     let salesChart = document.getElementById('salesChart').getContext('2d');

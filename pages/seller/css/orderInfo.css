@@ -14,7 +14,7 @@ body {
     top: 0;
     left: 0;
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 1500;
 }
 
 .sidebar p{
@@ -110,6 +110,7 @@ i{
     border-radius: 5px;
     margin-left: 10px;  
     cursor: pointer;
+    z-index: 2000;
     
 }
 
@@ -153,6 +154,6 @@ i{
 }
 
 .btn{
-    margin-left: 590px;
+    float: right;
    
 }

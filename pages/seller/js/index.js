@@ -20,6 +20,9 @@ function toggleSidebar() {
   document.getElementById("totalProducts").innerText = totalProducts;
   document.getElementById("inStockUnits").innerText = inStockUnits;
 });
+
+const ordersReceived = orders.length;
+document.getElementById("ordersReceived").innerText = ordersReceived;
  
 // logout function
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,25 +34,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-  let orders = [
-    {
-       id: 1, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-07-20", 
-       status: "Pending", 
-       total: 140
-      },
-      {
-        id: 2,
-        customer: "John Marsel", 
-        qty: 1, 
-        date: "2025-06-16", 
-        status: "Delivered", 
-        total: 65
-        }
-        ];
+  
+orders = JSON.parse(localStorage.getItem("orders")) || [];
+products = JSON.parse(localStorage.getItem("products")) || [];
+ const storedUsers  = JSON.parse(localStorage.getItem("users")) || [];
 
+ orders = orders.map(order => {
+  let buyer = storedUsers.find(u => u.id === order.buyerId);
+  let product = products.find(p => p.id === order.product_id);
+
+  return {
+    id: order.id,
+    customer: buyer ? buyer.name : order.buyer,
+    qty: order.quantity,
+    date: order.date,
+    status: order.status,
+    
+    products: product
+      ? [{ name: product.name, price: product.price, quantity: order.quantity }]
+      : [],
+    total: product ? product.price * order.quantity : 0,
+  };
+});
+
+//function of calculate otder total
+          /* function calculateOrderTotal(order) {
+            return Math.round(
+             order.products.reduce((sum, product) => sum + product.price * product.quantity, 0)
+            );
+          }
+ */
         let rowsPerPage = 3;
         let currentPage = 1;
 
@@ -63,18 +77,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             pageOrders.forEach(order => {
                 tableBody.innerHTML += `
-                    <tr onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">
-                        <td>#${order.id}</td>
+                    <tr>
+                        <td onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">#${order.id}</td>
                         <td>${order.customer}</td>
                         <td>${order.qty}</td>
                         <td>${order.date}</td>
                         <td><span class="badge ${getStatusClass(order.status)}">${order.status}</span></td>
-                        <td>$${order.total}</td>
+                        <td>$${Math.round(order.total)}</td>
                     </tr>
                 `;
             });
 
-            renderPagination();
+            // renderPagination();
         }
 
         function getStatusClass(status) {
@@ -88,28 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        function renderPagination() {
-            const totalPages = Math.ceil(orders.length / rowsPerPage);
-            const pagination = document.querySelector("pagination");
-            pagination.innerHTML = "";
+  
 
-            for (let i = 1; i <= totalPages; i++) {
-                pagination.innerHTML += `
-                    <li class="page-item ${i === currentPage ? "active" : ""}">
-                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
-                    </li>
-                `;
-            }
-        }
-
-        function changePage(page) {
-            
-            currentPage = page;
-            renderTable(page);
-        }
+            renderTable();
 
         function goToOrderInfo(orderId) {
              window.location.href = `orderInfo.html?id=${orderId}`;
         }
 
-        renderTable();
+        

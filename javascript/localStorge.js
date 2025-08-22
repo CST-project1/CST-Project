@@ -1345,6 +1345,7 @@ for (let i = 1; i <= 30; i++) {
     let productId = (i % 50) + 1;
     let product = products.find(p => p.id === productId);
     let store = stores.find(s => s.id === product.store_id);
+    if (!store) continue;
     let seller = users.find(u => u.role === "Seller" && u.store_id === store.id);
 
     // random buyer
