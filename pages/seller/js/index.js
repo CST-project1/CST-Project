@@ -2,24 +2,9 @@
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
- /*  let orders = [
-    {
-       id: 1, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-07-20", 
-       status: "Pending", 
-       total: 140
-      },
-      {
-        id: 2,
-        customer: "John Marsel", 
-        qty: 1, 
-        date: "2025-06-16", 
-        status: "Delivered", 
-        total: 65
-        }
-        ]; */
+
+  
+
 
         let rowsPerPage = 3;
         let currentPage = 1;

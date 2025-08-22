@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/orderList.css">
+    <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -49,11 +51,13 @@
                         <div class="col-md-3">
                             <select class="form-select" id="statusFilter">
                                 <option>All Status</option>
-                                <option>Pending</option>
-                                <!-- <option>Processing</option>
-                                <option>Shipped</option> -->
+                                <!-- <option>Pending</option> -->
                                 <option>Delivered</option>
                                 <option>Cancelled</option>
+                                <option>out to ship</option>
+                                <option>inqueue</option>
+                                <option>Processing</option>
+
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -68,7 +72,7 @@
                             </select>
                         </div>
                     </div>
-                    <!-- <input type="submit" class="btn btn-primary" value="Search"> -->
+                    
                 </div>
                 
             </div>
@@ -95,32 +99,7 @@
                 </tr>
               </thead>
               <tbody id="orderTable">
-                <!-- <tr class="second">
-                  <td>#1</td>
-                  <td>Zoe Smith</td>
-                  <td>2</td>
-                  <td>2025-7-20</td>
-                  <td><span class="badge bg-warning">Pending</span></td>
-                  <td>$140</td>
-                </tr>
-
-                <tr class="third">
-                  <td>#2</td>
-                  <td>jhon marsel</td>
-                  <td>1</td>
-                  <td>2025-6-16</td>
-                  <td><span class="badge bg-success">Delivered</span></td>
-                  <td>$65</td>
-                </tr>
-
-                <tr class="fourth">
-                  <td>#3</td>
-                  <td> Majesty brand</td>
-                  <td>2</td>
-                  <td>2025-6-16</td>
-                  <td><span class="badge bg-danger">canceled</span></td>
-                  <td>$160</td>
-                </tr> -->
+                
               </tbody>
             </table>
           </div>
@@ -140,7 +119,7 @@
     </main>
     
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/Data.js"></script>
+    <script src="../../../javascript/seed.js"></script>
     <script src="../js/orderList.js"></script>
     
 

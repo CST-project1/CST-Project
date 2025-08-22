@@ -3,72 +3,31 @@ function toggleSidebar() {
  document.getElementById("sidebar").classList.toggle("active");
  }
 
- /* let orders = [
-    {
-       id: 1, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-05-10", 
-       status: "Pending", 
-       total: 140
-      },
-      {
-        id: 2,
-        customer: "John Marsel", 
-        qty: 1, 
-        date: "2025-04-5", 
-        status: "Delivered", 
-        total: 65
-        },
-        {
-          id: 3,
-          customer: "Majesty Brand", 
-          qty: 2, 
-          date: "2025-07-20", 
-          status: "Cancelled", 
-          total: 160
-          },
-          {
-        id: 4,
-        customer: "John Marsel", 
-        qty: 1, 
-        date: "2025-08-16", 
-        status: "Delivered", 
-        total: 65
-        },
-      {
-       id: 5, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-07-20", 
-       status: "Pending", 
-       total: 140
-      },
-          {
-          id: 6,
-          customer: "Majesty Brand", 
-          qty: 2, 
-          date: "2025-04-16", 
-          status: "Cancelled", 
-          total: 160
-          },
-          {
-       id: 7, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-03-20", 
-       status: "Pending", 
-       total: 100
-      },
-      {
-       id: 8, 
-       customer: "Zoe Smith", 
-       qty: 2, 
-       date: "2025-08-20", 
-       status: "Pending", 
-       total: 120
-      },
-          ]; */
+ let orders = JSON.parse(localStorage.getItem("orders")) || [];
+ let products = JSON.parse(localStorage.getItem("products")) || [];
+ let users = JSON.parse(localStorage.getItem("users")) || [];
+ 
+ // check if data loaded
+ 
+console.log("Orders loaded: ", orders);
+
+
+orders = orders.map(order => {
+  let buyer = users.find(u => u.username === order.buyer);
+  let product = products.find(p => p.id === order.product_id);
+
+  return {
+    id: order.id,
+    customer: buyer ? buyer.name : order.buyer || "Unknown",
+    qty: order.quantity || 0,
+    date: order.date,
+    status: order.status,
+    products: product
+      ? [{ name: product.name, price: product.price, quantity: order.quantity }]
+      : [],
+    //total: product ? product.price * order.quantity : 0,
+  };
+});
 
           let rowsPerPage = 3;
           let currentPage = 1;
@@ -76,7 +35,7 @@ function toggleSidebar() {
 
           //function of calculate otder total
           function calculateOrderTotal(order) {
-            return order.products.reduce((sum, product) => sum + product.price * product.quantity, 0);
+            return order.products.reduce((sum, product) => sum + (product.price || 0) * (product.quantity || 0), 0);
           }
         
 
@@ -91,12 +50,16 @@ function toggleSidebar() {
 
             pageOrders.forEach(order => {
                 tableBody.innerHTML += `
-                    <tr onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">
-                        <td>#${order.id}</td>
+                    <tr>
+                        <td onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">#${order.id}</td>
                         <td>${order.customer}</td>
                         <td>${order.qty}</td>
                         <td>${order.date}</td>
-                        <td><span class="badge ${getStatusClass(order.status)}">${order.status}</span></td>
+                        <td><span class="badge ${getStatusClass(order.status)}" id="status-${order.id}">${order.status}</span>
+                        <button class="btn btn-sm btn-primary ms-2" onclick="editOrderStatus(${order.id})">
+                         <i class="bi bi-pencil"></i>
+                        </button>
+                        </td>
                         <td>$${calculateOrderTotal(order)}</td>
                     </tr>
                 `;
@@ -107,12 +70,13 @@ function toggleSidebar() {
 
         function getStatusClass(status) {
             switch (status) {
-                case "Pending": return "bg-warning";
+                //case "Pending": return "bg-warning";
                 case "Delivered": return "bg-success";
                 case "Cancelled": return "bg-danger";
-                // case "Shipped": return "bg-primary";
-                // case "Processing": return "bg-info";
-                default: return "bg-secondary";
+                case "out to ship": return "bg-primary";
+                case "inqueue": return "bg-info";
+                case "Processing": return "bg-secondary";
+                default: return "bg-dark";
             }
         }
 
@@ -121,6 +85,8 @@ function toggleSidebar() {
             let totalPages = Math.ceil(data.length / rowsPerPage);
             let pagination = document.getElementById("pagination");
             pagination.innerHTML = "";
+
+            if (totalPages === 0) return;
 
             // previous button
             pagination.innerHTML += `<li class="page-item ${currentPage === 1 ? "disabled" : ""}">
@@ -168,12 +134,15 @@ function toggleSidebar() {
             if (sortBy === "Date") {
                 filteredOrders.sort((a, b) => new Date(a.date) - new Date(b.date));
                 } else if (sortBy === "Amount") {
-                    filteredOrders.sort((a, b) => a.total - b.total);
+                    filteredOrders.sort((a, b) => a.qty - b.qty);
                     } else if (sortBy === "Status") {
                         let statusOrder = {
                             "Delivered":1,
-                            "Pending":2,
-                            "Cancelled":3
+                            //"Pending":2,
+                            "Cancelled":3,
+                            "out to ship":4,
+                            "inqueue":5,
+                            "Processing":6
                         };
                         filteredOrders.sort((a, b) => {return statusOrder[a.status] - statusOrder[b.status];
                             
@@ -210,12 +179,22 @@ let searchInput = document.getElementById("SearchInput");
 searchInput.addEventListener("input", function () {
     let searchTerm = this.value.trim().toLowerCase();
 
+    let searchResults;
+
     // filtering orders based on search term
-    let searchResults = filteredOrders.filter(order =>
+    if (!isNaN(searchTerm) && searchTerm !== ""){
+        searchResults = filteredOrders.filter(order =>
+         order.id.toString() ===searchTerm );
+        }
+        else {
+            searchResults = filteredOrders.filter(order =>
+            order.customer.toLowerCase().includes(searchTerm));
+        }
+    /* let searchResults = filteredOrders.filter(order =>
         order.customer.toLowerCase().includes(searchTerm) || // search by customer name
         order.id.toString().includes(searchTerm)          // search by order id
         
-    );
+    ); */
 
     currentPage = 1;
     renderTable(currentPage, searchResults);
@@ -231,7 +210,26 @@ dateInput.addEventListener("change", function () {
     renderTable(currentPage, dateFilter);
     });
 
-      
+
+// Edit order status
+function editOrderStatus(orderId) {
+  let order = orders.find(o => o.id === orderId);
+  if (!order) return;
+
+  let newStatus = prompt("Enter new status for this order:", order.status);
+  if (!newStatus) return;
+
+  order.status = newStatus;
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  let statusBadge = document.getElementById(`status-${order.id}`);
+  statusBadge.textContent = newStatus;
+  statusBadge.className = `badge ${getStatusClass(newStatus)}`;
+}
+
+      console.log(orders);
+console.log(products);
+console.log(users);
 
 
 

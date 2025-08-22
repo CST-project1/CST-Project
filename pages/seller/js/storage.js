@@ -8,3 +8,17 @@ function getProducts() {
 function saveProducts(products) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
 }
+
+// order section
+/* const ORDER_STORAGE_KEY = "seller_orders";
+
+function getOrders(){
+  return JSON.parse(localStorage.getItem(ORDER_STORAGE_KEY)) || [];
+}
+
+function saveOrders(orders) {
+  localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(orders));
+} */
+
+
+
