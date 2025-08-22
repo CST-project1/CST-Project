@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Load cart items
+    // Get current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    window.currentUser = currentUser;
     loadCheckoutItems();
     
     // Setup payment method toggle
@@ -13,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadCheckoutItems() {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const currentUser = window.currentUser || JSON.parse(localStorage.getItem('currentUser'));
+    const cartItems = currentUser ? JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [] : [];
     const checkoutItemsContainer = document.getElementById('checkout-items');
     
     checkoutItemsContainer.innerHTML = '';
@@ -27,7 +31,7 @@ function loadCheckoutItems() {
         const itemElement = document.createElement('div');
         itemElement.className = 'checkout-item';
         itemElement.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
+            <img src="../images/${item.image}" alt="${item.name}">
             <div class="item-details">
                 <h4>${item.name}</h4>
                 <p>$${item.price} x ${item.quantity}</p>
@@ -56,7 +60,8 @@ function setupPaymentMethods() {
 }
 
 function calculateTotals() {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const currentUser = window.currentUser || JSON.parse(localStorage.getItem('currentUser'));
+    const cartItems = currentUser ? JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [] : [];
     const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const shipping = 5.99;
     const tax = subtotal * 0.08; // 8% tax
@@ -84,12 +89,12 @@ function placeOrder(e) {
             country: document.getElementById('country').value
         },
         payment: document.querySelector('input[name="payment"]:checked').value,
-        items: JSON.parse(localStorage.getItem('cart')) || [],
+    items: (window.currentUser ? JSON.parse(localStorage.getItem(`cart_${window.currentUser.id}`)) : []) || [],
         total: parseFloat(document.getElementById('grand-total').textContent.replace('$', ''))
     };
     
     // Get current user
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = window.currentUser || JSON.parse(localStorage.getItem('currentUser'));
     
     // Get existing orders or initialize empty array
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -113,7 +118,9 @@ function placeOrder(e) {
     localStorage.setItem('orders', JSON.stringify(orders));
     
     // Clear cart
-    localStorage.removeItem('cart');
+    if (currentUser) {
+        localStorage.removeItem(`cart_${currentUser.id}`);
+    }
     document.getElementById('cart-count').textContent = '0';
     
     // Redirect to confirmation page with order ID
