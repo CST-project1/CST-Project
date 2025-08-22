@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 cartItems.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <img src="../images/${item.image}" alt="${item.name}" class="cart-item-image">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">$${item.price}</div>
