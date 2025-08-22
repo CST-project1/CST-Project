@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
+    // فلترة البياّنات بحيث يعرض فقط Sellers
     let sellers = users.filter(user => user.role === "Seller");
 
     let tbody = document.getElementById("sellersTable");
@@ -14,17 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        data.forEach(user => {
+        data.forEach((user) => {
             tbody.innerHTML += `
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="${user.profile_pic || '../../../images/logo.jpg'}" 
-                                 alt="profile" width="40" height="40" class="rounded-circle me-2">
-                            <div>
-                                <div class="fw-semibold">${user.username}</div>
-                                <div class="text-muted small">#${user.id || 'N/A'}</div>
-                            </div>
+                            <a href="sellerInfo.html?id=${user.id}" class="d-flex align-items-center text-decoration-none text-dark">
+                                <img src="${user.profile_pic || '../../../images/logo.jpg'}" 
+                                     alt="profile" width="40" height="40" class="rounded-circle me-2">
+                                <div>
+                                    <div class="fw-semibold">${user.username}</div>
+                                    <div class="text-muted small">#${user.id || 'N/A'}</div>
+                                </div>
+                            </a>
                         </div>
                     </td>
                     <td>${user.email}</td>
@@ -49,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     renderTable(sellers);
-
     searchInput.addEventListener("input", function () {
         let term = this.value.toLowerCase();
         let filtered = sellers.filter(user =>
