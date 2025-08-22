@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Essence - Luxury Perfume Store</title>
+    <title>Order History - L'Essence</title>
+     <link rel="stylesheet" href="../css/style2.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        main{
+            /* width: 80vw; */
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,10 +24,10 @@
             <div class="container">
                 <a href="index.html" class="logo">L'Essence</a>
                 <ul class="nav-links" id="nav-links">
-                    <li><a href="#hero">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="nav-right">
                     <div class="user-icon" id="user-icon">
@@ -31,9 +39,7 @@
                         <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" alt="Shopping Cart"/>
                         <span class="cart-count" id="cart-count">0</span>
                     </div>
-                    
                     <button class="logout-btn" onclick="logout()">Logout</button>
-
                     <button class="menu-toggle" id="menu-toggle">
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -65,48 +71,51 @@
     <div class="cart-overlay" id="cart-overlay"></div>
 
     <main>
-        <section id="hero" class="hero-section">
+        <section class="breadcrumb">
             <div class="container">
-                <h1>Discover Your Signature Scent</h1>
-                <p>An exclusive collection of perfumes that captivate the senses</p>
-                <a href="products.html" class="btn">Shop Now</a>
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="editProfile.html">My Profile</a> >
+                    <span>Order History</span>
+                </nav>
             </div>
         </section>
 
-        <section id="featured" class="featured-section">
+        <section class="order-history-section">
             <div class="container">
-                <h2>Featured Products</h2>
-                <p class="section-subtitle">Handpicked fragrances just for you</p>
-                <div class="product-grid" id="featured-products-grid">
-                    <!-- Featured products will be added dynamically here -->
+                <h1>Order History</h1>
+                
+                <div class="order-filters">
+                    <div class="filter-group">
+                        <label for="status-filter">Filter by Status:</label>
+                        <select id="status-filter">
+                            <option value="all">All Orders</option>
+                            <option value="Processing">Processing</option>
+                            <option value="inqueue">In Queue</option>
+                            <option value="out to ship">Out to Ship</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="date-filter">Filter by Date:</label>
+                        <select id="date-filter">
+                            <option value="all">All Time</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="365">Last Year</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="view-all-container">
-                    <a href="products.html" class="view-all-btn">View All Products</a>
+
+                <div class="orders-list" id="orders-list">
+                    <!-- Orders will be populated by JavaScript -->
                 </div>
-            </div>
-        </section>
 
-        <section id="about" class="about-section">
-            <div class="container">
-                <h2>Our Story</h2>
-                <p>At L'Essence, we believe that fragrance is not just a scent, but an identity and expression of self. We strive to bring you the finest perfumes from around the world, placing them at your fingertips.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>For any inquiries, you can reach us via:</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <strong>📧 Email:</strong> <a href="mailto:ahmed185taha@gmail.com">ahmed185taha@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>📞 Phone:</strong> <a href="tel:+201063675209">+20 106 367 5209</a>
-                    </div>
-                    <div class="contact-item">
-                        <strong>💬 WhatsApp:</strong> <a href="https://wa.me/201063675209">+20 106 367 5209</a>
-                    </div>
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prev-page">Previous</button>
+                    <span class="pagination-info" id="pagination-info">Page 1 of 1</span>
+                    <button class="pagination-btn" id="next-page">Next</button>
                 </div>
             </div>
         </section>
@@ -117,8 +126,9 @@
             <p>&copy; 2024 L'Essence. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="../../javascript/localStorge.js"></script>
+    
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/historyOrder.js"></script>
 </body>
 </html>

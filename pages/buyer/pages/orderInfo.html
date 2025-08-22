@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - L'Essence</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="user-icon" id="user-icon">
+                        <a href="editProfile.html">
+                            <img src="https://img.icons8.com/material-outlined/24/ffffff/user--v1.png" alt="User Profile"/>
+                        </a>
+                    </div>
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" alt="Shopping Cart"/>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkOut.html'">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="orderHistory.html">Order History</a> >
+                    <span>Order Details</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="order-info-section">
+            <div class="container">
+                <div class="order-header">
+                    <h1>Order #<span id="order-id">Loading...</span></h1>
+                    <div class="order-status-badge" id="order-status-badge">Processing</div>
+                </div>
+
+                <div class="order-info-grid">
+                    <div class="order-details">
+                        <h2>Order Details</h2>
+                        <div class="info-card">
+                            <div class="info-item">
+                                <strong>Order Date:</strong>
+                                <span id="order-date">Loading...</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Order Status:</strong>
+                                <span id="order-status">Loading...</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Payment Method:</strong>
+                                <span id="payment-method">Loading...</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Payment Status:</strong>
+                                <span id="payment-status">Loading...</span>
+                            </div>
+                        </div>
+
+                        <h2>Shipping Information</h2>
+                        <div class="info-card">
+                            <div class="info-item">
+                                <strong>Shipping Address:</strong>
+                                <span id="shipping-address">Loading...</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Shipping Method:</strong>
+                                <span id="shipping-method">Standard Shipping</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Estimated Delivery:</strong>
+                                <span id="estimated-delivery">Loading...</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Tracking Number:</strong>
+                                <span id="tracking-number">Loading...</span>
+                                <a href="#" class="track-link">Track Package</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+                        <div class="summary-card">
+                            <div class="order-items" id="order-items">
+                                <!-- Order items will be populated by JavaScript -->
+                            </div>
+                            
+                            <div class="order-totals">
+                                <div class="total-row">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">$0.00</span>
+                                </div>
+                                <div class="total-row">
+                                    <span>Shipping</span>
+                                    <span id="shipping">$0.00</span>
+                                </div>
+                                <div class="total-row">
+                                    <span>Tax</span>
+                                    <span id="tax">$0.00</span>
+                                </div>
+                                <div class="total-row grand-total">
+                                    <span>Total</span>
+                                    <span id="grand-total">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-actions">
+                            <button class="btn btn-primary" id="reorder-btn">Reorder</button>
+                            <button class="btn btn-secondary" id="cancel-order-btn">Cancel Order</button>
+                            <a href="historyOrder.html" class="btn btn-secondary">Order History</a>
+                            <!-- <button class="btn btn-secondary" id="contact-support-btn">Contact Support</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer-bottom">
+        <div class="container">
+            <p>&copy; 2024 L'Essence. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/orderInfo.js"></script>
+</body>
+</html>

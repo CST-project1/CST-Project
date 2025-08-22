@@ -1,63 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../pages/css/navbar.css">
-    <title>Order Confirmation</title>
-    <style>
-        
-        .card {
-            width: 50vw;
-            height: 65vh;
-            margin: 100px auto;
-        }
-        
-    </style>
+    <title>Order Confirmation - L'Essence</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg">
-        <div class="container">
-            <a href="#" class="navbar-brand">L'Essence</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="products.html" class="nav-link">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Contact</a>
-                    </li>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
+                <div class="nav-right">
+                    <div class="user-icon" id="user-icon">
+                        <a href="editProfile.html">
+                            <img src="https://img.icons8.com/material-outlined/24/ffffff/user--v1.png" alt="User Profile"/>
+                        </a>
+                    </div>
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" alt="Shopping Cart"/>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
             </div>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
         </div>
-    </nav>
-    <div class="container card text-center align-items-center justify-content-center">
-            <h1 class="text-success">Order Placed Successfully!</h1>
-            <p>Thank you for your purchase.</p>
-            <p>Your order ID is : <strong></strong></p>
-            <p>We've sent a confirmation email to : <strong></strong></p>
-            <a href="index.html" class="btn btn-primary  col-md-3">Continue Shopping</a>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkOut.html'">Checkout</button>
+        </div>
     </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="checkOut.html">Checkout</a> >
+                    <span>Order Confirmation</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="confirmation-section">
+            <div class="container">
+                <div class="confirmation-card">
+                    <div class="confirmation-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h1>Thank You for Your Order!</h1>
+                    <p class="confirmation-message">Your order has been placed successfully. We've sent a confirmation email with your order details.</p>
+
+                    <div class="order-details">
+                        <div class="detail-item">
+                            <strong>Order Number:</strong>
+                            <span id="order-number">#</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Order Date:</strong>
+                            <span id="order-date"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Estimated Delivery:</strong>
+                            <span id="delivery-date"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Total Amount:</strong>
+                            <span id="order-total"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Shipping Address:</strong>
+                            <span id="shipping-address"></span>
+                        </div>
+                    </div>
+
+                    <div class="confirmation-actions">
+                        <a href="orderInfo.html" id="view-order-btn" class="btn btn-primary">View Order Details</a>
+                        <a href="products.html" class="btn btn-secondary">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="main-footer-bottom">
         <div class="container">
             <p>&copy; 2024 L'Essence. All rights reserved.</p>
         </div>
     </footer>
-
+    
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/orderConfirmation.js"></script>
 </body>
-
 </html>
