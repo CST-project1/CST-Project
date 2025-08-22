@@ -1,0 +1,166 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - L'Essence</title>   
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <div class="user-icon" id="user-icon">
+                        <a href="editProfile.html">
+                            <img src="https://img.icons8.com/material-outlined/24/ffffff/user--v1.png" alt="User Profile"/>
+                        </a>
+                    </div>
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" alt="Shopping Cart"/>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkOut.html'">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    
+
+    <main>
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="editProfile.html">My Profile</a> >
+                    <span>Edit Profile</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="profile-section">
+            <div class="container">
+                <h1>Edit Profile</h1>
+                
+                <div class="profile-edit-grid">
+                    <div class="profile-picture-section">
+                        <div class="profile-picture">
+                            <img id="profile-image" src="../images/profile-pic.jpg" alt="Profile Picture">
+                            <label for="profile-picture-upload" class="change-picture-btn">
+                                Change Picture
+                            </label>
+                            <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="profile-form-section">
+                        <form id="edit-profile-form">
+                            <h2>Personal Information</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" required>
+                            </div>
+
+
+                            <h2>Change Password</h2>
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a href="editProfile.html" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Profile updated successfully!
+        </div>
+    </div>
+</div>
+
+    <footer class="main-footer-bottom">
+        <div class="container">
+            <p>&copy; 2024 L'Essence. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/editProfile.js"></script>
+</body>
+</html>  
+
