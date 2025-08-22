@@ -11,16 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!sellersTable) return;
         sellersTable.innerHTML = "";
 
-        const searchValue = searchInput.value.toLowerCase();
+        const searchValue = (searchInput ?.value || "").toLowerCase();
 
         sellers.filter(user => user.role === "Seller")
             .filter(seller => {
                 const store = stores.find(s => s.id === seller.store_id);
                 const storeName = store ? store.name : "";
+
+                const sellerName = (seller.name || "").toLowerCase();
+                const sellerEmail = (seller.email || "").toLowerCase();
+                const sellerId = String(seller.id || "");
+
                 return (
-                    seller.name.toLowerCase().includes(searchValue) ||
-                    seller.email.toLowerCase().includes(searchValue) ||
-                    String(seller.id).includes(searchValue) ||
+                    sellerName.includes(searchValue) ||
+                    sellerEmail.includes(searchValue) ||
+                    sellerId.includes(searchValue) ||
                     storeName.toLowerCase().includes(searchValue)
                 );
             })
@@ -38,18 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="d-flex align-items-center">
                             <a href="sellerInfo.html?id=${seller.id}" class="d-flex align-items-center">
                             <img src="${seller.logo ? '../../../images/' + seller.logo : '../../../../images/store1.jpg'}" 
-                                 alt="${seller.name}" 
+                                 alt="${seller.name || "No Name"}" 
                                  class="me-3 rounded-circle" 
                                  style="width:40px;height:40px;object-fit:cover;">
                             <div>
-                                <div class="fw-semibold">${seller.name}</div>
+                                <div class="fw-semibold">${seller.name || "No Name"}</div>
                                 <div class="text-muted small">#${seller.id}</div>
                             </div>
                             </a>
                         </div>
                     </td>
-                    <td>${seller.email}</td>
-                    <td>${seller.gender}</td>
+                    <td>${seller.email || "No Email"}</td>
+                    <td>${seller.gender || "-"}</td>
                     <td>${storeName}</td>
                     <td>
                         <span class="badge ${status === "active" ? "bg-success" : "bg-danger"}">${status}</span>
@@ -78,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.deleteSeller = deleteSeller;
     window.renderSellers = renderSellers;
 
-    // شغل البحث
+    // البحث
     if (searchInput) {
         searchInput.addEventListener("input", renderSellers);
     }
