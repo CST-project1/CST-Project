@@ -4,180 +4,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <title>Checkout</title>
-    <style>
-        .mainDiv {
-            width: 50vw;
-            height: auto;
-            margin: 100px auto;
-        }
-
-        .card {
-            width: 50vw;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .subCard {
-            width: 40vw;
-            height: auto;
-            margin: 20px auto;
-        }
-
-        .subCard>div {
-            padding: 2px 10px 0px 10px;
-        }
-
-        img {
-            margin-top: 5px;
-            width: 50px;
-            height: 50px;
-        }
-    </style>
+    <title>Checkout - L'Essence</title>
+    <!-- <link rel="stylesheet" href="../css/nav-footer.css"> -->
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg">
-        <div class="container">
-            <a href="index.html" class="navbar-brand">L'Essence</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="products.html" class="nav-link">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html#about" class="nav-link">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html#contact" class="nav-link">Contact</a>
-                    </li>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">L'Essence</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
+                <div class="nav-right">
+                    <div class="user-icon" id="user-icon">
+                        <a href="editProfile.html">
+                            <img src="https://img.icons8.com/material-outlined/24/ffffff/user--v1.png"
+                                alt="User Profile" />
+                        </a>
+                    </div>
+                    <div class="cart-icon" id="cart-icon">
+                        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"
+                            alt="Shopping Cart" />
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+                </div>
             </div>
+        </nav>
+    </header>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
         </div>
-    </nav>
-    <div class="mainDiv align-items-center">
-        <h1 class="mb-4">Checkout</h1>
-
-        <form action="orderConfirmation.html" class="form-group needs-validation" novalidate>
-            <label for="fname">First Name</label>
-            <input type="text" name="fname" id="first-name" class="form-control mb-4" required>
-
-            <label for="lname">Last Name</label>
-            <input type="text" name="lname" id="last-name" class="form-control mb-4" required>
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control mb-4" required>
-
-            <label for="phone">Phone</label>
-            <input type="tel" name="phone" id="phone" class="form-control mb-4" required>
-
-            <label for="address">Address</label>
-            <input type="text" name="address" id="address" class="form-control mb-4" required>
-
-            <label for="country">Country</label>
-            <select name="country" id="country" class="form-control mb-4" required>
-                <option value="">choose...</option>
-                <option value="Canada">Canda</option>
-                <option value="USA">United State</option>
-            </select>
-
-            <label for="state">State</label>
-            <select name="state" id="state" class="form-control mb-4" required>
-                <option value="">choose...</option>
-                <option value="CA">California</option>
-                <option value="NY">New York</option>
-            </select>
-
-            <label for="zip">Zip</label>
-            <input type="text" name="zip" id="zip" class="form-control mb-4" required>
-
-            <hr class="my-4">
-            <h1 class="mb-4">Payment</h1>
-
-            <div class="form-check">
-                <input type="radio" name="paymentMethod" id="credit" class="form-check-input" checked required>
-                <label for="credit" class="form-check-label">Credit card</label>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cart-total">0.00</span></strong>
             </div>
-
-            <div class="form-check mb-4">
-                <input type="radio" name="paymentMethod" id="paypal" class="form-check-input" required>
-                <label for="paypal" class="form-check-label">PayPal</label>
-            </div>
-
-            <label for="cardname">Name on card</label>
-            <input type="text" name="cardname" id="card-name" class="form-control mb-4" required>
-
-            <label for="cardnumber">Card number</label>
-            <input type="text" name="cardnumber" id="card-number" class="form-control mb-4" required>
-
-            <label for="expire">Expiration</label>
-            <input type="text" name="expire" id="expire" class="form-control mb-4" required>
-
-            <label for="cvv">CVV</label>
-            <input type="text" name="cvv" id="cvv" class="form-control mb-4" required>
-
-            <input type="submit" class="btn btn-dark my-4" value="Place Order">
-        </form>
-        <hr class="my-4">
-
-        <div class="card">
-            <h1 class="card-header">Order Summary</h1>
-            <div class="d-flex">
-                <img src="" alt="Product image"> <!-- when customer make order in products page -->
-                <div class="ms-3 my-2">
-                    <h6 class="my-0"><!-- Product name --></h6>
-                    <caption><!-- Brief description --> </caption>
-                </div>
-            </div>
-            <div class="d-flex">
-                <img src="" alt="Product image"> <!-- when customer make order in products page --> 
-                <div class="ms-3 my-2">
-                    <h6 class="my-0"><!-- Product name --></h6>
-                    <caption><!-- Brief description --></caption>
-                </div>
-            </div>
-            <div class="subCard card">
-                <div class="d-flex justify-content-between">
-                    <p>Subtotal</p>
-                    <span>$20.00</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p>Shipping</p>
-                    <span>$5.00</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p>Tax</p>
-                    <span>$2.00</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p class="text-success">Promo discount</p>
-                    <span class="text-success">-$5.00</span>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <p>Total (USD)</p>
-                    <span>$22.50</span>
-                </div>
-            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkOut.html'">Checkout</button>
         </div>
     </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <section class="breadcrumb">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Home</a> >
+                    <a href="cart.html">Cart</a> >
+                    <span>Checkout</span>
+                </nav>
+            </div>
+        </section>
+
+        <section class="checkout-section">
+            <div class="container">
+                <h1>Checkout</h1>
+
+                <div class="checkout-grid">
+                    <div class="checkout-form">
+                        <h2>Shipping Information</h2>
+                        <form id="checkout-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Shipping Address</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="us">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="ca">Canada</option>
+                                    <option value="eg">Egypt</option>
+                                </select>
+                            </div>
+
+                            <h2>Payment Method</h2>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="credit-card" name="payment" value="credit-card" checked>
+                                    <label for="credit-card">Credit Card</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="paypal" name="payment" value="paypal">
+                                    <label for="paypal">PayPal</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="cash" name="payment" value="cash">
+                                    <label for="cash">Cash on Delivery</label>
+                                </div>
+                            </div>
+
+                            <div class="credit-card-form" id="credit-card-form">
+                                <div class="form-group">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-name">Name on Card</label>
+                                    <input type="text" id="card-name">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="place-order-btn">Place Order</button>
+                        </form>
+                    </div>
+
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+                        <div class="order-items" id="checkout-items">
+                            <!-- Items will be populated by JavaScript -->
+                        </div>
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Shipping</span>
+                                <span id="shipping">$5.99</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Tax</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Total</span>
+                                <span id="grand-total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="main-footer-bottom">
         <div class="container">
             <p>&copy; 2024 L'Essence. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js files/checkout.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/checkout.js"></script>
 </body>
 
 </html>
-
