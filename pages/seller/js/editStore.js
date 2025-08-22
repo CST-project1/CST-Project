@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "Seller") return;
+
+  const brandName = document.getElementById("brandName");
+  brandName.textContent = currentUser.brand_name;
+});
+document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("currentUser"));
 
   // Fill profile card
