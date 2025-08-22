@@ -24,34 +24,48 @@
             transform: translateY(-50%);
             color: gray;
         }
+
+        .filters-row .col-md-3 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filters-row label {
+            font-weight: 500;
+        }
     </style>
 </head>
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
+        <!-- Sidebar -->
         <div id="sidebar-container"></div>
+
+        <!-- Main Content -->
         <main class="flex-grow-1 p-3">
             <h2 class="mb-4">Product Management</h2>
 
             <!-- Filters -->
-            <div class="row g-3 mb-4">
-                <div class="col-md-3 search-box">
-                    <i class="fa-solid fa-search"></i>
+            <div class="row g-3 mb-4 p-3 bg-light rounded shadow-sm align-items-center filters-row">
+                <div class="col-md-3">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search by name, id, category">
                 </div>
+
                 <div class="col-md-3">
                     <select id="categoryFilter" class="form-select">
                         <option value="all">All Categories</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="Accessories">Accessories</option>
-                        <option value="Gaming">Gaming</option>
-                        <option value="Audio">Audio</option>
+                        <option value="men">Men Perfume</option>
+                        <option value="women">Women Perfume</option>
+                        <option value="unisex">Unisex Perfume</option>
                     </select>
                 </div>
+
                 <div class="col-md-3">
+                    <label for="priceRange" class="form-label d-block">Max Price: <span
+                            id="priceValue">1000</span></label>
                     <input type="range" id="priceRange" min="0" max="1000" value="1000" class="form-range">
-                    <small id="priceLabel">Price: $0 - $1000</small>
                 </div>
+
                 <div class="col-md-3">
                     <select id="stockFilter" class="form-select">
                         <option value="all">All Stock</option>
@@ -61,7 +75,7 @@
                 </div>
             </div>
 
-            <!-- Table -->
+            <!-- Products Table -->
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
                     <thead class="table-light">
@@ -94,9 +108,10 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js" defer></script>
-    <script src="../js/products.js" defer></script>
+    <script src="../js/aside.js"></script>
+    <script src="../js/products.js"></script>
 </body>
 
 </html>

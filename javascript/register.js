@@ -23,7 +23,8 @@ document.getElementById("registerForm").addEventListener("submit", function (e) 
         password: document.getElementById("password").value,
         email: document.getElementById("email").value,
         phone: document.getElementById("phone").value,
-        role: document.getElementById("role").value
+        role: document.getElementById("role").value,
+        gender: document.getElementById("gender").value
     };
 
     if (data.role === "Seller") {
