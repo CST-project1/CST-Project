@@ -3,6 +3,35 @@ function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = getCurrentUser();
+  if (!currentUser || currentUser.role !== "Seller") return;
+
+  const brandName = document.getElementById("brandName");
+  brandName.textContent = currentUser.brand_name;
+
+  const allProducts = getProducts();
+  const sellerProducts = allProducts.filter(p => p.store_id === currentUser.store_id);
+  // Stats
+  const totalProducts = sellerProducts.length;
+  const inStockUnits = sellerProducts.reduce((sum, p) => sum + Number(p.stock), 0);
+
+  // Update UI
+  document.getElementById("totalProducts").innerText = totalProducts;
+  document.getElementById("inStockUnits").innerText = inStockUnits;
+});
+ 
+// logout function
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutLink = document.getElementById("logout-link");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // stop <a> from reloading page
+      logout(); // call logout from storage.js
+    });
+  }
+});
+
   
 
 

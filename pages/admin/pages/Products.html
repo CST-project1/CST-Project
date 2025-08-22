@@ -4,216 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
     <link rel="stylesheet" href="../../bootstrap-5.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/aside.css">
-    <title>Sidebar Toggle</title>
+    <style>
+        .search-box {
+            position: relative;
+        }
 
+        .search-box input {
+            padding-left: 2.2rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: gray;
+        }
+    </style>
 </head>
-<!--    
-
-FETCH all product
-
-serch product by name or category or id 
-
-filter product by category
-
-filter product by salay(filter by salay)
-
-filter product by discount(stock or out of stock)
-
-when click on product show product info by bassed on product id
-
-when click to edit product show product edit bage  by bassed on product id
-
-when click to delete product show aleart to confirm delete product
-
--->
 
 <body>
     <div class="container-fluid vh-100 d-flex p-0">
-        <aside id="sidebar" class="bg-light p-2 col-md-2 d-none d-md-block col-sm-12">
-            <button id="toggleBtn" class="p-2 rounded border mb-3 w-100">
-                ☰
-            </button>
-            <ul id="menuList" class="list-group">
-                <li class="list-group-item mb-2 rounded ">
-                    <a href="index.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>🏠 </span>
-                        <span class="d-md-none menu-text d-lg-inline">Dashboard</span>
-                    </a>
-                </li>
+        <div id="sidebar-container"></div>
+        <main class="flex-grow-1 p-3">
+            <h2 class="mb-4">Product Management</h2>
 
-                <li class="list-group-item rounded mb-2 d-flex align-items-center active">
-                    <a href="Products.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>🧴 </span>
-                        <span class="d-md-none menu-text d-lg-inline">Products</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="UsersPage.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>👤 </span>
-                        <span class="d-md-none menu-text d-lg-inline">Customers</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="SellerPage.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>👤 </span>
-                        <span class="d-md-none menu-text d-lg-inline">Seller</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="OrdersPage.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>📦 </span>
-                        <span class="d-md-none menu-text d-lg-inline">Orders</span>
-                    </a>
-                </li>
-                <li class="list-group-item rounded mb-2 d-flex align-items-center">
-                    <a href="../../../login.html"
-                        class="d-flex align-items-center justify-content-center justify-content-lg-start w-100 text-decoration-none">
-                        <span>🔓</span>
-                        <span class="d-md-none menu-text d-lg-inline">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-
-        <main class="flex-grow-1 p-3 ">
-            <h1 class="text-2xl font-bold  text-gray-800">Product Management</h1>
-
-            <div class="grid grid-cols-1 gap-4 mb-6 text-gray-800 d-flex">
-                <div class="relative">
-                    <i class="fa-solid fa-search absolute left-3 top-3 text-gray-400"></i>
-                    <input type="text" placeholder="Search products..."
-                        class="pl-10 p-2 w-full rounded-lg border dark:bg-gray-700 dark:border-gray-600" value=""
-                        onchange="" />
+            <!-- Filters -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3 search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name, id, category">
                 </div>
-                <select onchange="" class="p-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
-                    <option value="all">All Categories</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Accessories">Accessories</option>
-                    <option value="Gaming">Gaming</option>
-                    <option value="Audio">Audio</option>
-                </select>
-                <div>
-                    <input type="range" min="0" max="1000" value="0" onchange="" class="w-full" />
-                    <div class="text-sm">Price: $0 - $1000</div>
+                <div class="col-md-3">
+                    <select id="categoryFilter" class="form-select">
+                        <option value="all">All Categories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Audio">Audio</option>
+                    </select>
                 </div>
-                <select onchange="" class="p-2 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
-                    <option value="all">All Stock</option>
-                    <option value="inStock">In Stock</option>
-                    <option value="outOfStock">Out of Stock</option>
-                </select>
+                <div class="col-md-3">
+                    <input type="range" id="priceRange" min="0" max="1000" value="1000" class="form-range">
+                    <small id="priceLabel">Price: $0 - $1000</small>
+                </div>
+                <div class="col-md-3">
+                    <select id="stockFilter" class="form-select">
+                        <option value="all">All Stock</option>
+                        <option value="inStock">In Stock</option>
+                        <option value="outOfStock">Out of Stock</option>
+                    </select>
+                </div>
             </div>
+
+            <!-- Table -->
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
-                    <thead class="table-light table-cell-padding-x: 0.5rem">
+                    <thead class="table-light">
                         <tr>
-                            <th scope="col" class="text-blue-800">product</th>
-                            <th scope="col" class="text-blue-800">category</th>
-                            <th scope="col" class="text-blue-800">price</th>
-                            <th scope="col" class="text-blue-800">amount</th>
-                            <th scope="col" class="text-blue-800">status</th>
-                            <th scope="col" class="text-blue-800">actions</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- منتج 1 -->
-                        <tr>
-                            <td> <a href="ProductInfo.html">
-
-                                    <div class="d-flex align-items-center">
-                                        <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
-                                            style="width: 40px; height: 40px; object-fit: cover;">
-                                        <div>
-                                            <div class="fw-semibold">Product 1</div>
-                                            <div class="text-muted small">#P-101</div>
-                                        </div>
-
-                                    </div>
-                                </a>
-
-                            </td>
-                            <td class="text-muted">Electronics</td>
-                            <td>$299.00</td>
-                            <td>12</td>
-                            <td>
-                                <span class="badge bg-success">active</span>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="editProduct.html" class="btn btn-sm btn-outline-primary">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td> <a href="ProductInfo.html">
-
-                                    <div class="d-flex align-items-center">
-                                        <img src="../../../images/logo.jpg" alt="Product 1" class="me-3 rounded-circle"
-                                            style="width: 40px; height: 40px; object-fit: cover;">
-                                        <div>
-                                            <div class="fw-semibold">Product 1</div>
-                                            <div class="text-muted small">#P-101</div>
-                                        </div>
-
-                                    </div>
-                                </a>
-
-                            </td>
-                            <td class="text-muted">Electronics</td>
-                            <td>$299.00</td>
-                            <td>12</td>
-                            <td>
-                                <span class="badge bg-success">active</span>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="" class="btn btn-sm btn-outline-primary">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-outline-danger">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-
-
-                    </tbody>
+                    <tbody id="productTableBody"></tbody>
                 </table>
             </div>
+        </main>
 
-        </main> <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">
-            ☰
-        </button>
+        <!-- Mobile menu btn -->
+        <button class="btn btn-primary d-md-none position-fixed m-3" id="mobileMenuBtn">☰</button>
     </div>
+
+    <!-- Offcanvas mobile -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
         <div class="offcanvas-header">
             <h5>Menu</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body p-0">
-            <ul id="mobileMenuList" class="list-group list-group-flush "></ul>
+            <ul id="mobileMenuList" class="list-group list-group-flush"></ul>
         </div>
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js">
-
-    </script>
+    <script src="../js/aside.js" defer></script>
+    <script src="../js/products.js" defer></script>
 </body>
 
 </html>
