@@ -32,7 +32,7 @@ if (store) {
             productContainer.innerHTML += `
                 <div class="col-md-4 mb-3">
                     <div class="card h-40">
-                        <img src="../../${p.image || 'images.jpeg'}" class="card-img-top h-30 !important  object-fit-cover"  alt="${p.name}" >
+                        <img src="../../../images/${p.image || 'images.jpeg'}" class="card-img-top h-30 !important  object-fit-cover"  alt="${p.name}" >
                         <div class="card-body">
                             <h5 class="card-title">${p.name}</h5>
                             <p class="card-text">$${p.price} - ${p.description || ''}</p>

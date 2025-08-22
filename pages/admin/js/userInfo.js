@@ -10,7 +10,7 @@ if (user) {
     document.getElementById("userRole").textContent = user.role || "-";
     document.getElementById("userGender").textContent = user.gender || "-";
     document.getElementById("userLocation").value = user.location || "";
-    document.getElementById("profileImg").src = user.profile_pic ? "../../../images/" + user.profile_pic : "../../../images/logo.jpg";
+    document.getElementById("profileImg").src = user.logo ? "../../../images/" + user.logo : "../../../images/1.jpg";
 }
 
 // Update Location

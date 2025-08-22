@@ -12,8 +12,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- sidemenu Button  -->
-    <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
+  <!-- sidemenu Button  -->
+  <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
     
 
     <!-- Sidebar -->
@@ -29,13 +29,13 @@
             <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
             <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
             <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
-            <li class="logout"><a href="#"><span>🔓</span> Logout</a>
+            <li class="logout"><a href="#" id="logout-link"><span>🔓</span> Logout</a>
         </ul>
     </aside>
 
     <!-- Main content -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- Top bar -->
+      <!-- Main content -->
       <div class="content">
         <h1>My Products</h1>
         <a href="addProduct.html" class="btn btn-add"><i class="fa-plus"> Add Product</i></a>
@@ -62,7 +62,7 @@
 
       <nav>
         <ul class="pagination justify-content-center" id="pagination">
-          <!-- Pagination buttons will be generated dynamically -->
+
         </ul>
       </nav>
     </main>
@@ -76,4 +76,4 @@
 <script src="../js/storage.js"></script>
 <script src="../js/productMange.js"></script>
 </body>
-</html>
+</html> 

@@ -1,65 +1,87 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+document.addEventListener("DOMContentLoaded", () => {
+    const sellersTable = document.getElementById("sellersTable");
+    const searchInput = document.getElementById("searchInput");
 
-    // فلترة البياّنات بحيث يعرض فقط Sellers
-    let sellers = users.filter(user => user.role === "Seller");
+    let sellers = JSON.parse(localStorage.getItem("users")) || [];
+    let stores = JSON.parse(localStorage.getItem("stores")) || [];
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    let tbody = document.getElementById("sellersTable");
-    let searchInput = document.querySelector("input[type='text']");
+    function renderSellers() {
+        if (!sellersTable) return;
+        sellersTable.innerHTML = "";
 
-    function renderTable(data) {
-        tbody.innerHTML = "";
+        const searchValue = searchInput.value.toLowerCase();
 
-        if (data.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No sellers found</td></tr>`;
-            return;
-        }
+        sellers.filter(user => user.role === "Seller")
+            .filter(seller => {
+                const store = stores.find(s => s.id === seller.store_id);
+                const storeName = store ? store.name : "";
+                return (
+                    seller.name.toLowerCase().includes(searchValue) ||
+                    seller.email.toLowerCase().includes(searchValue) ||
+                    String(seller.id).includes(searchValue) ||
+                    storeName.toLowerCase().includes(searchValue)
+                );
+            })
+            .forEach(seller => {
+                const store = stores.find(s => s.id === seller.store_id);
+                const storeName = store ? store.name : "No Store";
 
-        data.forEach((user) => {
-            tbody.innerHTML += `
-                <tr>
+                const hasProducts = products.some(p => p.seller_id === seller.id);
+                const hasOrders = orders.some(o => o.seller_id === seller.id);
+                const status = hasProducts || hasOrders ? "active" : "inactive";
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
                     <td>
                         <div class="d-flex align-items-center">
-                            <a href="sellerInfo.html?id=${user.id}" class="d-flex align-items-center text-decoration-none text-dark">
-                                <img src="${user.profile_pic || '../../../images/logo.jpg'}" 
-                                     alt="profile" width="40" height="40" class="rounded-circle me-2">
-                                <div>
-                                    <div class="fw-semibold">${user.username}</div>
-                                    <div class="text-muted small">#${user.id || 'N/A'}</div>
-                                </div>
+                            <a href="sellerInfo.html?id=${seller.id}" class="d-flex align-items-center">
+                            <img src="${seller.logo ? '../../../images/' + seller.logo : '../../../../images/store1.jpg'}" 
+                                 alt="${seller.name}" 
+                                 class="me-3 rounded-circle" 
+                                 style="width:40px;height:40px;object-fit:cover;">
+                            <div>
+                                <div class="fw-semibold">${seller.name}</div>
+                                <div class="text-muted small">#${seller.id}</div>
+                            </div>
                             </a>
                         </div>
                     </td>
-                    <td>${user.email}</td>
-                    <td>${user.gender || '-'}</td>
-                    <td>${user.store_name || 'No Store'}</td>
+                    <td>${seller.email}</td>
+                    <td>${seller.gender}</td>
+                    <td>${storeName}</td>
                     <td>
-                        <span class="badge ${user.status === "active" ? "bg-success" : "bg-danger"}">
-                            ${user.status || 'inactive'}
-                        </span>
+                        <span class="badge ${status === "active" ? "bg-success" : "bg-danger"}">${status}</span>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-outline-primary me-1">
+                        <button onclick="editSeller('${seller.id}')" class="btn btn-sm btn-outline-primary me-1">
                             <i class="fa-solid fa-pen-to-square"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-outline-danger">
+                        </button>
+                        <button onclick="deleteSeller('${seller.id}')" class="btn btn-sm btn-outline-danger">
                             <i class="fa-solid fa-trash"></i>
-                        </a>
+                        </button>
                     </td>
-                </tr>
-            `;
-        });
+                `;
+                sellersTable.appendChild(row);
+            });
     }
 
-    renderTable(sellers);
-    searchInput.addEventListener("input", function () {
-        let term = this.value.toLowerCase();
-        let filtered = sellers.filter(user =>
-            (user.username && user.username.toLowerCase().includes(term)) ||
-            (user.email && user.email.toLowerCase().includes(term)) ||
-            (user.id && user.id.toString().toLowerCase().includes(term)) ||
-            (user.store_name && user.store_name.toLowerCase().includes(term))
-        );
-        renderTable(filtered);
-    });
+    function deleteSeller(id) {
+        if (confirm("Are you sure you want to delete this seller?")) {
+            sellers = sellers.filter(s => s.id !== id);
+            localStorage.setItem("users", JSON.stringify(sellers));
+            renderSellers();
+        }
+    }
+
+    window.deleteSeller = deleteSeller;
+    window.renderSellers = renderSellers;
+
+    // شغل البحث
+    if (searchInput) {
+        searchInput.addEventListener("input", renderSellers);
+    }
+
+    renderSellers();
 });

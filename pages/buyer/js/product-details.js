@@ -21,230 +21,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const increaseQtyBtn = document.getElementById('increase-qty');
     const addToCartMainBtn = document.getElementById('add-to-cart-main');
     const relatedProductsGrid = document.getElementById('related-products-grid');
-    
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Get current user from local storage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+    // If no user is logged in, redirect to login page
+    if (!currentUser) {
+        window.location.href = '../../../login.html';
+        return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
     let currentProduct = null;
+    const allProducts = JSON.parse(localStorage.getItem('products')) || [];
 
-    // All products data (updated with local images)
-    const allProducts = [
-        // Men's Fragrances
-        { 
-            id: 1, 
-            name: 'Golden Desert', 
-            price: 89.99, 
-            category: 'men', 
-            image: '../images/Golden-Desert-6ml.jpg', 
-            featured: true,
-            description: 'A luxurious blend that captures the essence of golden sand dunes at sunset. This sophisticated fragrance combines warm amber notes with exotic spices, creating an unforgettable masculine scent that exudes confidence and mystery.',
-            brand: "L'Essence Elite",
-            type: 'Eau de Parfum',
-            topNotes: 'Bergamot, Cardamom, Pink Pepper',
-            heartNotes: 'Saffron, Rose, Cinnamon',
-            baseNotes: 'Amber, Sandalwood, Vanilla'
-        },
-        { 
-            id: 2, 
-            name: 'Royal Oud', 
-            price: 119.99, 
-            category: 'men', 
-            image: '../images/CREEDROYALOUD.avif', 
-            featured: true,
-            description: 'An opulent fragrance fit for royalty. This rich and complex scent features the finest oud wood, balanced with precious rose and warm spices. A true masterpiece for the discerning gentleman.',
-            brand: "L'Essence Royal",
-            type: 'Eau de Parfum',
-            topNotes: 'Rose, Saffron, Nutmeg',
-            heartNotes: 'Oud, Patchouli, Geranium',
-            baseNotes: 'Amber, Musk, Sandalwood'
-        },
-        { 
-            id: 3, 
-            name: 'Ocean Breeze', 
-            price: 59.99, 
-            category: 'men', 
-            image: '../images/OceanBreeze.avif', 
-            featured: false,
-            description: 'Fresh and invigorating like a morning walk by the sea. This aquatic fragrance combines crisp marine notes with citrus and herbs, perfect for the modern man who loves adventure.',
-            brand: "L'Essence Fresh",
-            type: 'Eau de Toilette',
-            topNotes: 'Sea Salt, Lemon, Mint',
-            heartNotes: 'Marine Notes, Lavender, Rosemary',
-            baseNotes: 'Driftwood, Musk, Ambergris'
-        },
-        { 
-            id: 4, 
-            name: 'Black Leather', 
-            price: 95.99, 
-            category: 'men', 
-            image: '../images/BlackLeather.jpg', 
-            featured: false,
-            description: 'Bold and masculine with a rebellious edge. This intense fragrance features rich leather accords complemented by smoky woods and dark spices, perfect for evening wear.',
-            brand: "L'Essence Dark",
-            type: 'Eau de Parfum',
-            topNotes: 'Black Pepper, Juniper, Grapefruit',
-            heartNotes: 'Leather, Tobacco, Violet',
-            baseNotes: 'Vetiver, Cedar, Patchouli'
-        },
-        { 
-            id: 5, 
-            name: 'Woody Spice', 
-            price: 79.99, 
-            category: 'men', 
-            image: '../images/WoodySpice.jpg', 
-            featured: false,
-            description: 'Warm and comforting with a sophisticated twist. This aromatic blend features rich woods enhanced by exotic spices, creating a timeless fragrance for the refined gentleman.',
-            brand: "L'Essence Classic",
-            type: 'Eau de Parfum',
-            topNotes: 'Cinnamon, Nutmeg, Orange',
-            heartNotes: 'Cedar, Pine, Clove',
-            baseNotes: 'Sandalwood, Vanilla, Musk'
-        },
-        
-        // Women's Fragrances
-        { 
-            id: 6, 
-            name: 'White Musk', 
-            price: 69.99, 
-            category: 'women', 
-            image: '../images/WhiteMusk.jpg', 
-            featured: true,
-            description: 'Pure elegance in a bottle. This delicate fragrance features soft white musk enhanced by gentle florals and clean cotton notes, creating an aura of sophisticated femininity.',
-            brand: "L'Essence Pure",
-            type: 'Eau de Parfum',
-            topNotes: 'White Tea, Bergamot, Pear',
-            heartNotes: 'White Musk, Jasmine, Lily',
-            baseNotes: 'Cotton, Vanilla, Soft Woods'
-        },
-        { 
-            id: 7, 
-            name: 'Cherry Blossom', 
-            price: 79.99, 
-            category: 'women', 
-            image: '../images/CherryBlossom.jpg', 
-            featured: true,
-            description: 'Romantic and enchanting like spring in full bloom. This floral masterpiece captures the delicate beauty of cherry blossoms with soft petals and sweet undertones.',
-            brand: "L'Essence Bloom",
-            type: 'Eau de Parfum',
-            topNotes: 'Cherry Blossom, Mandarin, Green Leaves',
-            heartNotes: 'Peony, Rose, Magnolia',
-            baseNotes: 'White Musk, Cedar, Soft Amber'
-        },
-        { 
-            id: 8, 
-            name: 'Midnight Rose', 
-            price: 94.99, 
-            category: 'women', 
-            image: '../images/MidnightRose.jpg', 
-            featured: false,
-            description: 'Mysterious and seductive, perfect for evening occasions. This intense floral fragrance features deep red roses enhanced by dark berries and sensual woods.',
-            brand: "L'Essence Night",
-            type: 'Eau de Parfum',
-            topNotes: 'Black Currant, Pink Pepper, Bergamot',
-            heartNotes: 'Red Rose, Peony, Freesia',
-            baseNotes: 'Patchouli, Vanilla, Dark Chocolate'
-        },
-        { 
-            id: 9, 
-            name: 'Vanilla Dreams', 
-            price: 74.99, 
-            category: 'women', 
-            image: '../images/VanillaDreams.jpg', 
-            featured: false,
-            description: 'Sweet and comforting like a warm embrace. This gourmand fragrance features rich vanilla enhanced by caramel and soft florals, creating a dreamy and addictive scent.',
-            brand: "L'Essence Sweet",
-            type: 'Eau de Parfum',
-            topNotes: 'Mandarin, Pear, Pink Pepper',
-            heartNotes: 'Vanilla Orchid, Jasmine, Orange Blossom',
-            baseNotes: 'Vanilla, Caramel, Sandalwood'
-        },
-        { 
-            id: 10, 
-            name: 'Floral Elegance', 
-            price: 84.99, 
-            category: 'women', 
-            image: '../images/FloralElegance.jpg', 
-            featured: false,
-            description: 'Timeless sophistication in every drop. This classic floral bouquet combines the finest white flowers with green notes, creating an elegant and refined fragrance.',
-            brand: "L'Essence Classic",
-            type: 'Eau de Parfum',
-            topNotes: 'Green Mandarin, Blackcurrant, Pear',
-            heartNotes: 'White Flowers, Jasmine, Rose',
-            baseNotes: 'White Musk, Cedar, Blonde Woods'
-        },
-        { 
-            id: 11, 
-            name: 'Pink Peony', 
-            price: 67.99, 
-            category: 'women', 
-            image: '../images/PinkPeony.jpg', 
-            featured: false,
-            description: 'Fresh and feminine with a playful spirit. This delightful fragrance captures the essence of blooming peonies with fruity top notes and a soft musky base.',
-            brand: "L'Essence Fresh",
-            type: 'Eau de Toilette',
-            topNotes: 'Pink Grapefruit, Lychee, Peony',
-            heartNotes: 'Rose, Magnolia, Lily of the Valley',
-            baseNotes: 'White Musk, Blonde Woods, Soft Amber'
-        },
-        
-        // Unisex Fragrances
-        { 
-            id: 12, 
-            name: 'Citrus Burst', 
-            price: 64.99, 
-            category: 'unisex', 
-            image: '../images/CitrusBurst.jpg', 
-            featured: false,
-            description: 'Energizing and uplifting for any occasion. This vibrant citrus blend combines zesty fruits with aromatic herbs, perfect for those who love fresh and invigorating scents.',
-            brand: "L'Essence Energy",
-            type: 'Eau de Toilette',
-            topNotes: 'Lemon, Orange, Grapefruit',
-            heartNotes: 'Mint, Basil, Green Tea',
-            baseNotes: 'White Musk, Light Woods, Vetiver'
-        },
-        { 
-            id: 13, 
-            name: 'Fresh Mint', 
-            price: 54.99, 
-            category: 'unisex', 
-            image: '../images/FreshMint.jpg', 
-            featured: false,
-            description: 'Cool and refreshing like a mountain breeze. This invigorating fragrance features crisp mint enhanced by eucalyptus and clean aquatic notes.',
-            brand: "L'Essence Cool",
-            type: 'Eau de Toilette',
-            topNotes: 'Spearmint, Eucalyptus, Lime',
-            heartNotes: 'Peppermint, Green Leaves, Aquatic Notes',
-            baseNotes: 'White Musk, Light Cedar, Clean Cotton'
-        },
-        { 
-            id: 14, 
-            name: 'Amber Glow', 
-            price: 89.99, 
-            category: 'unisex', 
-            image: '../images/AmberGlow.jpg', 
-            featured: false,
-            description: 'Warm and mysterious with universal appeal. This sophisticated fragrance features rich amber enhanced by spices and precious woods, suitable for any gender.',
-            brand: "L'Essence Luxury",
-            type: 'Eau de Parfum',
-            topNotes: 'Pink Pepper, Cardamom, Bergamot',
-            heartNotes: 'Amber, Rose, Cinnamon',
-            baseNotes: 'Sandalwood, Vanilla, Patchouli'
-        },
-        { 
-            id: 15, 
-            name: 'Green Tea', 
-            price: 49.99, 
-            category: 'unisex', 
-            image: '../images/GreenTea.jpg', 
-            featured: false,
-            description: 'Zen-like tranquility in a bottle. This calming fragrance features pure green tea enhanced by citrus and white flowers, perfect for meditation and relaxation.',
-            brand: "L'Essence Zen",
-            type: 'Eau de Toilette',
-            topNotes: 'Green Tea, Lemon, Mint',
-            heartNotes: 'White Tea, Jasmine, Ginger',
-            baseNotes: 'White Musk, Light Woods, Clean Cotton'
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+
+    // Find the product
+    const product = allProducts.find(p => p.id === productId);
+
+    // Display product details
+    function displayProductDetails() {
+        if (!product) {
+            // Handle product not found
+            return;
         }
-    ];
 
-    // ----- Navbar Toggle Functionality -----
+        document.getElementById('product-breadcrumb').textContent = product.name;
+        document.getElementById('main-product-image').src = product.image;
+        document.getElementById('product-category-badge').textContent = product.category;
+        document.getElementById('product-title').textContent = product.name;
+        document.getElementById('product-price').textContent = `$${product.price}`;
+        // ... set other details from the product object
+    }
+
+    // ----- Navbar Toggle Functionality ----- 
     if (menuToggle && navLinks){
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -260,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ----- Cart Functionality -----
-    
+
     // Open cart sidebar
     if (cartIcon) {
         cartIcon.addEventListener('click', () => {
@@ -401,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
         updateCartUI();
     }
 
@@ -425,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove product from cart
     function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== parseInt(productId));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
         updateCartUI();
     }
 
@@ -439,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const item = cart.find(item => item.id === parseInt(productId));
         if (item) {
             item.quantity = newQuantity;
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
             updateCartUI();
         }
     }
@@ -500,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.goToProductDetails = goToProductDetails;
     
     // Initialize
+    displayProductDetails();
     loadProductDetails();
     updateCartUI();
 });

@@ -24,11 +24,19 @@
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="nav-right">
+                    <div class="user-icon" id="user-icon">
+                        <a href="myProfile.html">
+                            <img src="https://img.icons8.com/material-outlined/24/ffffff/user--v1.png" alt="User Profile"/>
+                        </a>
+                    </div>
                     <div class="cart-icon" id="cart-icon">
                         <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png"
                             alt="Shopping Cart" />
                         <span class="cart-count" id="cart-count">0</span>
                     </div>
+
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+
                     <button class="menu-toggle" id="menu-toggle">
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -225,6 +233,7 @@
         </div>
     </footer>
 
+    <script src="../../javascript/localStorge.js"></script>
     <script src="../js/product-details.js"></script>
 </body>
 

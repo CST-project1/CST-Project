@@ -5,9 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/aside.css">
     <script src="../js/aside.js"></script>
-
     <title>Store Products</title>
-
 </head>
 
 <body>
@@ -19,15 +17,15 @@
                 <h2 class="mb-4">Store Information - Admin View</h2>
 
                 <!-- Store Info Card -->
-                <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4" id="storeCard">
                     <div class="card-body">
-                        <h4 class="mb-3">Luxury Scents</h4>
-                        <p><strong>Owner:</strong> Ahmed Ali</p>
-                        <p><strong>Email:</strong> luxuryscents@example.com</p>
-                        <p><strong>Phone:</strong> +20 123 456 789</p>
-                        <p><strong>Address:</strong> 123 Perfume Street, Cairo, Egypt</p>
-                        <p><strong>Store ID:</strong> #STR1023</p>
-                        <p><strong>Created On:</strong> 15 Feb 2024</p>
+                        <h4 class="mb-3" id="storeName"></h4>
+                        <p><strong>Owner:</strong> <span id="storeOwner"></span></p>
+                        <p><strong>Email:</strong> <span id="storeEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="storePhone"></span></p>
+                        <p><strong>Address:</strong> <span id="storeAddress"></span></p>
+                        <p><strong>Store ID:</strong> <span id="storeId"></span></p>
+                        <p><strong>Created On:</strong> <span id="storeCreated"></span></p>
                     </div>
                 </div>
 
@@ -36,19 +34,19 @@
                     <div class="col-md-4">
                         <div class="p-3 bg-light rounded shadow-sm">
                             <h5>Products</h5>
-                            <p class="fs-4 fw-bold text-primary">25</p>
+                            <p class="fs-4 fw-bold text-primary" id="storeProductsCount">0</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-3 bg-light rounded shadow-sm">
                             <h5>Orders</h5>
-                            <p class="fs-4 fw-bold text-success">120</p>
+                            <p class="fs-4 fw-bold text-success" id="storeOrdersCount">0</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="p-3 bg-light rounded shadow-sm">
                             <h5>Rating</h5>
-                            <p class="fs-4 fw-bold text-warning">4.8 ★</p>
+                            <p class="fs-4 fw-bold text-warning" id="storeRating">0 ★</p>
                         </div>
                     </div>
                 </div>
@@ -68,31 +66,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="https://via.placeholder.com/50" class="rounded" alt="Product"></td>
-                                <td>Luxury Perfume</td>
-                                <td>$350</td>
-                                <td>15</td>
-                                <td>45</td>
-                                <td>4.9</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://via.placeholder.com/50" class="rounded" alt="Product"></td>
-                                <td>Rose Oud</td>
-                                <td>$280</td>
-                                <td>10</td>
-                                <td>30</td>
-                                <td>4.7</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
+                        <tbody id="productsTableBody">
                         </tbody>
                     </table>
                 </div>
@@ -119,7 +93,66 @@
     </div>
 
     <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aside.js">
+    <script>
+        // جلب البيانات من localStorage
+        const stores = JSON.parse(localStorage.getItem("stores")) || [];
+        const products = JSON.parse(localStorage.getItem("products")) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
+        // اختر متجر معين (مثلاً أول متجر موجود)
+        const store = stores[0];
+        if (store) {
+            document.getElementById("storeName").textContent = store.name || "N/A";
+            const seller = users.find(u => u.role === "Seller" && u.store_id === store.id);
+            document.getElementById("storeOwner").textContent = seller ? seller.name : "N/A";
+            document.getElementById("storeEmail").textContent = seller ? seller.email : "N/A";
+            document.getElementById("storePhone").textContent = seller ? seller.phone : "N/A";
+            document.getElementById("storeAddress").textContent = store.location || "N/A";
+            document.getElementById("storeId").textContent = "#STR" + store.id;
+            document.getElementById("storeCreated").textContent = store.created_on || "N/A";
+
+            // احصائيات المنتجات
+            const storeProducts = products.filter(p => p.store_id === store.id);
+            document.getElementById("storeProductsCount").textContent = storeProducts.length;
+
+            // افتراضياً: عدد الطلبات ومعدل التقييم
+            let totalOrders = storeProducts.reduce((acc, p) => acc + (p.orders || 0), 0);
+            let avgRating = storeProducts.length ? (storeProducts.reduce((acc, p) => acc + (p.rating || 0), 0) /
+                storeProducts.length).toFixed(1) : 0;
+            document.getElementById("storeOrdersCount").textContent = totalOrders;
+            document.getElementById("storeRating").textContent = avgRating + " ★";
+
+            // جدول المنتجات
+            const tbody = document.getElementById("productsTableBody");
+            tbody.innerHTML = "";
+            storeProducts.forEach(p => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="../../../${p.image}" class="rounded" width="50" height="50" alt="Product"></td>
+                        <td>${p.name}</td>
+                        <td>$${p.price}</td>
+                        <td>${p.stock}</td>
+                        <td>${p.orders || 0}</td>
+                        <td>${p.rating || 0}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editProduct(${p.id})">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function editProduct(id) {
+            window.location.href = `editProduct.html?id=${id}`;
+        }
+
+        function deleteProduct(id) {
+            if (confirm("Are you sure you want to delete this product?")) {
+                const updatedProducts = products.filter(p => p.id !== id);
+                localStorage.setItem("products", JSON.stringify(updatedProducts));
+                location.reload();
+            }
+        }
     </script>
 </body>

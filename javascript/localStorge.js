@@ -10,7 +10,7 @@ const users = [{
         gender: "male",
         location: "New York",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
     {
         id: 1,
@@ -22,7 +22,7 @@ const users = [{
         gender: "female",
         location: "London",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
     {
         id: 2,
@@ -34,7 +34,7 @@ const users = [{
         gender: "male",
         location: "Berlin",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
 
     // 5 Sellers
@@ -48,7 +48,7 @@ const users = [{
         gender: "male",
         location: "Cairo",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 1
     },
     {
@@ -61,7 +61,7 @@ const users = [{
         gender: "female",
         location: "Dubai",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 2
     },
     {
@@ -74,7 +74,7 @@ const users = [{
         gender: "male",
         location: "Paris",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 3
     },
     {
@@ -87,7 +87,7 @@ const users = [{
         gender: "male",
         location: "Rome",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 4
     },
     {
@@ -100,7 +100,7 @@ const users = [{
         gender: "female",
         location: "Madrid",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 5
     },
 ];
@@ -117,7 +117,7 @@ for (let i = 1; i <= 22; i++) {
         gender: i % 2 === 0 ? "male" : "female",
         location: "Random City",
         role: "Buyer",
-        logo: "profile.jpg",
+        logo: "logo.jpg",
     });
 }
 
@@ -172,7 +172,13 @@ products.push({
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -182,7 +188,13 @@ products.push({
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -192,7 +204,13 @@ products.push({
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -202,7 +220,13 @@ products.push({
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -212,7 +236,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -225,7 +255,13 @@ products.push({
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -235,7 +271,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -245,7 +287,13 @@ products.push({
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -255,7 +303,13 @@ products.push({
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -265,7 +319,13 @@ products.push({
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -275,7 +335,13 @@ products.push({
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -288,7 +354,13 @@ products.push({
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -298,7 +370,13 @@ products.push({
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -308,7 +386,13 @@ products.push({
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -318,7 +402,13 @@ products.push({
         price: 49.99,
         store_id: 3,
         category: 'unisex',
-        image: '../images/GreenTea.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'GreenTea.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
         id: 1,
@@ -327,7 +417,13 @@ products.push({
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -337,7 +433,13 @@ products.push({
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -347,7 +449,13 @@ products.push({
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -357,7 +465,13 @@ products.push({
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -367,7 +481,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -380,7 +500,13 @@ products.push({
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -390,7 +516,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -400,7 +532,13 @@ products.push({
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -410,7 +548,13 @@ products.push({
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -420,7 +564,13 @@ products.push({
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -430,7 +580,13 @@ products.push({
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -443,7 +599,13 @@ products.push({
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -453,7 +615,13 @@ products.push({
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -463,7 +631,13 @@ products.push({
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
         id: 15,
@@ -472,7 +646,13 @@ products.push({
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -482,7 +662,13 @@ products.push({
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -492,7 +678,13 @@ products.push({
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -502,7 +694,13 @@ products.push({
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -512,7 +710,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -525,7 +729,13 @@ products.push({
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -535,7 +745,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -545,7 +761,13 @@ products.push({
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -555,7 +777,13 @@ products.push({
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -565,7 +793,13 @@ products.push({
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -575,7 +809,13 @@ products.push({
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -588,7 +828,13 @@ products.push({
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -598,7 +844,13 @@ products.push({
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -608,7 +860,13 @@ products.push({
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
         id: 29,
@@ -617,7 +875,13 @@ products.push({
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -627,7 +891,13 @@ products.push({
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -637,7 +907,13 @@ products.push({
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -647,7 +923,13 @@ products.push({
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -657,7 +939,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -670,7 +958,13 @@ products.push({
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -680,7 +974,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -690,7 +990,13 @@ products.push({
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -700,7 +1006,13 @@ products.push({
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -710,7 +1022,13 @@ products.push({
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -720,7 +1038,13 @@ products.push({
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -733,7 +1057,13 @@ products.push({
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -743,7 +1073,13 @@ products.push({
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -753,7 +1089,13 @@ products.push({
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
         id: 43,
@@ -762,7 +1104,13 @@ products.push({
         price: 89.99,
         store_id: 1,
         category: 'men',
-        image: '../images/Golden-Desert-6ml.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'Golden-Desert-6ml.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -772,7 +1120,13 @@ products.push({
         price: 119.99,
         store_id: 2,
         category: 'men',
-        image: '../images/CREEDROYALOUD.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CREEDROYALOUD.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -782,7 +1136,13 @@ products.push({
         price: 59.99,
         store_id: 3,
         category: 'men',
-        image: '../images/OceanBreeze.avif',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'OceanBreeze.avif',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -792,7 +1152,13 @@ products.push({
         price: 95.99,
         store_id: 0,
         category: 'men',
-        image: '../images/BlackLeather.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'BlackLeather.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -802,7 +1168,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'men',
-        image: '../images/WoodySpice.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WoodySpice.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -815,7 +1187,13 @@ products.push({
         price: 69.99,
         store_id: 4,
         category: 'women',
-        image: '../images/WhiteMusk.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'WhiteMusk.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -825,7 +1203,13 @@ products.push({
         price: 79.99,
         store_id: 1,
         category: 'women',
-        image: '../images/CherryBlossom.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CherryBlossom.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -835,7 +1219,13 @@ products.push({
         price: 94.99,
         store_id: 2,
         category: 'women',
-        image: '../images/MidnightRose.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'MidnightRose.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -845,7 +1235,13 @@ products.push({
         price: 74.99,
         store_id: 1,
         category: 'women',
-        image: '../images/VanillaDreams.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'VanillaDreams.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -855,7 +1251,13 @@ products.push({
         price: 84.99,
         store_id: 0,
         category: 'women',
-        image: '../images/FloralElegance.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FloralElegance.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -865,7 +1267,13 @@ products.push({
         price: 67.99,
         store_id: 4,
         category: 'women',
-        image: '../images/PinkPeony.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'PinkPeony.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 
@@ -878,7 +1286,13 @@ products.push({
         price: 64.99,
         store_id: 2,
         category: 'unisex',
-        image: '../images/CitrusBurst.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'CitrusBurst.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: true
     }, {
 
@@ -888,7 +1302,13 @@ products.push({
         price: 54.99,
         store_id: 1,
         category: 'unisex',
-        image: '../images/FreshMint.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'FreshMint.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     }, {
 
@@ -898,7 +1318,13 @@ products.push({
         price: 89.99,
         store_id: 0,
         category: 'unisex',
-        image: '../images/AmberGlow.jpg',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.',
+        image: 'AmberGlow.jpg',
+        rating: 4.5,
+        discount: 10,
+        rating_count: 100,
+        Ingredients: "",
+        CountryofOrigin: "",
         featured: false
     },
 )
