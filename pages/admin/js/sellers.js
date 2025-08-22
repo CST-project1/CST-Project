@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sellersTable = document.getElementById("sellersTable");
+    const searchInput = document.getElementById("searchInput");
 
     let sellers = JSON.parse(localStorage.getItem("users")) || [];
     let stores = JSON.parse(localStorage.getItem("stores")) || [];
@@ -7,11 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
     function renderSellers() {
-        if (!sellersTable) return; // لو مش موجود العنصر
+        if (!sellersTable) return;
         sellersTable.innerHTML = "";
 
-        sellers
-            .filter(user => user.role === "Seller")
+        const searchValue = searchInput.value.toLowerCase();
+
+        sellers.filter(user => user.role === "Seller")
+            .filter(seller => {
+                const store = stores.find(s => s.id === seller.store_id);
+                const storeName = store ? store.name : "";
+                return (
+                    seller.name.toLowerCase().includes(searchValue) ||
+                    seller.email.toLowerCase().includes(searchValue) ||
+                    String(seller.id).includes(searchValue) ||
+                    storeName.toLowerCase().includes(searchValue)
+                );
+            })
             .forEach(seller => {
                 const store = stores.find(s => s.id === seller.store_id);
                 const storeName = store ? store.name : "No Store";
@@ -65,6 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.deleteSeller = deleteSeller;
     window.renderSellers = renderSellers;
+
+    // شغل البحث
+    if (searchInput) {
+        searchInput.addEventListener("input", renderSellers);
+    }
 
     renderSellers();
 });
