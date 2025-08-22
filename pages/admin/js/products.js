@@ -38,8 +38,7 @@ function renderProducts() {
                         <td>
                             <a href="ProductInfo.html?id=${p.id}" class="text-decoration-none text-dark">
                                 <div class="d-flex align-items-center">
-                                    <img src="../../../images/${p.image}" alt="${p.name}" class="me-3 rounded-circle"
-                                        style="width:40px;height:40px;object-fit:cover;">
+                                  
                                     <img src="../../../images/${p.image}" alt="${p.name}" class="me-3 rounded-circle" style="width:40px;height:40px;object-fit:cover;">
                                     <div>
                                         <div class="fw-semibold">${p.name}</div>

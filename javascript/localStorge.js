@@ -10,7 +10,7 @@ const users = [{
         gender: "male",
         location: "New York",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
     {
         id: 1,
@@ -22,7 +22,7 @@ const users = [{
         gender: "female",
         location: "London",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
     {
         id: 2,
@@ -34,7 +34,7 @@ const users = [{
         gender: "male",
         location: "Berlin",
         role: "Admin",
-        logo: "logo.jpg",
+        logo: "store.jpg"
     },
 
     // 5 Sellers
@@ -48,7 +48,7 @@ const users = [{
         gender: "male",
         location: "Cairo",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 1
     },
     {
@@ -61,7 +61,7 @@ const users = [{
         gender: "female",
         location: "Dubai",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 2
     },
     {
@@ -74,7 +74,7 @@ const users = [{
         gender: "male",
         location: "Paris",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 3
     },
     {
@@ -87,7 +87,7 @@ const users = [{
         gender: "male",
         location: "Rome",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 4
     },
     {
@@ -100,7 +100,7 @@ const users = [{
         gender: "female",
         location: "Madrid",
         role: "Seller",
-        logo: "images.jpeg",
+        logo: "store.jpg",
         store_id: 5
     },
 ];
@@ -117,7 +117,7 @@ for (let i = 1; i <= 22; i++) {
         gender: i % 2 === 0 ? "male" : "female",
         location: "Random City",
         role: "Buyer",
-        logo: "profile.jpg",
+        logo: "logo.jpg",
     });
 }
 
