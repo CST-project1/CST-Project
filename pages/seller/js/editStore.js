@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // get number of products from storage
   const products = JSON.parse(localStorage.getItem("products")) || [];
-  const sellerProducts = products.filter(p => p.sellerId === user.email);
+  const sellerProducts = products.filter(p => p.store_id === user.store_id);
   document.getElementById("storeProductsCount").textContent = sellerProducts.length;
 
   // Prefill modal fields
