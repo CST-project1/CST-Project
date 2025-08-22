@@ -1,34 +1,3 @@
-if (!localStorage.getItem("products")) {
-    const sampleProducts = [{
-            id: "P-101",
-            name: "Smartphone",
-            category: "Electronics",
-            price: 299,
-            amount: 12,
-            status: "active",
-            image: "../../../images/logo.jpg"
-        },
-        {
-            id: "P-102",
-            name: "Gaming Headset",
-            category: "Gaming",
-            price: 150,
-            amount: 0,
-            status: "inactive",
-            image: "../../../images/logo.jpg"
-        },
-        {
-            id: "P-103",
-            name: "Bluetooth Speaker",
-            category: "Audio",
-            price: 89,
-            amount: 30,
-            status: "active",
-            image: "../../../images/logo.jpg"
-        }
-    ];
-    localStorage.setItem("products", JSON.stringify(sampleProducts));
-}
 const productTableBody = document.getElementById("productTableBody");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
@@ -66,7 +35,7 @@ function renderProducts() {
                         <td>
                             <a href="ProductInfo.html?id=${p.id}" class="text-decoration-none text-dark">
                                 <div class="d-flex align-items-center">
-                                    <img src="../../${p.image}" alt="${p.name}" class="me-3 rounded-circle"
+                                    <img src="../../../images/${p.image}" alt="${p.name}" class="me-3 rounded-circle"
                                         style="width:40px;height:40px;object-fit:cover;">
                                     <div>
                                         <div class="fw-semibold">${p.name}</div>
