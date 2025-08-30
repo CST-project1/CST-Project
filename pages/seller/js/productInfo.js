@@ -25,17 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("productDesc").textContent = product.description || "No description available";
 
   // Images
+  const basePath = "../../../images/";
   const images = product.images || (product.image ? [product.image] : []);
   const imagesDiv = document.getElementById("productImages");
 
   if (images.length > 1) {
     const carouselId = "productInfoCarousel";
     imagesDiv.innerHTML = `
-      <div id="${carouselId}" class="carousel slide" data-bs-interval="false" style="width:300px; height:250px; object-fit:cover; margin:auto;">
+      <div id="${carouselId}" class="carousel slide" data-bs-interval="false" style="width:300px; height:250px; margin:auto;">
         <div class="carousel-inner">
           ${images.map((img, i) => `
             <div class="carousel-item ${i === 0 ? "active" : ""}">
-              <img src="${img}" class="d-block w-100" style="width:300px; height:250px; object-fit:cover; alt="${product.name}">
+              <img src="${basePath + img}" 
+                   onerror="this.src='https://placehold.co/300x250';"
+                   class="d-block w-100" 
+                   style="width:300px; height:250px; object-fit:cover;" 
+                   alt="${product.name}">
             </div>
           `).join("")}
         </div>
@@ -47,6 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
       </div>`;
   } else {
-    imagesDiv.innerHTML = `<img src="${images[0] || "https://placehold.co/200"}" class="img-fluid" alt="${product.name}">`;
+    const imgSrc = images[0] ? basePath + images[0] : "https://placehold.co/300x250";
+    imagesDiv.innerHTML = `
+      <img src="${imgSrc}" 
+           onerror="this.src='https://placehold.co/300x250';"
+           class="img-fluid" 
+           style="width:300px; height:250px; object-fit:cover;" 
+           alt="${product.name}">
+    `;
   }
 });

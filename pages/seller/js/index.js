@@ -1,14 +1,19 @@
 // Function to toggle the sidebar visibility
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("active");
-  }
+orders = JSON.parse(localStorage.getItem("orders")) || [];
+products = JSON.parse(localStorage.getItem("products")) || [];
+const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+const currentUser = getCurrentUser();
 
-  document.addEventListener("DOMContentLoaded", () => {
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   const currentUser = getCurrentUser();
   if (!currentUser || currentUser.role !== "Seller") return;
 
   const brandName = document.getElementById("brandName");
-  brandName.textContent = currentUser.brand_name;
+  // brandName.textContent = currentUser.brand_name;
 
   const allProducts = getProducts();
   const sellerProducts = allProducts.filter(p => p.store_id === currentUser.store_id);
@@ -19,11 +24,18 @@ function toggleSidebar() {
   // Update UI
   document.getElementById("totalProducts").innerText = totalProducts;
   document.getElementById("inStockUnits").innerText = inStockUnits;
+
+  const allOrders = getOrders();
+  const sellerOrders = allOrders.filter(
+    (o) => o.sellerId === currentUser.id
+  );
+  document.getElementById("ordersReceived").innerText = sellerOrders.length;
 });
 
-const ordersReceived = orders.length;
-document.getElementById("ordersReceived").innerText = ordersReceived;
- 
+
+
+
+
 // logout function
 document.addEventListener("DOMContentLoaded", () => {
   const logoutLink = document.getElementById("logout-link");
@@ -34,12 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-  
-orders = JSON.parse(localStorage.getItem("orders")) || [];
-products = JSON.parse(localStorage.getItem("products")) || [];
- const storedUsers  = JSON.parse(localStorage.getItem("users")) || [];
 
- orders = orders.map(order => {
+
+
+if (!currentUser) {
+  // If no user is logged in, clear orders to avoid errors
+  orders = [];
+} else {
+  orders = orders.filter(order => {
+    let product = products.find(p => p.id === order.product_id);
+    return product && product.store_id === currentUser.store_id;
+  });
+}
+
+orders = orders.map(order => {
   let buyer = storedUsers.find(u => u.id === order.buyerId);
   let product = products.find(p => p.id === order.product_id);
 
@@ -49,34 +69,36 @@ products = JSON.parse(localStorage.getItem("products")) || [];
     qty: order.quantity,
     date: order.date,
     status: order.status,
-    
-    products: product
-      ? [{ name: product.name, price: product.price, quantity: order.quantity }]
-      : [],
+
+    products: product ? [{
+      name: product.name,
+      price: product.price,
+      quantity: order.quantity
+    }] : [],
     total: product ? product.price * order.quantity : 0,
   };
 });
 
 //function of calculate otder total
-          /* function calculateOrderTotal(order) {
+/* function calculateOrderTotal(order) {
             return Math.round(
              order.products.reduce((sum, product) => sum + product.price * product.quantity, 0)
             );
           }
  */
-        let rowsPerPage = 3;
-        let currentPage = 1;
+let rowsPerPage = 3;
+let currentPage = 1;
 
-        function renderTable(page = 1) {
-            const tableBody = document.getElementById("orderTable");
-            tableBody.innerHTML = "";
+function renderTable(page = 1) {
+  const tableBody = document.getElementById("orderTable");
+  tableBody.innerHTML = "";
 
-            const start = (page - 1) * rowsPerPage;
-            const end = start + rowsPerPage;
-            const pageOrders = orders.slice(start, end);
+  const start = (page - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const pageOrders = orders.slice(start, end);
 
-            pageOrders.forEach(order => {
-                tableBody.innerHTML += `
+  pageOrders.forEach(order => {
+    tableBody.innerHTML += `
                     <tr>
                         <td onclick="goToOrderInfo(${order.id})" style="cursor:pointer;">#${order.id}</td>
                         <td>${order.customer}</td>
@@ -86,28 +108,32 @@ products = JSON.parse(localStorage.getItem("products")) || [];
                         <td>$${Math.round(order.total)}</td>
                     </tr>
                 `;
-            });
+  });
 
-            // renderPagination();
-        }
+  // renderPagination();
+}
 
-        function getStatusClass(status) {
-            switch (status) {
-                case "Pending": return "bg-warning";
-                case "Delivered": return "bg-success";
-                case "Cancelled": return "bg-danger";
-                case "Shipped": return "bg-primary";
-                case "Processing": return "bg-info";
-                default: return "bg-secondary";
-            }
-        }
+function getStatusClass(status) {
+  switch (status) {
+    case "Pending":
+      return "bg-warning";
+    case "Delivered":
+      return "bg-success";
+    case "Cancelled":
+      return "bg-danger";
+    case "Shipped":
+      return "bg-primary";
+    case "Processing":
+      return "bg-info";
+    default:
+      return "bg-secondary";
+  }
+}
 
-  
 
-            renderTable();
 
-        function goToOrderInfo(orderId) {
-             window.location.href = `orderInfo.html?id=${orderId}`;
-        }
+renderTable();
 
-        
+function goToOrderInfo(orderId) {
+  window.location.href = `orderInfo.html?id=${orderId}`;
+}

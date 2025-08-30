@@ -7,7 +7,7 @@
 
 .btn-add:hover {
     background-color: rgb(49, 49, 225);
-} 
+}
 
 body {
     margin: 0;
@@ -27,29 +27,29 @@ body {
     transition: transform 0.3s ease;
 }
 
-.sidebar p{
+.sidebar p {
     margin-left: 35px;
 }
 
-header{
-      margin-bottom: 20px;  
+header {
+    margin-bottom: 20px;
 }
 
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin-top: 15px;
-    
+
 }
 
 .sidebar ul li {
-    margin-left: 15px  ; 
-    margin-top:10px ;
+    margin-left: 15px;
+    margin-top: 10px;
     padding-top: 5px;
     padding-left: 10px;
 }
 
-.sidebar ul li:hover{
+.sidebar ul li:hover {
     border-style: none;
     border-radius: 10px;
     width: 200px;
@@ -73,26 +73,26 @@ header{
     color: rgb(0, 0, 0);
     text-decoration: none;
     margin-bottom: 20px;
-    
+
 }
 
- .sidebar ul li a:hover{
+.sidebar ul li a:hover {
     color: rgb(255, 255, 255);
-} 
+}
 
 .sidebar ul li.active a {
     color: white;
     font-weight: bold;
 }
 
-.sidebar img{
+.sidebar img {
     width: 100px;
     border-radius: 50%;
     margin-left: 35px;
     margin-bottom: 10px;
 }
 
-i{
+i {
     margin-right: 10px;
 }
 
@@ -105,26 +105,26 @@ i{
 /* sidemenu Button  */
 .sidemenu {
     display: none;
-    font-size:20px;
-    background: #333333; 
+    font-size: 20px;
+    background: #333333;
     color: #ffffff;
-    padding: 5px 10px;   
+    padding: 5px 10px;
     cursor: pointer;
-     position: fixed; 
-     top: 5px; 
-     border-radius: 5px;
-     margin-left: 10px;
-     
+    position: fixed;
+    top: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+
     cursor: pointer;
 }
 
-.btn-close{
-     display: none;     
-     position: absolute;
-     top: 10px;
-     right: 10px;
-     border: none;
-    
+.btn-close {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+
 }
 
 /* Responsive */
@@ -132,7 +132,8 @@ i{
     .sidemenu {
         display: block;
     }
-     .btn-close {
+
+    .btn-close {
         display: block;
     }
 
@@ -169,7 +170,7 @@ i{
 .custom-table td {
     vertical-align: middle;
     padding: 12px;
-    }
+}
 
 .custom-table img {
     width: 50px;
@@ -189,15 +190,16 @@ i{
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: black;
-  border-radius: 50%;
+    background-color: black;
+    border-radius: 50%;
 }
 
 .product-link {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 
 .product-link:hover {
-  color: rgb(49, 49, 225);;
+    color: rgb(49, 49, 225);
+    ;
 }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const allProductsGrid = document.getElementById('all-products-grid');
     const cartCountSpan = document.getElementById('cart-count');
     const cartIcon = document.getElementById('cart-icon');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    
+
     // Get current user from local storage
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../../../login.html';
         return;
     }
-    
+
     let cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
     let currentFilter = 'all';
 
@@ -69,19 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Display all products with filtering
     function displayProducts(filter = 'all') {
         if (!allProductsGrid) return;
-        
+
         let productsToShow = allProducts;
         if (filter !== 'all') {
             productsToShow = allProducts.filter(product => product.category === filter);
         }
-        
+
         allProductsGrid.innerHTML = '';
-        
+
         productsToShow.forEach(product => {
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <img src="../images/${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
+                <img src="../../../images/${product.image}" alt="${product.name}" class="product-image" onclick="goToProductDetails(${product.id})">
                 <div class="product-info">
                     <div class="product-category">${product.category}</div>
                     <h3 class="product-name">${product.name}</h3>
@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
             button.classList.add('active');
-            
+
             // Get filter category
             const category = button.getAttribute('data-category');
             currentFilter = category;
-            
+
             // Display filtered products
             displayProducts(category);
         });
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!product) return;
 
         const existingItem = cart.find(item => item.id === product.id);
-        
+
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
@@ -203,11 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add click functionality to "Add to Cart" buttons
     if (allProductsGrid) {
-        allProductsGrid.addEventListener('click', function(e) {
+        allProductsGrid.addEventListener('click', function (e) {
             if (e.target.classList.contains('add-to-cart-btn')) {
                 const productId = e.target.getAttribute('data-id');
                 addToCart(productId);
-                
+
                 // Add simple animation effect to button when clicked
                 e.target.textContent = 'Added!';
                 e.target.classList.add('added');
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Initialize
     displayProducts();
     updateCartUI();

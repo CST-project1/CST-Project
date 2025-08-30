@@ -88,6 +88,7 @@ fetch("../components/aside.html")
             if (pageTitle) {
                 if (currentPage.includes("productinfo.html")) {
                     pageTitle.innerHTML = `Product Information - ID #${productId}`;
+
                 } else {
                     pageTitle.innerHTML = `Products <span class="text-primary">#${productId}</span>`;
                 }

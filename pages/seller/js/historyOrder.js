@@ -1,33 +1,33 @@
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
-  }
+}
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const currentUser = getCurrentUser();
-  if (!currentUser || currentUser.role !== "Seller") return;
+document.addEventListener("DOMContentLoaded", () => {
+    const currentUser = getCurrentUser();
+    if (!currentUser || currentUser.role !== "Seller") return;
 
-  const brandName = document.getElementById("brandName");
-  brandName.textContent = currentUser.brand_name;
+    const brandName = document.getElementById("brandName");
+    brandName.textContent = currentUser.brand_name;
 });
 
-   // logout function
+// logout function
 document.addEventListener("DOMContentLoaded", () => {
-  const logoutLink = document.getElementById("logout-link");
-  if (logoutLink) {
-    logoutLink.addEventListener("click", (e) => {
-      e.preventDefault(); // stop <a> from reloading page
-      logout(); // call logout from storage.js
-    });
-  }
+    const logoutLink = document.getElementById("logout-link");
+    if (logoutLink) {
+        logoutLink.addEventListener("click", (e) => {
+            e.preventDefault(); // stop <a> from reloading page
+            logout(); // call logout from storage.js
+        });
+    }
 });
 
 // delet the order
-window.deleteOrder = function(id) {
+window.deleteOrder = function (id) {
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
     orders = orders.filter(order => order.id != id); // تجاهل النوع
     localStorage.setItem("orders", JSON.stringify(orders));
     const row = document.getElementById(`order-${id}`);
-    if(row) row.remove(); 
+    if (row) row.remove();
 };
 
 
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    
+
     tableBody.innerHTML = "";
 
     // rows
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const product = products.find(p => p.id === order.product_id);
         const buyer = users.find(u => u.id === order.buyerId);
 
-        if (!product || !buyer) return; 
+        if (!product || !buyer) return;
 
-        
+
         let statusClass = "";
-        switch(order.status.toLowerCase()) {
+        switch (order.status.toLowerCase()) {
             case "delivered":
                 statusClass = "bg-success";
                 break;
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const row = document.createElement("tr");
         row.id = `order-${order.id}`;
         row.innerHTML = `
-            <td><img src="../../../${product.image}" alt="${product.name}" width="50"></td>
+            <td><img src="../../../images/${product.image}" alt="${product.name}" width="50"></td>
             <td>${product.name}</td>
             <td>$${product.price.toFixed(2)}</td>
             <td>${buyer.name}</td>
@@ -89,6 +89,3 @@ document.addEventListener("DOMContentLoaded", () => {
         tableBody.appendChild(row);
     });
 });
-
-
-

@@ -128,7 +128,10 @@
             storeProducts.forEach(p => {
                 tbody.innerHTML += `
                     <tr>
-                        <td><img src="../../../${p.image}" class="rounded" width="50" height="50" alt="Product"></td>
+                        <td>
+                            <a href="productInfo.html?id=${p.id}" class="fw-bold">
+                            <img src="../../../images/${p.image}" class="rounded" width="50" height="50" alt="Product">
+                            </a></td>
                         <td>${p.name}</td>
                         <td>$${p.price}</td>
                         <td>${p.stock}</td>

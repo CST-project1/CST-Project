@@ -121,6 +121,7 @@ a {
     font-weight: bold;
     display: none;
 }
+
 /* user icon */
 
 .user-icon {
@@ -138,6 +139,16 @@ a {
     width: 28px;
     vertical-align: middle;
 }
+
+.order-item-image {
+    width: 30vw;
+    height: 30vh;
+    object-fit: cover;
+    /* يحافظ على النسبة */
+    border-radius: 8px;
+    /* شكل ألطف */
+}
+
 
 /* Cart Sidebar */
 .cart-sidebar {

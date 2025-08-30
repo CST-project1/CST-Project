@@ -21,7 +21,6 @@ function getCurrentUser() {
 
 function logout() {
   localStorage.removeItem("currentUser");
-
   window.location.href = "../../../login.html";
 }
 
@@ -34,15 +33,12 @@ function saveProducts(products) {
   localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
 }
 // order section
-/* const ORDER_STORAGE_KEY = "seller_orders";
+const ORDER_STORAGE_KEY = "orders";
 
-function getOrders(){
+function getOrders() {
   return JSON.parse(localStorage.getItem(ORDER_STORAGE_KEY)) || [];
 }
 
 function saveOrders(orders) {
   localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(orders));
-} */
-
-
-
+}

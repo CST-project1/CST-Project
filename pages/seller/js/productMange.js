@@ -36,25 +36,25 @@ function renderTable(products, page, allProducts) {
   const paginatedProducts = products.slice(start, end);
 
   paginatedProducts.forEach((product, index) => {
-    
+
     const absoluteIndex = allProducts.findIndex(
       (p) => p.name === product.name && p.sellerId === product.sellerId
     );
-const images = product.images || (product.image ? [product.image] : []);
-let imageHTML = "";
+    const images = product.images || (product.image ? [product.image] : []);
+    let imageHTML = "";
 
-const resolvedImages = images.map(img => {
-  // If already Base64 or starts with http, use as is
-  if (img.startsWith("data:") || img.startsWith("http")) {
-    return img;
-  }
-  //it's a filename and prepend your images folder path
-  return `../../../images/${img}`;
-});
+    const resolvedImages = images.map(img => {
+      // If already Base64 or starts with http, use as is
+      if (img.startsWith("data:") || img.startsWith("http")) {
+        return img;
+      }
+      //it's a filename and prepend your images folder path
+      return `../../../images/${img}`;
+    });
 
-if (resolvedImages.length > 1) {
-  const carouselId = `carousel-${page}-${index}`;
-  imageHTML = `
+    if (resolvedImages.length > 1) {
+      const carouselId = `carousel-${page}-${index}`;
+      imageHTML = `
     <div id="${carouselId}" class="carousel slide" data-bs-interval="false" style="width:50px; object-fit:cover">
       <div class="carousel-inner">
         ${resolvedImages
@@ -73,10 +73,10 @@ if (resolvedImages.length > 1) {
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>`;
-} else {
-  const img = resolvedImages.length ? resolvedImages[0] : "../images/placeholder.jpg";
-  imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
-}
+    } else {
+      const img = resolvedImages.length ? resolvedImages[0] : "../images/placeholder.jpg";
+      imageHTML = `<img src="${img}" alt="${product.name}" width="50" height="50">`;
+    }
     //Status depends on stock
     const status = Number(product.stock) >= 1 ? "Active" : "Out of Stock";
 
@@ -84,7 +84,7 @@ if (resolvedImages.length > 1) {
       <tr>
         <td>${imageHTML}</td>
         <td>
-          <a href="productInfo.html?index=${absoluteIndex}" class="product-link">
+          <a href="productInfo.html?index=${absoluteIndex}" class=" product-link">
             ${product.name}
           </a>
         </td>
@@ -182,4 +182,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-

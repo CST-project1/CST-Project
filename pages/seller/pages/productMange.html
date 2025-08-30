@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,69 +12,73 @@
   <!-- Font Awesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
   <!-- sidemenu Button  -->
   <div class="sidemenu" onclick="toggleSidebar()">&#9776;</div>
-    
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-       
-        <button  class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
 
-         <img src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg" alt="Logo" >
-         <p class="text-muted" id="brandName"></p>
-         <ul>
-            <li class="dashboard"><a href="index.html"><span>🏠 </span>  Dashboard</a></li>
-            <li class="products active"><a href="#"><span>🧴 </span> Products</a></li>
-            <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
-            <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
-            <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
-            <li class="logout"><a href="#" id="logout-link"><span>🔓</span> Logout</a>
-        </ul>
-    </aside>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
 
+    <button class="btn-close btn-close-black" aria-label="Close" onclick="toggleSidebar()"></button>
+
+    <img
+      src="https://marketplace.canva.com/EAGSec-fmik/2/0/1600w/canva-pink-elegant-special-sale-perfume-instagram-post-Uvwn1uyqzaM.jpg"
+      alt="Logo">
+    <p class="text-muted" id="brandName"></p>
+    <ul>
+      <li class="dashboard"><a href="index.html"><span>🏠 </span> Dashboard</a></li>
+      <li class="products active"><a href="#"><span>🧴 </span> Products</a></li>
+      <li class="orders"><a href="orderList.html"><span>📦 </span> Orders</a></li>
+      <li class="analytics"><a href="analytics.html"><span>📈 </span> Analytics</a></li>
+      <li class="account"><a href="storeDetails.html"><span>👤 </span> Account Settings</a></li>
+      <li class="logout"><a href="#" id="logout-link"><span>🔓</span> Logout</a>
+    </ul>
+  </aside>
+
+  <!-- Main content -->
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <!-- Main content -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <!-- Main content -->
-      <div class="content">
-        <h1>My Products</h1>
-        <a href="addProduct.html" class="btn btn-add"><i class="fa-plus"> Add Product</i></a>
-      </div>
+    <div class="content">
+      <h1>My Products</h1>
+      <a href="addProduct.html" class="btn btn-add"><i class="fa-plus"> Add Product</i></a>
+    </div>
 
-      <!-- Product Table -->
-      <div class="table-responsive">
-        <table class="table custom-table" id="product-table">
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="product-table-body">
-            
-          </tbody>
-        </table>
-      </div>
+    <!-- Product Table -->
+    <div class="table-responsive">
+      <table class="table custom-table" id="product-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body">
 
-      <nav>
-        <ul class="pagination justify-content-center" id="pagination">
+        </tbody>
+      </table>
+    </div>
 
-        </ul>
-      </nav>
-    </main>
+    <nav>
+      <ul class="pagination justify-content-center" id="pagination">
+
+      </ul>
+    </nav>
+  </main>
   </div>
-</div>
-         
+  </div>
 
-</script>
-<!-- Bootstrap JS -->
-<script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
-<script src="../js/storage.js"></script>
-<script src="../js/productMange.js"></script>
+
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="../../bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/productMange.js"></script>
 </body>
-</html> 
+
+</html>
