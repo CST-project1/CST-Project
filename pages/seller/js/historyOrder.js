@@ -1,54 +1,51 @@
+// Toggle Sidebar
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 
+// Get current user
+const currentUser = getCurrentUser();
+
 document.addEventListener("DOMContentLoaded", () => {
-    const currentUser = getCurrentUser();
+
+    // لو المستخدم مش بائع نوقف
     if (!currentUser || currentUser.role !== "Seller") return;
 
+    // عرض اسم البراند
     const brandName = document.getElementById("brandName");
-    brandName.textContent = currentUser.brand_name;
-});
+    if (brandName) {
+        brandName.textContent = currentUser.brand_name;
+    }
 
-// logout function
-document.addEventListener("DOMContentLoaded", () => {
+    // logout function
     const logoutLink = document.getElementById("logout-link");
     if (logoutLink) {
         logoutLink.addEventListener("click", (e) => {
-            e.preventDefault(); // stop <a> from reloading page
-            logout(); // call logout from storage.js
+            e.preventDefault(); // منع تحميل الصفحة
+            logout(); // استدعاء logout من storage.js
         });
     }
-});
 
-// delet the order
-window.deleteOrder = function (id) {
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    orders = orders.filter(order => order.id != id); // تجاهل النوع
-    localStorage.setItem("orders", JSON.stringify(orders));
-    const row = document.getElementById(`order-${id}`);
-    if (row) row.remove();
-};
-
-
-document.addEventListener("DOMContentLoaded", () => {
+    // عرض الطلبات في الجدول
     const tableBody = document.getElementById("orderTable");
+    if (!tableBody) return;
 
-    // local storage
-    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    // جلب البيانات من localStorage
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
+    // تصفية الطلبات الخاصة بالبائع الحالي
+    orders = orders.filter(order => order.sellerId === currentUser.id);
 
     tableBody.innerHTML = "";
 
-    // rows
+    // إنشاء الصفوف
     orders.forEach(order => {
         const product = products.find(p => p.id === order.product_id);
         const buyer = users.find(u => u.id === order.buyerId);
 
         if (!product || !buyer) return;
-
 
         let statusClass = "";
         switch (order.status.toLowerCase()) {
@@ -67,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
             case "processing":
                 statusClass = "bg-secondary";
                 break;
-
             default:
                 statusClass = "";
         }
@@ -77,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.innerHTML = `
             <td><img src="../../../images/${product.image}" alt="${product.name}" width="50"></td>
             <td>${product.name}</td>
-            <td>$${product.price.toFixed(2)}</td>
+            <td>$${parseFloat(product.price).toFixed(2)}</td>
             <td>${buyer.name}</td>
             <td><span class="badge ${statusClass}">${order.status}</span></td>
             <td>
@@ -89,3 +85,22 @@ document.addEventListener("DOMContentLoaded", () => {
         tableBody.appendChild(row);
     });
 });
+
+
+// Delete order function
+window.deleteOrder = function (id) {
+
+    if (!currentUser || currentUser.role !== "Seller") return;
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const orderToDelete = orders.find(order => order.id == id);
+    if (!orderToDelete || orderToDelete.sellerId !== currentUser.id) return;
+
+    // حذف الطلب
+    orders = orders.filter(order => order.id != id);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    // إزالة الصف من الجدول
+    const row = document.getElementById(`order-${id}`);
+    if (row) row.remove();
+};
