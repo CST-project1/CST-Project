@@ -121,16 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update additional details
         const productBrand = document.getElementById('product-brand');
-        const productType = document.getElementById('product-type');
-        const topNotes = document.getElementById('top-notes');
-        const heartNotes = document.getElementById('heart-notes');
-        const baseNotes = document.getElementById('base-notes');
 
-        if (productBrand) productBrand.textContent = currentProduct.brand;
-        if (productType) productType.textContent = currentProduct.type;
-        if (topNotes) topNotes.textContent = currentProduct.topNotes;
-        if (heartNotes) heartNotes.textContent = currentProduct.heartNotes;
-        if (baseNotes) baseNotes.textContent = currentProduct.baseNotes;
+        if (productBrand) productBrand.textContent = "L'Essence";
 
         // Load related products
         loadRelatedProducts();
