@@ -43,26 +43,27 @@
          }
 
          tbody.innerHTML += `
-          <tr>
-            <td>
-              <a href="orderInfo.html?id=${order.id}">
-                <div>
-                  <div class="fw-semibold">${buyer.username || "Unknown"}</div>
-                  <div class="text-muted small">#${order.id}</div>
-                </div>
-              </a>
-            </td>
-            <td class="text-muted">${order.payment || "cash"}</td>
-            <td>$${order.total}</td>
-            <td>${order.quantity} product(s)</td>
-            <td><span class="badge ${statusClass}">${order.status}</span></td>
-            <td>
-              <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder(${order.id})">
-                <i class="fa-solid fa-trash"></i>
-              </button>
-            </td>
-          </tr>
-        `;
+  <tr>
+    <td>
+      <a href="OrderInfo.html?id=${order.id}">
+        <div>
+          <div class="fw-semibold">${buyer.username || "Unknown"}</div>
+          <div class="text-muted small">#${order.id}</div>
+        </div>
+      </a>
+    </td>
+    <td class="text-muted">${order.payment || "cash"}</td>
+    <td>$${order.total}</td>
+    <td>${order.quantity} product(s)</td>
+    <td><span class="badge ${statusClass}">${order.status}</span></td>
+    <td>
+      <button class="btn btn-sm btn-outline-danger" onclick="deleteOrder(${order.id})">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </td>
+  </tr>
+`;
+
      });
  }
 
