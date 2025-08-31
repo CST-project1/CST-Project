@@ -45,7 +45,7 @@
          tbody.innerHTML += `
           <tr>
             <td>
-              < a href="orderInfo.html?id=${order.id}">
+              <a href="orderInfo.html?id=${order.id}">
                 <div>
                   <div class="fw-semibold">${buyer.username || "Unknown"}</div>
                   <div class="text-muted small">#${order.id}</div>
